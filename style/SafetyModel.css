@@ -1,0 +1,52 @@
+.safety_Modal_1 {
+  position: fixed;
+  font-size: 1.5rem;
+  top: 150px;
+  left: 405px;
+}
+.safety_Modal_2 a {
+  position: fixed;
+  top: 157px;
+  left: 645px;
+  height: 20px;
+  width: 80px;
+  text-align: center;
+  color: rgb(89, 89, 89);
+  font-size: 0.8rem;
+  border-radius: 10px;
+  /* border: solid 1px #000; */
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.safety_Modal_box1 {
+  position: fixed;
+  font-size: 1rem;
+  top: 190px;
+  left: 400px;
+  height: 270px;
+  width: 560px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+.safety_Modal_box2 {
+  position: fixed;
+  font-size: 1rem;
+  top: 190px;
+  left: 970px;
+  height: 270px;
+  width: 550px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+.safety_Modal_box3 {
+  position: fixed;
+  font-size: 1rem;
+  top: 465px;
+  left: 400px;
+  height: 465px;
+  width: 1120px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}

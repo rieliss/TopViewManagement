@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/base.css" />
+    <link rel="stylesheet" href="/style/fixed.css" />
+    <link rel="stylesheet" href="/style/square.css" />
+    <link rel="stylesheet" href="/style/169res.css" />
+    <link rel="stylesheet" href="/style/button.css" />
+    <link rel="stylesheet" href="/style/position.css" />
+    <link rel="stylesheet" href="/style/model.css" />
+    <link rel="stylesheet" href="/style/CostModel.css" />
+    <link rel="stylesheet" href="/style/DeliveryModel.css" />
+    <link rel="stylesheet" href="/style/EnergyModel.css" />
+    <link rel="stylesheet" href="/style/SafetyModel.css" />
+    <link rel="stylesheet" href="/style/qcmodel.css" />
+    <link rel="icon" href="/icons/water-shortage.png" />
+    <title>TOP VIEW MANAGEMENT</title>
+  </head>
+
+  <body onload="display_ct();">
+    <section>
+      <div class="container">
+        <div class="item item-1">
+          <h1>EPD Manufacturing Top View Management</h1>
+        </div>
+        <div class="item item-2">MORE INFORMATION</div>
+        <div class="item item-2-1">
+          <a href="#" target="_blank" class="button button_safe"
+            >Safety Control</a
+          >
+        </div>
+        <div class="item item-2-2">
+          <a
+            href="/Main/dekidaka.html"
+            target="_blank"
+            class="button button_deki"
+            >DEKIDAKA</a
+          >
+        </div>
+        <div class="item item-2-3">
+          <a href="#" target="_blank" class="button button_man">Manpower</a>
+        </div>
+        <div class="item item-2-4">
+          <a
+            href="/VisualInventory/inventory.html"
+            target="_blank"
+            class="button button_in"
+            >Inventory</a
+          >
+        </div>
+        <div class="item item-2-5">
+          <a href="#" target="_blank" class="button button_truck">TruckTime</a>
+        </div>
+        <div class="item item-2-6">
+          <a href="#" target="_blank" class="button button_qa">Quality</a>
+        </div>
+        <div class="item item-2-7">
+          <a
+            href="http://10.122.77.12/energy-visualize/daily"
+            target="_blank"
+            class="button button_co2"
+            >CO2 Emission</a
+          >
+        </div>
+        <div class="item item-2-8">
+          <a><b>OVERALL MFG. KPI</b></a>
+        </div>
+        <div class="item item-3">
+          <img src="/icons/Picture1.png" alt="imagetopview" />
+        </div>
+        <div class="item item-4">
+          <p>Powered by EPD DX Promotion</p>
+          <hr />
+        </div>
+        <div class="item item-4-1">
+          <span id="ct">
+            <script type="text/javascript">
+              function display_c() {
+                var refresh = 1000; // Refresh rate in milli seconds
+                mytime = setTimeout("display_ct()", refresh);
+              }
+
+              function display_ct() {
+                var x = new Date();
+                // document.getElementById('ct').innerHTML = x3;
+                // date part ///
+                var month = x.getMonth() + 1;
+                var day = x.getDate();
+                var year = x.getFullYear();
+                if (month < 10) {
+                  month = "0" + month;
+                }
+                if (day < 10) {
+                  day = "0" + day;
+                }
+                var x3 = day + "-" + month + "-" + year;
+
+                // time part //
+                var hour = x.getHours();
+                var minute = x.getMinutes();
+                var second = x.getSeconds();
+                if (hour < 10) {
+                  hour = "0" + hour;
+                }
+                if (minute < 10) {
+                  minute = "0" + minute;
+                }
+                if (second < 10) {
+                  second = "0" + second;
+                }
+                var x3 = x3 + " " + hour + ":" + minute + ":" + second;
+                document.getElementById("ct").innerHTML = x3;
+                display_c();
+              }
+            </script>
+          </span>
+        </div>
+        <div class="item item-6" id="Safety_Btn">
+          <img
+            src="/icons/Safety.png"
+            alt="safety"
+            style="margin-top: 10px; margin-left: 10px"
+          />
+          <div class="item item-6-1" id="myBtn"><b>Safety</b></div>
+          <div class="item item-6-2"><b>Normal</b></div>
+          <div class="item item-6-3"><b>● Risk Map</b></div>
+          <div class="item item-6-4">(Points)</div>
+          <div class="item item-6-5"><b>60</b></div>
+          <div class="item item-6-6"><b>● Contactor</b></div>
+          <div class="item item-6-7">(Area)</div>
+          <div class="item item-6-8"><b>25</b></div>
+          <div class="item item-6-9"><b>● Accident/Nearmiss</b></div>
+          <div class="item item-6-10">(Cases)</div>
+          <div class="item item-6-11"><b>0 / 0</b></div>
+          <div class="item item-6-12"><b>● Safety Device Release</b></div>
+          <div class="item item-6-13">(Cases)</div>
+          <div class="item item-6-14"><b>0</b></div>
+        </div>
+        <div class="item item-7" id="QC_Btn">
+          <img
+            src="/icons/QC.png"
+            alt="qc"
+            style="margin-top: 10px; margin-left: 10px"
+          />
+          <div class="item item-7-1"><b>Quality Control</b></div>
+          <div class="item item-7-2"><b>Abnormal</b></div>
+          <div class="item item-7-3"><b>● Defect Ratio</b></div>
+          <div class="item item-7-4">(% : P-Chart)</div>
+          <div class="item item-7-5">
+            <b><span style="color: red">2.3%</span> / 1.0%</b>
+          </div>
+          <div class="item item-7-6"><b>● Internal Loss</b></div>
+          <div class="item item-7-7">(%)</div>
+          <div class="item item-7-8">
+            <b><span style="color: red">0.9%</span> / 1.0%</b>
+          </div>
+        </div>
+        <div class="item item-8" id="cost_Btn">
+          <img
+            src="/icons/Cost.png"
+            alt="cost"
+            style="margin-top: 10px; margin-left: 10px"
+          />
+          <div class="item item-8-1"><b>Cost</b></div>
+          <div class="item item-8-2"><b>Normal</b></div>
+          <div class="item item-8-3"><b>● Investment</b></div>
+          <div class="item item-8-4">(Acc. KB/Month)</div>
+          <div class="item item-8-5">
+            <b><span>25 KB </span>/ 35 KB</b>
+          </div>
+          <div class="item item-8-6"><b>● Expense control </b></div>
+          <div class="item item-8-7">(Acc. KB/Month)</div>
+          <div class="item item-8-8">
+            <b><span style="color: rgb(192, 0, 0)">0.9%</span> / 1.0%</b>
+          </div>
+        </div>
+        <div class="item_hide_MGR" id="item_hide_MGR">
+          <div class="item item-14-5"></div>
+          <div class="item item-14-6"></div>
+          <div class="item item-14-7"></div>
+          <div class="item item-14-8"></div>
+          <div class="item item-14-9"></div>
+          <div class="item item-14-10"></div>
+          <div class="item item-14-11"></div>
+          <div class="item item-14-12">
+            <img src="/icons/MFG1MGR.png" alt="MFG1MGR" />
+          </div>
+          <div class="item item-14-13">
+            <img src="/icons/MFG2MGR.png" alt="MFG2MGR" />
+          </div>
+          <div class="item item-14-14">
+            <img src="/icons/MFG3MGR.png" alt="MFG3MGR" />
+          </div>
+          <div class="item item-14-15">
+            <img src="/icons/Part1MGR.png" alt="Part1MGR" />
+          </div>
+          <div class="item item-14-16">
+            <img src="/icons/Part2MGR.png" alt="Part2MGR" />
+          </div>
+          <div class="item item-14-17">
+            <img src="/icons/PartMGR.png" alt="PartMGR" />
+          </div>
+          <div class="item item-14-18">
+            <img src="/icons/AssyMGR.png" alt="AssyMGR" />
+          </div>
+          <div class="item item-9">
+            <div class="item item-9-1"><b>Mfg. 1 Alternator</b></div>
+            <div class="item item-9-2">Mr. Rangsan Thongsiri</div>
+          </div>
+          <div class="item item-10">
+            <div class="item item-10-1"><b>Mfg. 2 Starter</b></div>
+            <div class="item item-10-2">Mr. Suraphun Paenthongrong</div>
+          </div>
+          <div class="item item-11">
+            <div class="item item-11-1"><b>Mfg. 3 ECC,ABS,ASMO</b></div>
+            <div class="item item-11-2">Mr. Nuttapark Sutthitearranun</div>
+          </div>
+          <div class="item item-12">
+            <div class="item item-12-1"><b>Part Manufacturing 1</b></div>
+            <div class="item item-12-2">Mr. Sirichai Kitjumroen</div>
+          </div>
+          <div class="item item-13">
+            <div class="item item-13-1"><b>Part Manufacturing 2</b></div>
+            <div class="item item-13-2">Mr. Jaruek Sujawipan</div>
+          </div>
+          <div class="item item-31">
+            <div class="item item-31-1"><b>Assy Manufacturing</b></div>
+            <div class="item item-31-2">Mr. Thanong Wongsukjit</div>
+          </div>
+          <div class="item item-14-1">
+            <div class="item item-14-1-1"><b>Part Manufacturing</b></div>
+            <div class="item item-14-1-2">Mr. Sirichai Kitjumroen</div>
+          </div>
+        </div>
+        <div class="item item-14-2" id="delivery_Btn">
+          <img
+            src="/icons/Delivery.png"
+            alt="Delivery"
+            style="margin-top: 10px; margin-left: 10px"
+          />
+          <div class="item item-14-2-1"><b>Delivery</b></div>
+          <div class="item item-14-2-2"><b>Abnormal</b></div>
+          <div class="item item-14-2-3"><b>● In-house Stock</b></div>
+          <div class="item item-14-2-4">(DOH)</div>
+          <div class="item item-14-2-5">
+            <b><span style="color: red">2.3%</span> / 1.0%</b>
+          </div>
+          <div class="item item-14-2-6"><b>● Shipment</b></div>
+          <div class="item item-14-2-7">(Rounds)</div>
+          <div class="item item-14-2-8">
+            <b><span style="color: red">345</span> / 475</b>
+          </div>
+          <div class="item item-14-2-9"><b>● Risk Stock</b></div>
+          <div class="item item-14-2-10">(DOH)</div>
+          <div class="item item-14-2-11"><b>6.28 / 5.00</b></div>
+          <div class="item item-14-2-12"><b>● Active AGV</b></div>
+          <div class="item item-14-2-13">(Units)</div>
+          <div class="item item-14-2-14"><b>13 / 13</b></div>
+        </div>
+        <div class="item item-14-3" id="Prod_Btn">
+          <img
+            src="/icons/Prod.png"
+            alt="Prod"
+            style="margin-top: 10px; margin-left: 10px"
+          />
+          <div class="item item-14-3-1"><b>Productivity</b></div>
+          <div class="item item-14-3-2"><b>Normal</b></div>
+          <div class="item item-14-3-3"><b>● PROD. Progress</b></div>
+          <div class="item item-14-3-4">(Acc. Q’ty/Day)</div>
+          <div class="item item-14-3-5">
+            <b
+              ><span style="color: black" class="update_prodA">0 B</span> /
+              <span style="color: black" class="update_prodP">0 B</span></b
+            >
+          </div>
+          <div class="item item-14-3-6"><b>● Man Power Att.</b></div>
+          <div class="item item-14-3-7">(Person/Day)</div>
+          <div class="item item-14-3-8">
+            <b><span style="color: black">635</span> / 635</b>
+          </div>
+          <div class="item item-14-3-9"><b>● TPM Notify</b></div>
+          <div class="item item-14-3-10">(Abnormal/Normal points.)</div>
+          <div class="item item-14-3-11"><b>5 / 10</b></div>
+        </div>
+        <div class="item item-14-4" id="Energy_Btn">
+          <img
+            src="/icons/Energy.png"
+            alt="Energy"
+            style="margin-top: 10px; margin-left: 10px"
+          />
+          <div class="item item-14-4-1"><b>Energy</b></div>
+          <div class="item item-14-4-2"><b>Normal</b></div>
+          <div class="item item-14-4-3"><b>● CO2 Emission</b></div>
+          <div class="item item-14-4-4">(Kg./piece)</div>
+          <div class="item item-14-4-5">
+            <b><span style="color: black">25 KB</span> / 35 KB</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="Alternator Product">
+      <div class="AltProd AltProd-1" id="4463">4463</div>
+      <div class="AltProd AltProd-2" id="4464">4464</div>
+      <div class="AltProd AltProd-3" id="4461">4461</div>
+      <div class="AltProd AltProd-4" id="4278">4278</div>
+      <div class="AltProd AltProd-5" id="4274">4274</div>
+      <div class="AltProd AltProd-6" id="4268">4268</div>
+      <div class="AltProd AltProd-7" id="4267">4267</div>
+      <div class="AltProd AltProd-8" id="4273">4273</div>
+      <div class="AltProd AltProd-9" id="4277">4277</div>
+      <div class="AltProd AltProd-10" id="4271">4271</div>
+      <div class="AltProd AltProd-11" id="4276">4276</div>
+      <div class="AltProd AltProd-12" id="4272">4272</div>
+      <div class="AltProd AltProd-13" id="4290">4290</div>
+      <div class="AltProd AltProd-14" id="4291">4291</div>
+    </div>
+    <div class="Starter Product">
+      <div class="StrProd StrProd-1" id="S100">4452</div>
+      <div class="StrProd StrProd-2" id="S200">4251</div>
+      <div class="StrProd StrProd-3" id="S101">4451</div>
+      <div class="StrProd StrProd-4" id="S201">4253</div>
+      <div class="StrProd StrProd-5" id="S102">4453</div>
+      <div class="StrProd StrProd-6" id="S203">4260</div>
+      <div class="StrProd StrProd-7" id="S203Pluge">4260</div>
+      <div class="StrProd StrProd-9" id="S202">4259</div>
+      <div class="StrProd StrProd-10" id="S103">4454</div>
+      <!-- <div class="StrProd StrProd-11" id="S254S255">4280</div>
+    <div class="StrProd StrProd-12" id="S212S222">4281</div>
+    <div class="StrProd StrProd-13" id="S212S222">4282</div> -->
+      <div class="StrProd StrProd-14" id="S251">4254</div>
+      <div class="StrProd StrProd-15" id="S232">4286</div>
+      <div class="StrProd StrProd-16" id="S230S231">4256</div>
+      <div class="StrProd StrProd-17" id="Y345Y357">4120</div>
+      <div class="StrProd StrProd-18" id="Y276">4120</div>
+      <div class="StrProd StrProd-19" id="Y360">4120</div>
+    </div>
+    <div class="ECC, ABS & Asmo Product">
+      <div class="ECCABS ECCABS-1" id="M100">4441</div>
+      <!-- <div class="ECCABS ECCABS-2" id="M203">4245</div> -->
+      <!-- <div class="ECCABS ECCABS-3" id="M220">4241</div> -->
+      <!-- <div class="ECCABS ECCABS-4" id="M202">4247</div> -->
+      <div class="ECCABS ECCABS-5" id="B1001">4419</div>
+      <div class="ECCABS ECCABS-6" id="B1002">4419</div>
+      <div class="ECCABS ECCABS-7" id="B1003">4419</div>
+      <div class="ECCABS ECCABS-8" id="B1004">4419</div>
+      <div class="ECCABS ECCABS-9" id="B200">4419</div>
+      <div class="ECCABS ECCABS-10" id="H1001">4443</div>
+      <div class="ECCABS ECCABS-11" id="H1002">4443</div>
+      <div class="ECCABS ECCABS-12" id="H200">4443</div>
+      <div class="ECCABS ECCABS-13" id="A208">4269</div>
+      <div class="ECCABS ECCABS-14" id="A216">4275</div>
+      <!-- <div class="ECCABS ECCABS-15" id="A202">4279</div> -->
+      <div class="ECCABS ECCABS-16" id="Y100">4499</div>
+      <!-- <div class="ECCABS ECCABS-17" id="Converyan">4499</div> -->
+      <!-- <div class="ECCABS ECCABS-18" id="Pragnant">4498</div> -->
+      <div class="ECCABS ECCABS-19" id="Z100">4433</div>
+      <div class="ECCABS ECCABS-20" id="Z1001">4433</div>
+      <div class="ECCABS ECCABS-21" id="V102">4420</div>
+      <div class="ECCABS ECCABS-22" id="W100">4412</div>
+      <div class="ECCABS ECCABS-23" id="W103W104">4412</div>
+    </div>
+    <!-- <div class="Parts Manufacturing 1">
+      <div class="Parts1 Parts1-1" id="Y301">4111</div>
+      <div class="Parts1 Parts1-2" id="Y309">4111</div>
+      <div class="Parts1 Parts1-3" id="Y302">4111</div>
+      <div class="Parts1 Parts1-4" id="Y309500T">4111</div>
+      <div class="Parts1 Parts1-5" id="Y231">4141</div>
+      <div class="Parts1 Parts1-6" id="Y216">4141</div>
+      <div class="Parts1 Parts1-7" id="Y311Fin">4141</div>
+      <div class="Parts1 Parts1-8" id="Y270">4141</div>
+      <div class="Parts1 Parts1-9" id="Y311PA64">4141</div>
+      <div class="Parts1 Parts1-10" id="Y306">4114</div>
+      <div class="Parts1 Parts1-11" id="Y312">4114</div>
+      <div class="Parts1 Parts1-12" id="Y313">4114</div>
+      <div class="Parts1 Parts1-13" id="Y266">4156</div>
+      <div class="Parts1 Parts1-14" id="Y252CF">4151</div>
+      <div class="Parts1 Parts1-15" id="CF0002">4131</div>
+      <div class="Parts1 Parts1-16" id="CF0003">4131</div>
+      <div class="Parts1 Parts1-17" id="Y258">4136</div>
+      <div class="Parts1 Parts1-18" id="Y352HP5">4133</div>
+      <div class="Parts1 Parts1-19" id="Y352HP3">4133</div>
+    </div>
+    <div class="Parts Manufacturing 2">
+      <div class="Parts2 Parts2-1" id="Y254P">15</div>
+      <div class="Parts2 Parts2-2" id="Y254Before">16</div>
+      <div class="Parts2 Parts2-3" id="Y254RA">17</div>
+      <div class="Parts2 Parts2-4" id="Y255RA">18</div>
+      <div class="Parts2 Parts2-5" id="Y255PGA">19</div>
+      <div class="Parts2 Parts2-6" id="Y255PA70">20</div>
+      <div class="Parts2 Parts2-7" id="Y254PA70">21</div>
+      <div class="Parts2 Parts2-8" id="Y252After">22</div>
+      <div class="Parts2 Parts2-9" id="Y253Lathe">23</div>
+      <div class="Parts2 Parts2-10" id="Y277">24</div>
+      <div class="Parts2 Parts2-11" id="Y253Weld">25</div>
+      <div class="Parts2 Parts2-12" id="Y278">15</div>
+      <div class="Parts2 Parts2-13" id="Y278-1">16</div>
+      <div class="Parts2 Parts2-14" id="Y278-2">17</div>
+      <div class="Parts2 Parts2-15" id="Y278-3">18</div>
+      <div class="Parts2 Parts2-16" id="Y278-4">19</div>
+      <div class="Parts2 Parts2-17" id="Y222">20</div>
+      <div class="Parts2 Parts2-18" id="Y227">21</div>
+      <div class="Parts2 Parts2-19" id="Y261">22</div>
+      <div class="Parts2 Parts2-20" id="Y233">23</div>
+      <div class="Parts2 Parts2-21" id="Y232">24</div>
+      <div class="Parts2 Parts2-22" id="Y200">25</div>
+      <div class="Parts2 Parts2-23" id="Y204">15</div>
+      <div class="Parts2 Parts2-24" id="Y214">16</div>
+      <div class="Parts2 Parts2-25" id="Y362">17</div>
+      <div class="Parts2 Parts2-26" id="Y215">18</div>
+      <div class="Parts2 Parts2-27" id="Y234">19</div>
+      <div class="Parts2 Parts2-28" id="Y229">20</div>
+      <div class="Parts2 Parts2-29" id="Y228">20</div>
+      <div class="Parts2 Parts2-30" id="Y361">17</div>
+      <div class="Parts2 Parts2-31" id="4134GDP">18</div>
+      <div class="Parts2 Parts2-32" id="Tool0011">19</div>
+      <div class="Parts2 Parts2-33" id="4132Lathe">20</div>
+    </div> -->
+
+    <div id="safety_Modal" class="modal">
+      <div class="hide-item-7"></div>
+      <div class="hide-item-8"></div>
+      <div class="hide-item-14-2"></div>
+      <div class="hide-item-14-3"></div>
+      <div class="hide-item-14-4"></div>
+      <!-- Modal content -->
+      <div class="modal-content">
+        <button class="safety_btn_close">
+          <span class="icon_cross"></span>
+        </button>
+      </div>
+      <div class="safety_Modal safety_Modal_1">Safety Information</div>
+      <div class="safety_Modal safety_Modal_2">
+        <a
+          href="http://172.23.36.47:5503/Main/dekidaka.html"
+          class="button button_in"
+          >Detail >></a
+        >
+      </div>
+      <div class="safety_Modal safety_Modal_box1"></div>
+      <div class="safety_Modal safety_Modal_box2"></div>
+      <div class="safety_Modal safety_Modal_box3"></div>
+      <div class=""></div>
+    </div>
+    <div id="QC_Modal" class="modal">
+      <div class="hide-item-6"></div>
+      <!-- <div class=" hide-item-7"></div> -->
+      <div class="hide-item-8"></div>
+      <div class="hide-item-14-2"></div>
+      <div class="hide-item-14-3"></div>
+      <div class="hide-item-14-4"></div>
+      <!-- Modal content -->
+      <div class="modal-content">
+        <button class="QC_btn_close">
+          <span class="icon_cross"></span>
+        </button>
+      </div>
+      <div class="QC_Modal QC_Modal_1">Quality Control Information</div>
+      <div class="QC_Modal QC_Modal_2">
+        <a
+          href="http://172.23.36.47:5503/Main/dekidaka.html"
+          target="_blank"
+          class="button button_in"
+          >Detail >></a
+        >
+      </div>
+      <div class="QC_Modal QC_Modal_box1"></div>
+      <div class="QC_Modal QC_Modal_box2"></div>
+      <div class="QC_Modal QC_Modal_box3"></div>
+      <div class=""></div>
+    </div>
+
+    <div id="cost_Modal" class="modal">
+      <div class="hide-item-6"></div>
+      <div class="hide-item-7"></div>
+      <!-- <div class="hide-item-8"></div> -->
+      <div class="hide-item-14-2"></div>
+      <div class="hide-item-14-3"></div>
+      <div class="hide-item-14-4"></div>
+      <!-- Modal content -->
+      <div class="modal-content">
+        <button class="cost_btn_close">
+          <span class="icon_cross"></span>
+        </button>
+      </div>
+      <div class="Cost_Modal Cost_Modal_1"><b>Cost Information</b></div>
+      <div class="Cost_Modal Cost_Modal_2">
+        <a
+          href="http://172.23.36.47:5503/Main/dekidaka.html"
+          target="_blank"
+          class="button button_in"
+          >Detail >></a
+        >
+      </div>
+      <div class="Cost_Modal Cost_Modal_iframe">
+        <!-- <iframe
+          title="EPD Sales & Profit_Share"
+          width="1140"
+          height="541.25"
+          src="https://app.powerbi.com/reportEmbed?reportId=8dcadf18-a131-44e6-b620-a5af111c7459&autoAuth=true&ctid=69405920-b673-4f7c-8845-e124e9d08af2"
+          frameborder="0"
+          allowfullscreen="true"
+        ></iframe> -->
+        <iframe
+          src="https://app.powerbi.com/reportEmbed?reportId=8dcadf18-a131-44e6-b620-a5af111c7459&autoAuth=true&pageName=ReportSection7ba5d50b807e35a92c22"
+          frameborder="0"
+          allowfullscreen="true"
+        ></iframe>
+        <!-- <iframe
+          src="https://app.powerbi.com/reportEmbed?reportId="
+          frameborder="0"
+        ></iframe> -->
+      </div>
+      <!-- <div class="Cost_Modal Cost_Modal_5">
+        <div class="Cost_Modal Cost_Modal_3"><b>Expense</b></div>
+        <div class="Cost_Modal Cost_Modal_4">
+          <div class="Cost_Modal Cost_Modal_6"><b>MFG.1 Alternator</b></div>
+          <hr class="line1" />
+          <div class="Cost_Modal Cost_Modal_7"></div>
+          <div class="Cost_Modal Cost_Modal_8">
+            <canvas id="chartIdCostMFG1"></canvas>
+          </div>
+          <div class="Cost_Modal Cost_Modal_9">
+            <span class="Cost_Modal Cost_Modal_9 number"><b>15K</b></span>
+            <br />
+            <span class="Cost_Modal Cost_Modal_9 text">Bath</span>
+          </div>
+          <div class="Cost_Modal Cost_Modal_10">Category</div>
+          <hr class="line2" />
+          <div class="Cost_Modal Cost_Modal_11">Dies</div>
+          <div class="Cost_Modal Cost_Modal_12">Tooling</div>
+          <div class="Cost_Modal Cost_Modal_13">Test & Sample</div>
+          <div class="Cost_Modal Cost_Modal_14">MC Maint.</div>
+        </div>
+        <div class="Cost_Modal Cost_Modal_15">
+          <div class="Cost_Modal Cost_Modal_16">
+            <div>MFG.2 Starter</div>
+          </div>
+          <hr class="line3" />
+          <div class="Cost_Modal Cost_Modal_17"></div>
+          <div class="Cost_Modal Cost_Modal_18">
+            <canvas id="chartIdCostMFG2"></canvas>
+          </div>
+          <div class="Cost_Modal Cost_Modal_19">
+            <span class="Cost_Modal Cost_Modal_19 number"><b>33K</b></span>
+            <br />
+            <span class="Cost_Modal Cost_Modal_19 text">Bath</span>
+          </div>
+          <div class="Cost_Modal Cost_Modal_20">Category</div>
+          <hr class="line4" />
+          <div class="Cost_Modal Cost_Modal_21">Chemicals</div>
+          <div class="Cost_Modal Cost_Modal_22">Tooling</div>
+          <div class="Cost_Modal Cost_Modal_23">Test & Sample</div>
+          <div class="Cost_Modal Cost_Modal_24">Cost Spoilage</div>
+        </div>
+        <div class="Cost_Modal Cost_Modal_25">
+          <div class="Cost_Modal Cost_Modal_26">
+            <div>MFG.3 ECC</div>
+          </div>
+          <hr class="line5" />
+          <div class="Cost_Modal Cost_Modal_27"></div>
+          <div class="Cost_Modal Cost_Modal_28">
+            <canvas id="chartIdCostMFG3"></canvas>
+          </div>
+          <div class="Cost_Modal Cost_Modal_29">
+            <span class="Cost_Modal Cost_Modal_29 number"><b>22K</b></span>
+            <br />
+            <span class="Cost_Modal Cost_Modal_29 text">Bath</span>
+          </div>
+          <div class="Cost_Modal Cost_Modal_30">Category</div>
+          <hr class="line6" />
+          <div class="Cost_Modal Cost_Modal_31">Cutters</div>
+          <div class="Cost_Modal Cost_Modal_32">Cost Spoilage</div>
+          <div class="Cost_Modal Cost_Modal_33">Tooling</div>
+          <div class="Cost_Modal Cost_Modal_34">Test & Sample</div>
+        </div>
+        <div class="Cost_Modal Cost_Modal_35">
+          <div class="Cost_Modal Cost_Modal_36">
+            <div>Part MFG.1</div>
+          </div>
+          <hr class="line7" />
+          <div class="Cost_Modal Cost_Modal_37"></div>
+          <div class="Cost_Modal Cost_Modal_38">
+            <canvas id="chartIdCostPart1"></canvas>
+          </div>
+          <div class="Cost_Modal Cost_Modal_39">
+            <span class="Cost_Modal Cost_Modal_39 number"><b>18K</b></span>
+            <br />
+            <span class="Cost_Modal Cost_Modal_39 text">Bath</span>
+          </div>
+          <div class="Cost_Modal Cost_Modal_40">Category</div>
+          <hr class="line8" />
+          <div class="Cost_Modal Cost_Modal_41">Dies</div>
+          <div class="Cost_Modal Cost_Modal_42">Tooling</div>
+          <div class="Cost_Modal Cost_Modal_43">Test & Sample</div>
+          <div class="Cost_Modal Cost_Modal_44">Chemicals</div>
+        </div>
+        <div class="Cost_Modal Cost_Modal_45">
+          <div class="Cost_Modal Cost_Modal_46">
+            <div>Part MFG.2</div>
+          </div>
+          <hr class="line9" />
+          <div class="Cost_Modal Cost_Modal_47"></div>
+          <div class="Cost_Modal Cost_Modal_48">
+            <canvas id="chartIdCostPart2"></canvas>
+          </div>
+          <div class="Cost_Modal Cost_Modal_49">
+            <span class="Cost_Modal Cost_Modal_49 number"><b>18K</b></span>
+            <br />
+            <span class="Cost_Modal Cost_Modal_49 text">Bath</span>
+          </div>
+          <div class="Cost_Modal Cost_Modal_50">Category</div>
+          <hr class="line10" />
+          <div class="Cost_Modal Cost_Modal_51">Dies</div>
+          <div class="Cost_Modal Cost_Modal_52">Tooling</div>
+          <div class="Cost_Modal Cost_Modal_53">Test & Sample</div>
+          <div class="Cost_Modal Cost_Modal_54">Cutters</div>
+        </div>
+      </div> -->
+      <!-- <div class="Cost_Modal Cost_Modal_box">
+        <div class="Cost_Modal Cost_Modal_Investment">Investment</div>
+        <div class="Cost_Modal Cost_Modal_number">67.5%</div>
+        <div class="Cost_Modal Cost_Modal_canvas">
+          <canvas id="Investment"></canvas>
+        </div>
+        <div class="Cost_Modal Cost_Modal_unit">Unit in Million</div>
+      </div> -->
+    </div>
+
+    <div id="delivery_Modal" class="modal">
+      <div class="hide-item-6"></div>
+      <div class="hide-item-7"></div>
+      <div class="hide-item-8"></div>
+      <!-- <div class="hide-item-14-2"></div> -->
+      <div class="hide-item-14-3"></div>
+      <div class="hide-item-14-4"></div>
+      <!-- Modal content -->
+      <div class="modal-content">
+        <button class="delivery_btn_close">
+          <span class="icon_cross"></span>
+        </button>
+      </div>
+      <div class="delivery_Modal delivery_Modal_1">Delivery Information</div>
+      <div class="delivery_Modal delivery_Modal_2">
+        <a
+          href="http://172.23.36.47:5503/Main/dekidaka.html"
+          target="_blank"
+          class="button button_deki"
+          >Detail >></a
+        >
+      </div>
+      <div class="delivery_Modal delivery_Modal_box1">
+        <div class="delivery_Modal delivery_Modal_3">In-house Stock</div>
+        <div class="delivery_Modal delivery_Modal_4"></div>
+        <div class="delivery_Modal delivery_Modal_5">
+          <span class="delivery_Modal delivery_Modal_5-number"
+            ><b>2.3%</b></span
+          >
+          <span class="delivery_Modal delivery_Modal_5-text">/ 1.0%</span>
+        </div>
+        <div class="delivery_Modal delivery_Modal_6">
+          <canvas id="CurrentLossInHouseStock"></canvas>
+        </div>
+      </div>
+      <div class="delivery_Modal delivery_Modal_box2">
+        <div class="delivery_Modal delivery_Modal_7">Risk Stock</div>
+        <div class="delivery_Modal delivery_Modal_8">
+          <span class="delivery_Modal delivery_Modal_8-number"
+            ><b>6.28</b></span
+          >
+          <span class="delivery_Modal delivery_Modal_8-text">/ 5.00</span>
+        </div>
+        <div class="delivery_Modal delivery_Modal_9">
+          <canvas id="CurrentLossRiskStock"></canvas>
+        </div>
+      </div>
+      <div class="delivery_Modal delivery_Modal_box3">
+        <div class="delivery_Modal delivery_Modal_10">Shipment</div>
+        <div class="delivery_Modal delivery_Modal_11">Total</div>
+        <div class="delivery_Modal delivery_Modal_12">
+          <span class="delivery_Modal delivery_Modal_12-number">475</span>
+          <span class="delivery_Modal delivery_Modal_12-text">rounds</span>
+        </div>
+        <div class="delivery_Modal delivery_Modal_13">
+          <canvas id="chartIdShipment"></canvas>
+        </div>
+        <div class="delivery_Modal delivery_Modal_14"></div>
+        <div class="delivery_Modal delivery_Modal_15">
+          <span class="delivery_Modal delivery_Modal_15-number"
+            ><b>325</b></span
+          >
+          <span class="delivery_Modal delivery_Modal_15-text">On plan</span>
+        </div>
+        <div class="delivery_Modal delivery_Modal_16">
+          <span class="delivery_Modal delivery_Modal_16-number"><b>20</b></span>
+          <span class="delivery_Modal delivery_Modal_16-text">Delay</span>
+        </div>
+        <div class="delivery_Modal delivery_Modal_17">
+          <span class="delivery_Modal delivery_Modal_17-number"
+            ><b>130</b></span
+          >
+          <span class="delivery_Modal delivery_Modal_17-text">On progress</span>
+        </div>
+      </div>
+      <div class="delivery_Modal delivery_Modal_box4">
+        <div class="delivery_Modal delivery_Modal_18">AGV</div>
+        <div class="delivery_Modal delivery_Modal_19"></div>
+        <div class="delivery_Modal delivery_Modal_20">
+          <span class="delivery_Modal delivery_Modal_20-number">10</span>
+          <span class="delivery_Modal delivery_Modal_20-text">13</span>
+          <span class="delivery_Modal delivery_Modal_20-units">units</span>
+        </div>
+        <div class="delivery_Modal delivery_Modal_21">
+          <span class="delivery_Modal delivery_Modal_21-Ac">Active</span>
+          <span class="delivery_Modal delivery_Modal_21-AGV">AGV</span>
+          <span class="delivery_Modal delivery_Modal_21-Num">70%</span>
+        </div>
+        <div class="delivery_Modal delivery_Modal_22">
+          <canvas id=""></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div id="Prod_Modal" class="modal">
+      <div class="hide-item-6"></div>
+      <div class="hide-item-7"></div>
+      <div class="hide-item-8"></div>
+      <div class="hide-item-14-2"></div>
+      <!-- <div class="hide-item-14-3"></div> -->
+      <div class="hide-item-14-4"></div>
+      <!-- Modal content -->
+      <div class="modal-content">
+        <button class="Prod_btn_close">
+          <span class="icon_cross"></span>
+        </button>
+      </div>
+      <div class="Prod_Modal Prod_Modal_8">
+        <div class="Prod_Modal Prod_Modal_72">
+          <span class="Prod_Modal Prod_Modal_72 header">MP Attendance</span
+          ><br />
+          <span class="Prod_Modal Prod_Modal_72 date">(20 July 2023)</span>
+        </div>
+        <div class="Prod_Modal Prod_Modal_73">
+          <span class="Prod_Modal Prod_Modal_73 first"><b>635</b></span>
+          <span class="Prod_Modal Prod_Modal_73 second">/ 635</span>
+        </div>
+        <div class="Prod_Modal Prod_Modal_74"><b>Active</b> <br />Workers</div>
+        <div class="Prod_Modal Prod_Modal_75">
+          <canvas id="ActiveWorker"></canvas>
+        </div>
+        <div class="Prod_Modal Prod_Modal_78"></div>
+        <div class="Prod_Modal Prod_Modal_76"><b>6</b></div>
+        <div class="Prod_Modal Prod_Modal_77">Leaves</div>
+      </div>
+      <div class="Prod_Modal Prod_Modal_9">
+        <div class="Prod_Modal Prod_Modal_79">
+          <iframe
+            width="632px"
+            height="355px"
+            src="https://apps.powerapps.com/play/6aea9366-b1c4-429e-9c02-bdca2e57eb8d?tenantId=69405920-b673-4f7c-8845-e124e9d08af2"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="Prod_Modal Prod_Modal_1"><b>Productivity Information</b></div>
+      <div class="Prod_Modal Prod_Modal_2">
+        <a
+          href="http://172.23.36.47:5503/Main/dekidaka.html"
+          target="_blank"
+          class="button button_deki"
+          >Detail >></a
+        >
+      </div>
+      <div class="Prod_Modal Prod_Modal_5">
+        <div class="Prod_Modal Prod_Modal_3"><b>Productivity Progress</b></div>
+        <div class="Prod_Modal Prod_Modal_4">Current production level</div>
+        <div class="Prod_Modal Prod_Modal_6"><b>260,000</b></div>
+        <div class="Prod_Modal Prod_Modal_7">units</div>
+        <div class="Prod_Modal Prod_Modal_10">
+          <canvas id="CurrentPord"></canvas>
+        </div>
+
+        <div class="Prod_Modal Prod_Modal_12">
+          <div class="Prod_Modal Prod_Modal_16">
+            <b>MFG.1<br />Alternator</b>
+          </div>
+          <div class="Prod_Modal Prod_Modal_17">Planned</div>
+          <div class="Prod_Modal Prod_Modal_18"><b>2,600</b></div>
+          <div class="Prod_Modal Prod_Modal_19">Actual</div>
+          <div class="Prod_Modal Prod_Modal_20"><b>1,820</b></div>
+          <div class="Prod_Modal Prod_Modal_21">OA</div>
+          <div class="Prod_Modal Prod_Modal_22"><b>80%</b></div>
+          <div class="Prod_Modal Prod_Modal_11">
+            <canvas id="chartIdMFG1"></canvas>
+          </div>
+        </div>
+        <div class="Prod_Modal Prod_Modal_23">
+          <div class="Prod_Modal Prod_Modal_24">
+            <b>MFG.2<br />Starter</b>
+          </div>
+          <div class="Prod_Modal Prod_Modal_25">Planned</div>
+          <div class="Prod_Modal Prod_Modal_26"><b>2,600</b></div>
+          <div class="Prod_Modal Prod_Modal_27">Actual</div>
+          <div class="Prod_Modal Prod_Modal_28"><b>1,820</b></div>
+          <div class="Prod_Modal Prod_Modal_29">OA</div>
+          <div class="Prod_Modal Prod_Modal_30"><b>80%</b></div>
+        </div>
+        <div class="Prod_Modal Prod_Modal_31">
+          <div class="Prod_Modal Prod_Modal_32">
+            <b>MFG.3<br />ECC</b>
+          </div>
+          <div class="Prod_Modal Prod_Modal_33">Planned</div>
+          <div class="Prod_Modal Prod_Modal_34"><b>2,600</b></div>
+          <div class="Prod_Modal Prod_Modal_35">Actual</div>
+          <div class="Prod_Modal Prod_Modal_36"><b>1,820</b></div>
+          <div class="Prod_Modal Prod_Modal_37">OA</div>
+          <div class="Prod_Modal Prod_Modal_38"><b>80%</b></div>
+        </div>
+        <div class="Prod_Modal Prod_Modal_39">
+          <div class="Prod_Modal Prod_Modal_40">
+            <b>Part<br />MFG.1</b>
+          </div>
+          <div class="Prod_Modal Prod_Modal_41">Planned</div>
+          <div class="Prod_Modal Prod_Modal_42"><b>2,600</b></div>
+          <div class="Prod_Modal Prod_Modal_43">Actual</div>
+          <div class="Prod_Modal Prod_Modal_44"><b>1,820</b></div>
+          <div class="Prod_Modal Prod_Modal_45">OA</div>
+          <div class="Prod_Modal Prod_Modal_46"><b>80%</b></div>
+        </div>
+        <div class="Prod_Modal Prod_Modal_47">
+          <div class="Prod_Modal Prod_Modal_48">
+            <b>Part<br />MFG.2</b>
+          </div>
+          <div class="Prod_Modal Prod_Modal_49">Planned</div>
+          <div class="Prod_Modal Prod_Modal_50"><b>2,600</b></div>
+          <div class="Prod_Modal Prod_Modal_51">Actual</div>
+          <div class="Prod_Modal Prod_Modal_52"><b>1,820</b></div>
+          <div class="Prod_Modal Prod_Modal_53">OA</div>
+          <div class="Prod_Modal Prod_Modal_54"><b>80%</b></div>
+        </div>
+        <div class="Prod_Modal Prod_Modal_13"></div>
+        <div class="Prod_Modal Prod_Modal_14">Loss(mins)</div>
+        <div class="Prod_Modal Prod_Modal_15"><b>25</b></div>
+        <div class="Prod_Modal Prod_Modal_55"></div>
+        <div class="Prod_Modal Prod_Modal_56">Loss(mins)</div>
+        <div class="Prod_Modal Prod_Modal_57"><b>25</b></div>
+        <div class="Prod_Modal Prod_Modal_58"></div>
+        <div class="Prod_Modal Prod_Modal_59">Loss(mins)</div>
+        <div class="Prod_Modal Prod_Modal_60"><b>25</b></div>
+        <div class="Prod_Modal Prod_Modal_61"></div>
+        <div class="Prod_Modal Prod_Modal_62">Loss(mins)</div>
+        <div class="Prod_Modal Prod_Modal_63"><b>25</b></div>
+        <div class="Prod_Modal Prod_Modal_64"></div>
+        <div class="Prod_Modal Prod_Modal_65">Loss(mins)</div>
+        <div class="Prod_Modal Prod_Modal_66"><b>25</b></div>
+
+        <div class="Prod_Modal Prod_Modal_67">
+          <canvas id="chartIdMFG2"></canvas>
+        </div>
+        <div class="Prod_Modal Prod_Modal_68">
+          <canvas id="chartIdMFG3"></canvas>
+        </div>
+        <div class="Prod_Modal Prod_Modal_69">
+          <canvas id="chartIdPART1"></canvas>
+        </div>
+        <div class="Prod_Modal Prod_Modal_70">
+          <canvas id="chartIdPART2"></canvas>
+        </div>
+
+        <div class="Prod_Modal Prod_Modal_71">
+          <canvas id="CurrentLoss"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div id="Energy_Modal" class="modal">
+      <div class="hide-item-6"></div>
+      <div class="hide-item-7"></div>
+      <div class="hide-item-8"></div>
+      <div class="hide-item-14-2"></div>
+      <div class="hide-item-14-3"></div>
+      <div class="hide-item-14-4"></div>
+      <!-- Modal content -->
+      <div class="modal-content">
+        <button class="Energy_btn_close">
+          <span class="icon_cross"></span>
+        </button>
+      </div>
+      <div class="energy_Modal energy_Modal_1">Energy Information</div>
+      <div class="energy_Modal energy_Modal_2">
+        <a
+          href="http://10.122.77.12/energy-visualize/daily"
+          target="_blank"
+          class="button button_in"
+          >Detail >></a
+        >
+      </div>
+      <div class="energy_Modal energy_Modal_iframe">
+        <iframe
+          src="http://10.122.77.12/energy-visualize/daily"
+          frameborder="0"
+        ></iframe>
+      </div>
+      <!-- <div class="energy_Modal energy_Modal_box1"></div>
+      <div class="energy_Modal energy_Modal_box2"></div>
+      <div class="energy_Modal energy_Modal_box3"></div> -->
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"
+      integrity="sha512-+sXUwEYakGznuXubXLO/7LWSAPcm+U3NxMJaSu3S5OcvruAAAzaC50Uh4TW9KWj0hA6vfPAjB7E1uuIXgn9vmQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-stacked100@1.0.0"></script>
+    <script src="/Modules/socket.js"></script>
+    <script src="/Modules/index.js"></script>
+    <script src="/Modules/chart.js"></script>
+    <script src="/Modules/chartdeli.js"></script>
+  </body>
+</html>

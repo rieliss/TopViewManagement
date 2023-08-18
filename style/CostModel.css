@@ -1,0 +1,717 @@
+.Cost_Modal_1 {
+  position: fixed;
+  font-size: 1.5rem;
+  top: 145px;
+  left: 405px;
+}
+.Cost_Modal_2 a {
+  position: fixed;
+  top: 156px;
+  left: 610px;
+  height: 20px;
+  width: 70px;
+  text-align: center;
+  color: rgb(89, 89, 89);
+  font-size: 0.8rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.Cost_Modal_3 {
+  position: fixed;
+  font-size: 1.2rem;
+  top: 195px;
+  left: 410px;
+}
+.Cost_Modal_4 {
+  position: fixed;
+  font-size: 1rem;
+  top: 240px;
+  left: 420px;
+  height: 400px;
+  width: 210px;
+  border-radius: 10px;
+  border: solid 1px rgba(255, 255, 255, 1);
+}
+.Cost_Modal_5 {
+  position: fixed;
+  font-size: 1rem;
+  top: 190px;
+  left: 400px;
+  height: 465px;
+  width: 1120px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+.Cost_Modal_6 {
+  position: fixed;
+  font-size: 1.3rem;
+  top: 245px;
+  left: 445px;
+}
+hr.line1 {
+  position: fixed;
+  top: 270px;
+  left: 430px;
+  width: 185px;
+}
+.Cost_Modal_7 {
+  position: fixed;
+  font-size: 1rem;
+  top: 285px;
+  left: 600px;
+  height: 15px;
+  width: 15px;
+  border-radius: 10px;
+  background-color: rgba(0, 204, 153, 1);
+}
+.Cost_Modal_8 {
+  position: fixed;
+  font-size: 1rem;
+  top: 285px;
+  left: 375px;
+  height: 30px;
+  width: 500px;
+}
+.Cost_Modal_9.number {
+  position: fixed;
+  font-size: 2rem;
+  top: 400px;
+  left: 500px;
+  color: rgb(129, 228, 229);
+}
+.Cost_Modal_9.text {
+  position: fixed;
+  font-size: 0.8rem;
+  top: 445px;
+  left: 515px;
+  color: rgba(191, 191, 191, 1);
+}
+.Cost_Modal_10 {
+  position: fixed;
+  font-size: 1rem;
+  top: 465px;
+  left: 440px;
+}
+hr.line2 {
+  position: fixed;
+  top: 485px;
+  left: 430px;
+  width: 185px;
+}
+.Cost_Modal_11 {
+  position: fixed;
+  top: 505px;
+  left: 430px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_12 {
+  position: fixed;
+  top: 535px;
+  left: 430px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_13 {
+  position: fixed;
+  top: 565px;
+  left: 430px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_14 {
+  position: fixed;
+  top: 595px;
+  left: 430px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_15 {
+  position: fixed;
+  font-size: 1rem;
+  top: 240px;
+  left: 640px;
+  height: 400px;
+  width: 210px;
+  border-radius: 10px;
+  border: solid 1px rgba(255, 255, 255, 1);
+}
+.Cost_Modal_16 {
+  position: fixed;
+  font-size: 1.3rem;
+  top: 245px;
+  left: 680px;
+}
+hr.line3 {
+  position: fixed;
+  top: 270px;
+  left: 650px;
+  width: 185px;
+}
+.Cost_Modal_17 {
+  position: fixed;
+  font-size: 1rem;
+  top: 285px;
+  left: 820px;
+  height: 15px;
+  width: 15px;
+  border-radius: 10px;
+  background-color: rgba(0, 204, 153, 1);
+}
+.Cost_Modal_18 {
+  position: fixed;
+  font-size: 1rem;
+  top: 285px;
+  left: 595px;
+  height: 30px;
+  width: 500px;
+}
+.Cost_Modal_19.number {
+  position: fixed;
+  font-size: 2rem;
+  top: 400px;
+  left: 720px;
+  color: rgb(129, 228, 229);
+}
+.Cost_Modal_19.text {
+  position: fixed;
+  font-size: 0.8rem;
+  top: 445px;
+  left: 735px;
+  color: rgba(191, 191, 191, 1);
+}
+.Cost_Modal_20 {
+  position: fixed;
+  font-size: 1rem;
+  top: 465px;
+  left: 660px;
+}
+hr.line4 {
+  position: fixed;
+  top: 485px;
+  left: 650px;
+  width: 185px;
+}
+.Cost_Modal_21 {
+  position: fixed;
+  top: 505px;
+  left: 650px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_22 {
+  position: fixed;
+  top: 535px;
+  left: 650px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_23 {
+  position: fixed;
+  top: 565px;
+  left: 650px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_24 {
+  position: fixed;
+  top: 595px;
+  left: 650px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_25 {
+  position: fixed;
+  font-size: 1rem;
+  top: 240px;
+  left: 860px;
+  height: 400px;
+  width: 210px;
+  border-radius: 10px;
+  border: solid 1px rgba(255, 255, 255, 1);
+}
+.Cost_Modal_26 {
+  position: fixed;
+  font-size: 1.3rem;
+  top: 245px;
+  left: 915px;
+}
+hr.line5 {
+  position: fixed;
+  top: 270px;
+  left: 870px;
+  width: 185px;
+}
+.Cost_Modal_27 {
+  position: fixed;
+  font-size: 1rem;
+  top: 285px;
+  left: 1040px;
+  height: 15px;
+  width: 15px;
+  border-radius: 10px;
+  background-color: rgba(0, 204, 153, 1);
+}
+.Cost_Modal_28 {
+  position: fixed;
+  font-size: 1rem;
+  top: 285px;
+  left: 815px;
+  height: 30px;
+  width: 500px;
+}
+.Cost_Modal_29.number {
+  position: fixed;
+  font-size: 2rem;
+  top: 400px;
+  left: 940px;
+  color: rgb(129, 228, 229);
+}
+.Cost_Modal_29.text {
+  position: fixed;
+  font-size: 0.8rem;
+  top: 445px;
+  left: 955px;
+  color: rgba(191, 191, 191, 1);
+}
+.Cost_Modal_30 {
+  position: fixed;
+  font-size: 1rem;
+  top: 465px;
+  left: 880px;
+}
+hr.line6 {
+  position: fixed;
+  top: 485px;
+  left: 870px;
+  width: 185px;
+}
+.Cost_Modal_31 {
+  position: fixed;
+  top: 505px;
+  left: 870px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_32 {
+  position: fixed;
+  top: 535px;
+  left: 870px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_33 {
+  position: fixed;
+  top: 565px;
+  left: 870px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_34 {
+  position: fixed;
+  top: 595px;
+  left: 870px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_35 {
+  position: fixed;
+  font-size: 1rem;
+  top: 240px;
+  left: 1080px;
+  height: 400px;
+  width: 210px;
+  border-radius: 10px;
+  border: solid 1px rgba(255, 255, 255, 1);
+}
+.Cost_Modal_36 {
+  position: fixed;
+  font-size: 1.3rem;
+  top: 245px;
+  left: 1135px;
+}
+hr.line7 {
+  position: fixed;
+  top: 270px;
+  left: 1090px;
+  width: 185px;
+}
+.Cost_Modal_37 {
+  position: fixed;
+  font-size: 1rem;
+  top: 285px;
+  left: 1260px;
+  height: 15px;
+  width: 15px;
+  border-radius: 10px;
+  background-color: rgba(0, 204, 153, 1);
+}
+.Cost_Modal_38 {
+  position: fixed;
+  font-size: 1rem;
+  top: 285px;
+  left: 1035px;
+  height: 30px;
+  width: 500px;
+}
+.Cost_Modal_39.number {
+  position: fixed;
+  font-size: 2rem;
+  top: 400px;
+  left: 1160px;
+  color: rgb(129, 228, 229);
+}
+.Cost_Modal_39.text {
+  position: fixed;
+  font-size: 0.8rem;
+  top: 445px;
+  left: 1175px;
+  color: rgba(191, 191, 191, 1);
+}
+.Cost_Modal_40 {
+  position: fixed;
+  font-size: 1rem;
+  top: 465px;
+  left: 1100px;
+}
+hr.line8 {
+  position: fixed;
+  top: 485px;
+  left: 1090px;
+  width: 185px;
+}
+.Cost_Modal_41 {
+  position: fixed;
+  top: 505px;
+  left: 1090px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_42 {
+  position: fixed;
+  top: 535px;
+  left: 1090px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_43 {
+  position: fixed;
+  top: 565px;
+  left: 1090px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_44 {
+  position: fixed;
+  top: 595px;
+  left: 1090px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_45 {
+  position: fixed;
+  font-size: 1rem;
+  top: 240px;
+  left: 1300px;
+  height: 400px;
+  width: 210px;
+  border-radius: 10px;
+  border: solid 1px rgba(255, 255, 255, 1);
+}
+.Cost_Modal_46 {
+  position: fixed;
+  font-size: 1.3rem;
+  top: 245px;
+  left: 1355px;
+}
+hr.line9 {
+  position: fixed;
+  top: 270px;
+  left: 1310px;
+  width: 185px;
+}
+.Cost_Modal_47 {
+  position: fixed;
+  font-size: 1rem;
+  top: 285px;
+  left: 1480px;
+  height: 15px;
+  width: 15px;
+  border-radius: 10px;
+  background-color: rgba(0, 204, 153, 1);
+}
+.Cost_Modal_48 {
+  position: fixed;
+  font-size: 1rem;
+  top: 285px;
+  left: 1255px;
+  height: 30px;
+  width: 500px;
+}
+.Cost_Modal_49.number {
+  position: fixed;
+  font-size: 2rem;
+  top: 400px;
+  left: 1380px;
+  color: rgb(129, 228, 229);
+}
+.Cost_Modal_49.text {
+  position: fixed;
+  font-size: 0.8rem;
+  top: 445px;
+  left: 1395px;
+  color: rgba(191, 191, 191, 1);
+}
+.Cost_Modal_50 {
+  position: fixed;
+  font-size: 1rem;
+  top: 465px;
+  left: 1330px;
+}
+hr.line10 {
+  position: fixed;
+  top: 485px;
+  left: 1310px;
+  width: 185px;
+}
+.Cost_Modal_51 {
+  position: fixed;
+  top: 505px;
+  left: 1310px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_52 {
+  position: fixed;
+  top: 535px;
+  left: 1310px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_53 {
+  position: fixed;
+  top: 565px;
+  left: 1310px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_54 {
+  position: fixed;
+  top: 595px;
+  left: 1310px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+
+/* .Cost_Modal_26 {
+  position: fixed;
+  font-size: 1.3rem;
+  top: 245px;
+  left: 445px;
+}
+hr.line5 {
+  position: fixed;
+  top: 270px;
+  left: 430px;
+  width: 185px;
+}
+.Cost_Modal_27 {
+  position: fixed;
+  font-size: 1rem;
+  top: 285px;
+  left: 600px;
+  height: 15px;
+  width: 15px;
+  border-radius: 10px;
+  background-color: rgba(0, 204, 153, 1);
+}
+.Cost_Modal_28 {
+  position: fixed;
+  font-size: 1rem;
+  top: 285px;
+  left: 375px;
+  height: 30px;
+  width: 500px;
+}
+.Cost_Modal_29.number {
+  position: fixed;
+  font-size: 2rem;
+  top: 400px;
+  left: 500px;
+  color: rgb(129, 228, 229);
+}
+.Cost_Modal_29.text {
+  position: fixed;
+  font-size: 0.8rem;
+  top: 445px;
+  left: 515px;
+  color: rgba(191, 191, 191, 1);
+}
+.Cost_Modal_30 {
+  position: fixed;
+  font-size: 1rem;
+  top: 465px;
+  left: 440px;
+}
+hr.line5 {
+  position: fixed;
+  top: 485px;
+  left: 430px;
+  width: 185px;
+}
+.Cost_Modal_31 {
+  position: fixed;
+  top: 505px;
+  left: 430px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_32 {
+  position: fixed;
+  top: 535px;
+  left: 430px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_33 {
+  position: fixed;
+  top: 565px;
+  left: 430px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+}
+.Cost_Modal_34 {
+  position: fixed;
+  top: 595px;
+  left: 430px;
+  width: 180px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  background-color: rgb(75, 186, 194);
+} */
+
+.Cost_Modal_box {
+  position: fixed;
+  font-size: 1rem;
+  top: 660px;
+  left: 400px;
+  height: 270px;
+  width: 1120px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+
+.Cost_Modal_Investment {
+  position: fixed;
+  font-size: 1.5rem;
+  top: 670px;
+  left: 420px;
+}
+.Cost_Modal_number {
+  position: fixed;
+  font-size: 3rem;
+  top: 730px;
+  left: 1330px;
+}
+.Cost_Modal_canvas {
+  position: fixed;
+  top: 820px;
+  left: 450px;
+  height: 270px;
+  width: 1020px;
+}
+.Cost_Modal_unit {
+  position: fixed;
+  font-size: 1rem;
+  top: 860px;
+  left: 1360px;
+}
+.Cost_Modal_iframe {
+  position: fixed;
+  top: 190px;
+  left: 400px;
+  height: 740px;
+  width: 1120px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+.Cost_Modal_iframe iframe {
+  position: fixed;
+  top: 200px;
+  left: 410px;
+  height: 720px;
+  width: 1100px;
+}

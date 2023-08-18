@@ -1,0 +1,331 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 6;
+  top: 140px;
+  left: 390px;
+  right: 0px;
+  height: 800px;
+  width: 1140px;
+  overflow: auto;
+  border-radius: 5px;
+  background-color: rgba(64, 64, 64, 0.6);
+}
+
+.safety_btn_close {
+  /* margin: 10px; */
+  background: white;
+  border: solid 1px rgb(64, 64, 64, 0.9);
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 1100px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  /* flex-flow: column nowrap; */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.safety_btn_close .icon_cross {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.safety_btn_close .icon_cross:before,
+.safety_btn_close .icon_cross:after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgb(0, 0, 0);
+  border-radius: 0px;
+}
+
+.safety_btn_close .icon_cross:before {
+  transform: rotate(45deg);
+}
+
+.safety_btn_close .icon_cross:after {
+  transform: rotate(-45deg);
+}
+
+.safety_btn_close:hover,
+.safety_btn_close:focus {
+  transform: rotateZ(90deg);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.QC_btn_close {
+  /* margin: 10px; */
+  background: white;
+  border: solid 1px rgb(64, 64, 64, 0.9);
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 1100px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  /* flex-flow: column nowrap; */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.QC_btn_close .icon_cross {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.QC_btn_close .icon_cross:before,
+.QC_btn_close .icon_cross:after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgb(0, 0, 0);
+  border-radius: 0px;
+}
+
+.QC_btn_close .icon_cross:before {
+  transform: rotate(45deg);
+}
+
+.QC_btn_close .icon_cross:after {
+  transform: rotate(-45deg);
+}
+
+.QC_btn_close:hover,
+.QC_btn_close:focus {
+  transform: rotateZ(90deg);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.cost_btn_close {
+  /* margin: 10px; */
+  background: white;
+  border: solid 1px rgb(64, 64, 64, 0.9);
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 1100px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  /* flex-flow: column nowrap; */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.cost_btn_close .icon_cross {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.cost_btn_close .icon_cross:before,
+.cost_btn_close .icon_cross:after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgb(0, 0, 0);
+  border-radius: 0px;
+}
+
+.cost_btn_close .icon_cross:before {
+  transform: rotate(45deg);
+}
+
+.cost_btn_close .icon_cross:after {
+  transform: rotate(-45deg);
+}
+
+.cost_btn_close:hover,
+.cost_btn_close:focus {
+  transform: rotateZ(90deg);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.delivery_btn_close {
+  /* margin: 10px; */
+  background: white;
+  border: solid 1px rgb(64, 64, 64, 0.9);
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 1100px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  /* flex-flow: column nowrap; */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.delivery_btn_close .icon_cross {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.delivery_btn_close .icon_cross:before,
+.delivery_btn_close .icon_cross:after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgb(0, 0, 0);
+  border-radius: 0px;
+}
+
+.delivery_btn_close .icon_cross:before {
+  transform: rotate(45deg);
+}
+
+.delivery_btn_close .icon_cross:after {
+  transform: rotate(-45deg);
+}
+
+.delivery_btn_close:hover,
+.delivery_btn_close:focus {
+  transform: rotateZ(90deg);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.Prod_btn_close {
+  /* margin: 10px; */
+  background: white;
+  border: solid 1px rgb(64, 64, 64, 0.9);
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 1100px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  /* flex-flow: column nowrap; */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.Prod_btn_close .icon_cross {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.Prod_btn_close .icon_cross:before,
+.Prod_btn_close .icon_cross:after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgb(0, 0, 0);
+  border-radius: 0px;
+}
+
+.Prod_btn_close .icon_cross:before {
+  transform: rotate(45deg);
+}
+
+.Prod_btn_close .icon_cross:after {
+  transform: rotate(-45deg);
+}
+
+.Prod_btn_close:hover,
+.Prod_btn_close:focus {
+  transform: rotateZ(90deg);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.Energy_btn_close {
+  /* margin: 10px; */
+  background: white;
+  border: solid 1px rgb(64, 64, 64, 0.9);
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 1100px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  /* flex-flow: column nowrap; */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.Energy_btn_close .icon_cross {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.Energy_btn_close .icon_cross:before,
+.Energy_btn_close .icon_cross:after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgb(0, 0, 0);
+  border-radius: 0px;
+}
+
+.Energy_btn_close .icon_cross:before {
+  transform: rotate(45deg);
+}
+
+.Energy_btn_close .icon_cross:after {
+  transform: rotate(-45deg);
+}
+
+.Energy_btn_close:hover,
+.Energy_btn_close:focus {
+  transform: rotateZ(90deg);
+  background: rgba(255, 255, 255, 0.8);
+}

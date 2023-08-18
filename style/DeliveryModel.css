@@ -1,0 +1,136 @@
+.delivery_Modal_1 {
+  position: fixed;
+  font-size: 1.5rem;
+  top: 150px;
+  left: 405px;
+}
+.delivery_Modal_2 a {
+  position: fixed;
+  top: 157px;
+  left: 645px;
+  height: 20px;
+  width: 80px;
+  text-align: center;
+  color: rgb(89, 89, 89);
+  font-size: 0.8rem;
+  border-radius: 10px;
+  /* border: solid 1px #000; */
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.delivery_Modal_box1 {
+  position: fixed;
+  font-size: 1rem;
+  top: 190px;
+  left: 400px;
+  height: 400px;
+  width: 560px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+.delivery_Modal_box2 {
+  position: fixed;
+  font-size: 1rem;
+  top: 190px;
+  left: 970px;
+  height: 400px;
+  width: 550px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+.delivery_Modal_box3 {
+  position: fixed;
+  font-size: 1rem;
+  top: 595px;
+  left: 400px;
+  height: 335px;
+  width: 690px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+.delivery_Modal_box4 {
+  position: fixed;
+  font-size: 1rem;
+  top: 595px;
+  left: 1100px;
+  height: 335px;
+  width: 420px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 0;
+}
+
+.delivery_Modal_3 {
+  position: fixed;
+  font-size: 1rem;
+  top: 195px;
+  left: 410px;
+}
+.delivery_Modal_4 {
+  position: fixed;
+  top: 200px;
+  left: 745px;
+  height: 50px;
+  width: 200px;
+  background-color: rgba(255, 0, 55, 0.1);
+  border: solid 2px rgba(255, 0, 55, 1);
+  border-radius: 10px;
+}
+.delivery_Modal_5-number {
+  position: fixed;
+  font-size: 1.8rem;
+  color: rgba(255, 0, 55, 1);
+  top: 205px;
+  left: 770px;
+}
+.delivery_Modal_5-text {
+  position: fixed;
+  font-size: 1.8rem;
+  color: white;
+  top: 205px;
+  left: 840px;
+}
+.delivery_Modal_6 {
+  position: fixed;
+  top: 260px;
+  left: 420px;
+  width: 510px;
+}
+.delivery_Modal_7 {
+  position: fixed;
+  font-size: 1rem;
+  top: 195px;
+  left: 980px;
+}
+.delivery_Modal_8 {
+  position: fixed;
+  top: 200px;
+  left: 1305px;
+  height: 50px;
+  width: 200px;
+  background-color: rgba(0, 204, 153, 0.1);
+  border: solid 2px rgba(0, 204, 153, 1);
+  border-radius: 10px;
+}
+.delivery_Modal_8-number {
+  position: fixed;
+  font-size: 1.8rem;
+  color: rgba(0, 204, 153, 1);
+  top: 205px;
+  left: 1330px;
+}
+.delivery_Modal_8-text {
+  position: fixed;
+  font-size: 1.8rem;
+  color: white;
+  top: 205px;
+  left: 1400px;
+}
+.delivery_Modal_9 {
+  position: fixed;
+  top: 260px;
+  left: 980px;
+  width: 510px;
+}
