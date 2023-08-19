@@ -48,41 +48,24 @@ const config = {
 //instantiate a connection pool
 const appPool = new sql.ConnectionPool(config);
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '/Main/index.html'));
-});
-app.use(express.static(__dirname));
-
-//require route handlers and use the same connection pool everywhere
-const route1 = require("./routes/route.js");
-
-app.get("/path", route1);
-
-app.get("/masterdata", function (req, res) {
-  pool.query(
-    "SELECT * FROM master_data limit 10",
-    function (err, result, fields) {
-      res.json(result);
-    }
-  );
-});
-
-const today = new Date();
+const today = new Date('2023-08-18');
 const todayDate = today.toISOString();
 let todayDate_result = todayDate.slice(0, 10);
 let monthDate_result = todayDate.slice(0, 7);
-// console.log(todayDate_result)
+console.log(todayDate_result)
 // console.log(monthDate_result)
 const x = "'" + todayDate_result + " 00:00:00.000'";
 const y = "'" + monthDate_result + "-01 00:00:00.000'";
+console.log(x)
 
 const req_message_ProdAct =
-  "SELECT RxNo_Line,Value FROM tbProductionActual WHERE ProductionDate = " + x + " AND ValueType = 'OK'";
+  "SELECT RxNo_Line,Value FROM tbProductionActual WHERE ProductionDate = " + x + " AND ValueType = 'OK' AND RxNo_Line != 'PRS2308000000005'";
 const req_message_ProdPlan = "SELECT RxNo_Line,PlanValue_Total FROM tbMasterPlan WHERE PlanMonth = " + y;
 const req_message_commonDay = ("SELECT DataCode,DataValue FROM tbCommonData WHERE DataType = 'WORK_DAY'")
+const req_message_LineSummary = "SELECT RxNo_Line,Department FROM line_summary where Department in ('Alternator Product', 'ECC, ABS & Asmo Product','Parts Mfg.1','Parts Mfg.2','Starter Product')";
 
-console.log(req_message_ProdAct);
-console.log(req_message_ProdPlan);
+// console.log(req_message_ProdAct);
+// console.log(req_message_ProdPlan);
 
 app.get("/ProdAct", function (req, res) {
   req.app.locals.db.query(req_message_ProdAct, function (err, recorfset) {
@@ -116,6 +99,25 @@ app.get("/commonDate", function (req, res) {
   });
 });
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '/Main/index.html'));
+});
+app.use(express.static(__dirname));
+
+//require route handlers and use the same connection pool everywhere
+const route1 = require("./routes/route.js");
+
+app.get("/path", route1);
+
+app.get("/LineSummary", function (req, res) {
+  pool.query(
+    req_message_LineSummary,
+    function (err, result, fields) {
+      res.json(result);
+    }
+  );
+});
+
 io.on('connection', (socket) => {
   console.log('user connected')
   setInterval(() => {
@@ -135,6 +137,12 @@ io.on('connection', (socket) => {
       function (err, result, fields) {
         io.emit('CommonDay', result)
         // console.log('Sent CommonDay!')
+      }
+    )
+    pool.query(
+      req_message_LineSummary,
+      function (err, result, fields) {
+        io.emit('LineSummary', result)
       }
     )
   }, 5000)

@@ -50,3 +50,16 @@
   background-color: rgba(0, 0, 0, 0.35);
   z-index: 0;
 }
+.QC_Modal_iframe {
+  position: fixed;
+  top: 190px;
+  left: 400px;
+  height: 740px;
+  width: 1120px;
+  border-radius: 10px;
+  background-color: rgba(216, 216, 216, 0.8);
+  z-index: 0;
+  text-align: center;
+  font-size: 3rem;
+  color: black;
+}

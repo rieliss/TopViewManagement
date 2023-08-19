@@ -102,4 +102,4 @@ window.onclick = function (event) {
     }
 }
 
-// delivery_Modal.style.display = "block"
+Prod_Modal.style.display = "block"
