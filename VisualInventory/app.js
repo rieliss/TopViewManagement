@@ -13,8 +13,7 @@ const connection = mysql.createConnection({
   port: "3306",
   user: "iot_admin",
   password: "1234",
-  database: "info_board_line5_center",
-  // database: 'inventory_db'
+  database: "inventory_db",
 });
 
 connection.connect((err) => {
@@ -28,7 +27,7 @@ app.get("/stock", function (req, res) {
   connection.query(
     // "SELECT * FROM actual_part WHERE LineCode = 'B1002' AND LineCode = 'B1003' ORDER BY RecordTime DESC LIMIT 1",
     // "SELECT DISTINCT LineCode, ActualVal, PlanVal, RecordTime FROM actual_part ORDER BY RecordTime DESC LIMIT 100",
-    "SELECT * FROM master_data LIMIT 20",
+    "SELECT part_no, Customer_name, stock_qty FROM vwstock_status_new",
     // "SELECT DISTINCT LineCode, ActualVal, PlanVal, RecordTime FROM actual_part ORDER BY RecordTime DESC LIMIT 100",
     // "SELECT TOP 3 * FROM actual_part;",
     // "SELECT * FROM (SELECT TOP 1 * FROM actual_part ORDER BY RecordTime DESC) last"
