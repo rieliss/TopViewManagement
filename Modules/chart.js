@@ -66,7 +66,7 @@ const chartIdMFG1 = new Chart(chrtMFG1, {
     data: {
         datasets: [
             {
-                data: [0, 3900],
+                data: [3900, 0],
                 backgroundColor: ["mediumaquamarine", "rgba(217,217,217,0.2)"],
                 borderWidth: 0,
             },
@@ -118,7 +118,7 @@ const chartIdMFG2 = new Chart(chrtMFG2, {
     data: {
         datasets: [
             {
-                data: [0, 3900],
+                data: [3900, 0],
                 backgroundColor: ["mediumaquamarine", "rgba(217,217,217,0.2)"],
                 borderWidth: 0,
             },
@@ -170,7 +170,7 @@ const chartIdMFG3 = new Chart(chrtMFG3, {
     data: {
         datasets: [
             {
-                data: [0, 3900],
+                data: [3900, 0],
                 backgroundColor: ["mediumaquamarine", "rgba(217,217,217,0.2)"],
                 borderWidth: 0,
             },
@@ -222,7 +222,7 @@ const chartIdPART1 = new Chart(chrtPART1, {
     data: {
         datasets: [
             {
-                data: [0, 3900],
+                data: [3900, 0],
                 backgroundColor: ["mediumaquamarine", "rgba(217,217,217,0.2)"],
                 borderWidth: 0,
             },
@@ -274,7 +274,7 @@ const chartIdPART2 = new Chart(chrtPART2, {
     data: {
         datasets: [
             {
-                data: [0, 3900],
+                data: [3900, 0],
                 backgroundColor: ["mediumaquamarine", "rgba(217,217,217,0.2)"],
                 borderWidth: 0,
             },
@@ -289,7 +289,7 @@ const chartIdPART2 = new Chart(chrtPART2, {
                 left: 0,
                 right: 0,
                 top: 0,
-                bottom: 0,
+                bottom: 10,
             },
         },
         legend: {

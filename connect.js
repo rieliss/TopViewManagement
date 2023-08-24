@@ -1,6 +1,7 @@
 const mysql = require("mysql2");
 const sql = require("mssql");
 const cors = require("cors");
+const writeXlsxFile = require("write-excel-file");
 require("dotenv").config();
 const express = require("express");
 const { Socket } = require("socket.io");
@@ -48,7 +49,15 @@ const config = {
 //instantiate a connection pool
 const appPool = new sql.ConnectionPool(config);
 
-const today = new Date('2023-08-18');
+function getPreviousDay(date = new Date()) {
+  const previous = new Date(date.getTime());
+  previous.setDate(date.getDate() - 1);
+
+  return previous;
+}
+
+const today = new Date('2023-08-23');
+// const today = getPreviousDay()
 const todayDate = today.toISOString();
 let todayDate_result = todayDate.slice(0, 10);
 let monthDate_result = todayDate.slice(0, 7);
@@ -60,7 +69,7 @@ console.log(x)
 
 const req_message_ProdAct =
   "SELECT RxNo_Line,Value FROM tbProductionActual WHERE ProductionDate = " + x + " AND ValueType = 'OK' AND RxNo_Line != 'PRS2308000000005'";
-const req_message_ProdPlan = "SELECT RxNo_Line,PlanValue_Total FROM tbMasterPlan WHERE PlanMonth = " + y;
+const req_message_ProdPlan = "SELECT RxNo_Line,PlanValue_Total as Value FROM tbMasterPlan WHERE PlanMonth = " + y;
 const req_message_commonDay = ("SELECT DataCode,DataValue FROM tbCommonData WHERE DataType = 'WORK_DAY'")
 const req_message_LineSummary = "SELECT RxNo_Line,Department FROM line_summary where Department in ('Alternator Product', 'ECC, ABS & Asmo Product','Parts Mfg.1','Parts Mfg.2','Starter Product')";
 
@@ -145,7 +154,7 @@ io.on('connection', (socket) => {
         io.emit('LineSummary', result)
       }
     )
-  }, 5000)
+  }, 2000)
 })
 
 // connect the pool and start the web server when done
