@@ -56,8 +56,8 @@ function getPreviousDay(date = new Date()) {
   return previous;
 }
 
-const today = new Date('2023-08-23');
-// const today = getPreviousDay()
+// const today = new Date('2023-08-23');
+const today = getPreviousDay()
 const todayDate = today.toISOString();
 let todayDate_result = todayDate.slice(0, 10);
 let monthDate_result = todayDate.slice(0, 7);
@@ -132,26 +132,26 @@ io.on('connection', (socket) => {
   setInterval(() => {
     appPool.query(req_message_ProdAct,
       function (err, result, fields) {
-        io.emit('ProdAct', result)
+        socket.emit('ProdAct', result)
         // console.log('Sent ProdAct!')
       }
     )
     appPool.query(req_message_ProdPlan,
       function (err, result, fields) {
-        io.emit('MasterPlan', result)
+        socket.emit('MasterPlan', result)
         // console.log('Sent ProdPlan!')
       }
     )
     appPool.query(req_message_commonDay,
       function (err, result, fields) {
-        io.emit('CommonDay', result)
+        socket.emit('CommonDay', result)
         // console.log('Sent CommonDay!')
       }
     )
     pool.query(
       req_message_LineSummary,
       function (err, result, fields) {
-        io.emit('LineSummary', result)
+        socket.emit('LineSummary', result)
       }
     )
   }, 2000)
