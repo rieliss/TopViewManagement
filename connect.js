@@ -1,7 +1,6 @@
 const mysql = require("mysql2");
 const sql = require("mssql");
 const cors = require("cors");
-const writeXlsxFile = require("write-excel-file");
 require("dotenv").config();
 const express = require("express");
 const { Socket } = require("socket.io");
@@ -56,25 +55,55 @@ function getPreviousDay(date = new Date()) {
   return previous;
 }
 
-// const today = new Date('2023-08-23');
+// const today = new Date('2023-08-30');
 const today = getPreviousDay()
 const todayDate = today.toISOString();
 let todayDate_result = todayDate.slice(0, 10);
 let monthDate_result = todayDate.slice(0, 7);
-console.log(todayDate_result)
-// console.log(monthDate_result)
+let today_Loss = todayDate.slice(8, 10);
+// console.log(today_Loss)
+
 const x = "'" + todayDate_result + " 00:00:00.000'";
 const y = "'" + monthDate_result + "-01 00:00:00.000'";
-console.log(x)
 
-const req_message_ProdAct =
-  "SELECT RxNo_Line,Value FROM tbProductionActual WHERE ProductionDate = " + x + " AND ValueType = 'OK' AND RxNo_Line != 'PRS2308000000005'";
-const req_message_ProdPlan = "SELECT RxNo_Line,PlanValue_Total as Value FROM tbMasterPlan WHERE PlanMonth = " + y;
+const firstdate = "'" + monthDate_result + "-01 00:00:00.000'";
+const lastdate = "'" + monthDate_result + "-" + today_Loss + " 00:00:00.000'";
+// console.log(lastdate)
+
+const req_message_Loss = "SELECT RxNo, RxNo_Line, ItemNo, Code, Description, Minute, ManPower, ManPowerHour FROM tbDailyWorkRecord WHERE ProductionDate = " + x + " AND DataModule = 'LOSS'"
+const req_message_ProdAct = "SELECT RxNo_Line,Value FROM tbProductionActual WHERE ProductionDate = " + x + " AND ValueType = 'OK' AND RxNo_Line != 'PRS2308000000005' AND RxNo_Line != 'PRS2301000000009'";
+const req_message_ProdAct_PPA = "SELECT RxNo_Line,Value,HourNo FROM tbProductionActual WHERE ProductionDate = " + x + " AND ValueType = 'PPA' AND RxNo_Line != 'PRS2308000000005' AND RxNo_Line != 'PRS2301000000009'";
+const req_message_ProdAct_date = "SELECT RxNo_Line,Value,ProductionDate FROM tbProductionActual WHERE ProductionDate >= " + firstdate + " AND ProductionDate <= " + lastdate + " AND ValueType = 'OK' AND RxNo_Line != 'PRS2308000000005' AND RxNo_Line != 'PRS2301000000009'";
+const req_message_mp = "SELECT RxNo,RxNo_Line,ProductionDate,InLine_WT,OutLine_WT,Mizusumashi_WT,LineLeader_WT,TeamLeader_WT FROM tbDailyManPower WHERE ProductionDate = " + x;
+
+const req_message_ProdPlan = "SELECT RxNo_Line,PlanMonth,ProdPlanPerMonth,WorkingDay FROM tbManPowerPlan WHERE PlanMonth = " + y + " AND RxNo_Line != 'PRS2308000000005' AND RxNo_Line != 'PRS2301000000009'";
 const req_message_commonDay = ("SELECT DataCode,DataValue FROM tbCommonData WHERE DataType = 'WORK_DAY'")
 const req_message_LineSummary = "SELECT RxNo_Line,Department FROM line_summary where Department in ('Alternator Product', 'ECC, ABS & Asmo Product','Parts Mfg.1','Parts Mfg.2','Starter Product')";
 
-// console.log(req_message_ProdAct);
-// console.log(req_message_ProdPlan);
+// console.log(req_message_ProdAct_date)
+console.log(req_message_ProdAct_PPA)
+
+app.get("/Loss", function (req, res) {
+  req.app.locals.db.query(req_message_Loss, function (err, recorfset) {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+      return;
+    }
+    res.send(recorfset);
+  });
+});
+
+app.get("/Manpower", function (req, res) {
+  req.app.locals.db.query(req_message_mp, function (err, recorfset) {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+      return;
+    }
+    res.send(recorfset);
+  });
+});
 
 app.get("/ProdAct", function (req, res) {
   req.app.locals.db.query(req_message_ProdAct, function (err, recorfset) {
@@ -86,6 +115,28 @@ app.get("/ProdAct", function (req, res) {
     res.send(recorfset);
   });
 });
+app.get("/ProdActPPA", function (req, res) {
+  req.app.locals.db.query(req_message_ProdAct_PPA, function (err, recorfset) {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+      return;
+    }
+    res.send(recorfset);
+  });
+});
+
+app.get("/ProdActDate", function (req, res) {
+  req.app.locals.db.query(req_message_ProdAct_date, function (err, recorfset) {
+    if (err) {
+      console.log(err);
+      res.status(500).send(err);
+      return;
+    }
+    res.send(recorfset);
+  });
+});
+
 app.get("/ProdPlan", function (req, res) {
   req.app.locals.db.query(req_message_ProdPlan, function (err, recorfset) {
     if (err) {
@@ -129,32 +180,56 @@ app.get("/LineSummary", function (req, res) {
 
 io.on('connection', (socket) => {
   console.log('user connected')
-  setInterval(() => {
-    appPool.query(req_message_ProdAct,
-      function (err, result, fields) {
-        socket.emit('ProdAct', result)
-        // console.log('Sent ProdAct!')
-      }
-    )
-    appPool.query(req_message_ProdPlan,
-      function (err, result, fields) {
-        socket.emit('MasterPlan', result)
-        // console.log('Sent ProdPlan!')
-      }
-    )
-    appPool.query(req_message_commonDay,
-      function (err, result, fields) {
-        socket.emit('CommonDay', result)
-        // console.log('Sent CommonDay!')
-      }
-    )
-    pool.query(
-      req_message_LineSummary,
-      function (err, result, fields) {
-        socket.emit('LineSummary', result)
-      }
-    )
-  }, 2000)
+  // setInterval(() => {
+  appPool.query(req_message_ProdAct,
+    function (err, result, fields) {
+      socket.emit('ProdAct', result)
+      // console.log('Sent ProdAct!')
+    }
+  )
+  appPool.query(req_message_ProdPlan,
+    function (err, result, fields) {
+      socket.emit('MasterPlan', result)
+      // console.log('Sent ProdPlan!')
+    }
+  )
+  appPool.query(req_message_commonDay,
+    function (err, result, fields) {
+      socket.emit('CommonDay', result)
+      // console.log('Sent CommonDay!')
+    }
+  )
+  pool.query(
+    req_message_LineSummary,
+    function (err, result, fields) {
+      socket.emit('LineSummary', result)
+    }
+  )
+  appPool.query(req_message_ProdAct_date,
+    function (err, result, fields) {
+      socket.emit('ProdActPerDay', result)
+      // console.log('Sent CommonDay!')
+    }
+  )
+  appPool.query(req_message_Loss,
+    function (err, result, fields) {
+      socket.emit('Loss', result)
+      // console.log('Sent CommonDay!')
+    }
+  )
+  appPool.query(req_message_ProdAct_PPA,
+    function (err, result, fields) {
+      socket.emit('ProdActPPA', result)
+      // console.log('Sent ProdAct!')
+    }
+  )
+  appPool.query(req_message_mp,
+    function (err, result, fields) {
+      socket.emit('Manpower', result)
+      // console.log('Sent ProdAct!')
+    }
+  )
+  // }, 2000)
 })
 
 // connect the pool and start the web server when done

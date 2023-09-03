@@ -1,13 +1,120 @@
 /*----------------------------------------------------------------*/
 
 Chart.register(ChartjsPluginStacked100.default);
-new Chart(document.getElementById("CurrentPord"), {
+var CurrentPordchart = document.getElementById("CurrentPord");
+
+const getOrCreateTooltip = (chart) => {
+    let tooltipEl = chart.canvas.parentNode.querySelector('div');
+
+    if (!tooltipEl) {
+        tooltipEl = document.createElement('div');
+        tooltipEl.style.background = 'rgba(0, 0, 0, 0.7)';
+        tooltipEl.style.borderRadius = '3px';
+        tooltipEl.style.color = 'white';
+        tooltipEl.style.opacity = 1;
+        tooltipEl.style.pointerEvents = 'none';
+        tooltipEl.style.position = 'absolute';
+        tooltipEl.style.transform = 'translate(-50%, 0)';
+        tooltipEl.style.transition = 'all .1s ease';
+
+        const table = document.createElement('table');
+        table.style.margin = '0px';
+
+        tooltipEl.appendChild(table);
+        chart.canvas.parentNode.appendChild(tooltipEl);
+    }
+
+    return tooltipEl;
+};
+
+const externalTooltipHandler = (context) => {
+    // Tooltip Element
+    const { chart, tooltip } = context;
+    const tooltipEl = getOrCreateTooltip(chart);
+
+    // Hide if no tooltip
+    if (tooltip.opacity === 0) {
+        tooltipEl.style.opacity = 0;
+        return;
+    }
+
+    // Set Text
+    if (tooltip.body) {
+        const titleLines = tooltip.title || [];
+        const bodyLines = tooltip.body.map(b => b.lines);
+
+        const tableHead = document.createElement('thead');
+
+        titleLines.forEach(title => {
+            const tr = document.createElement('tr');
+            tr.style.borderWidth = 0;
+
+            const th = document.createElement('th');
+            th.style.borderWidth = 0;
+            const text = document.createTextNode(title);
+
+            th.appendChild(text);
+            tr.appendChild(th);
+            tableHead.appendChild(tr);
+        });
+
+        const tableBody = document.createElement('tbody');
+        bodyLines.forEach((body, i) => {
+            const colors = tooltip.labelColors[i];
+
+            const span = document.createElement('span');
+            span.style.background = colors.backgroundColor;
+            span.style.borderColor = colors.borderColor;
+            span.style.borderWidth = '2px';
+            span.style.marginRight = '10px';
+            span.style.height = '10px';
+            span.style.width = '10px';
+            span.style.display = 'inline-block';
+
+            const tr = document.createElement('tr');
+            tr.style.backgroundColor = 'inherit';
+            tr.style.borderWidth = 0;
+
+            const td = document.createElement('td');
+            td.style.borderWidth = 0;
+
+            const text = document.createTextNode(body);
+
+            td.appendChild(span);
+            td.appendChild(text);
+            tr.appendChild(td);
+            tableBody.appendChild(tr);
+        });
+
+        const tableRoot = tooltipEl.querySelector('table');
+
+        // Remove old children
+        while (tableRoot.firstChild) {
+            tableRoot.firstChild.remove();
+        }
+
+        // Add new children
+        tableRoot.appendChild(tableHead);
+        tableRoot.appendChild(tableBody);
+    }
+
+    const { offsetLeft: positionX, offsetTop: positionY } = chart.canvas;
+
+    // Display, position, and set styles for font
+    tooltipEl.style.opacity = 1;
+    tooltipEl.style.left = positionX + tooltip.caretX + 'px';
+    tooltipEl.style.top = positionY + tooltip.caretY + 'px';
+    tooltipEl.style.font = tooltip.options.bodyFont.string;
+    tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px';
+};
+
+const CurrentPord = new Chart(CurrentPordchart, {
     type: "bar",
     data: {
         labels: ["Bar"],
         datasets: [
-            { data: [75], backgroundColor: "rgba(0, 204, 153, 1)" },
-            { data: [35], backgroundColor: "rgba(217, 217, 217, 1)" },
+            { data: [10], backgroundColor: "rgba(0, 204, 153, 1)" },
+            { data: [10], backgroundColor: "rgba(217, 217, 217, 1)" },
         ],
     },
     options: {
@@ -23,7 +130,9 @@ new Chart(document.getElementById("CurrentPord"), {
                 display: false
             },
             tooltip: {
-                enabled: false
+                enabled: false,
+                position: 'nearest',
+                external: externalTooltipHandler
             }
         },
         scales: {
@@ -52,11 +161,11 @@ const doughnutLabelMFG1 = {
         ctx.save();
         const xCoor = chart.getDatasetMeta(0).data[0].x;
         const yCoor = chart.getDatasetMeta(0).data[0].y;
-        ctx.font = "bold 18px sans-serif";
+        ctx.font = "bold 14px sans-serif";
         ctx.fillStyle = "#42e684";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("70%", xCoor, yCoor);
+        ctx.fillText(chrtMFG1_value, xCoor, yCoor);
     },
 };
 
@@ -66,8 +175,8 @@ const chartIdMFG1 = new Chart(chrtMFG1, {
     data: {
         datasets: [
             {
-                data: [3900, 0],
-                backgroundColor: ["mediumaquamarine", "rgba(217,217,217,0.2)"],
+                data: [10, 0],
+                backgroundColor: ["rgba(217,217,217,0.2)", "mediumaquamarine"],
                 borderWidth: 0,
             },
         ],
@@ -104,11 +213,11 @@ const doughnutLabelMFG2 = {
         ctx.save();
         const xCoor = chart.getDatasetMeta(0).data[0].x;
         const yCoor = chart.getDatasetMeta(0).data[0].y;
-        ctx.font = "bold 18px sans-serif";
+        ctx.font = "bold 14px sans-serif";
         ctx.fillStyle = "#42e684";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("70%", xCoor, yCoor);
+        ctx.fillText(chrtMFG2_value, xCoor, yCoor);
     },
 };
 
@@ -118,8 +227,8 @@ const chartIdMFG2 = new Chart(chrtMFG2, {
     data: {
         datasets: [
             {
-                data: [3900, 0],
-                backgroundColor: ["mediumaquamarine", "rgba(217,217,217,0.2)"],
+                data: [10, 0],
+                backgroundColor: ["rgba(217,217,217,0.2)", "mediumaquamarine"],
                 borderWidth: 0,
             },
         ],
@@ -156,11 +265,11 @@ const doughnutLabelMFG3 = {
         ctx.save();
         const xCoor = chart.getDatasetMeta(0).data[0].x;
         const yCoor = chart.getDatasetMeta(0).data[0].y;
-        ctx.font = "bold 18px sans-serif";
+        ctx.font = "bold 14px sans-serif";
         ctx.fillStyle = "#42e684";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("70%", xCoor, yCoor);
+        ctx.fillText(chrtMFG3_value, xCoor, yCoor);
     },
 };
 
@@ -170,8 +279,8 @@ const chartIdMFG3 = new Chart(chrtMFG3, {
     data: {
         datasets: [
             {
-                data: [3900, 0],
-                backgroundColor: ["mediumaquamarine", "rgba(217,217,217,0.2)"],
+                data: [10, 0],
+                backgroundColor: ["rgba(217,217,217,0.2)", "mediumaquamarine"],
                 borderWidth: 0,
             },
         ],
@@ -208,11 +317,11 @@ const doughnutLabelPART1 = {
         ctx.save();
         const xCoor = chart.getDatasetMeta(0).data[0].x;
         const yCoor = chart.getDatasetMeta(0).data[0].y;
-        ctx.font = "bold 18px sans-serif";
+        ctx.font = "bold 14px sans-serif";
         ctx.fillStyle = "#42e684";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("70%", xCoor, yCoor);
+        ctx.fillText(chrtPART1_value, xCoor, yCoor);
     },
 };
 
@@ -222,8 +331,8 @@ const chartIdPART1 = new Chart(chrtPART1, {
     data: {
         datasets: [
             {
-                data: [3900, 0],
-                backgroundColor: ["mediumaquamarine", "rgba(217,217,217,0.2)"],
+                data: [10, 0],
+                backgroundColor: ["rgba(217,217,217,0.2)", "mediumaquamarine"],
                 borderWidth: 0,
             },
         ],
@@ -260,11 +369,11 @@ const doughnutLabelPART2 = {
         ctx.save();
         const xCoor = chart.getDatasetMeta(0).data[0].x;
         const yCoor = chart.getDatasetMeta(0).data[0].y;
-        ctx.font = "bold 18px sans-serif";
+        ctx.font = "bold 14px sans-serif";
         ctx.fillStyle = "#42e684";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText("70%", xCoor, yCoor);
+        ctx.fillText(chrtPART2_value, xCoor, yCoor);
     },
 };
 
@@ -274,8 +383,8 @@ const chartIdPART2 = new Chart(chrtPART2, {
     data: {
         datasets: [
             {
-                data: [3900, 0],
-                backgroundColor: ["mediumaquamarine", "rgba(217,217,217,0.2)"],
+                data: [10, 0],
+                backgroundColor: ["rgba(217,217,217,0.2)", "mediumaquamarine"],
                 borderWidth: 0,
             },
         ],
@@ -303,68 +412,76 @@ const chartIdPART2 = new Chart(chrtPART2, {
 });
 /*----------------------------------------------------------------*/
 
-const data = {
-    labels: [1, 2, 3, 4, 5],
-    datasets: [{
-        label: 'My First Dataset',
-        datasets: [
-            { data: [75], backgroundColor: "rgba(255, 205, 86, 1)" },
-            { data: [35], backgroundColor: "rgba(255, 159, 64, 1)" },
-            { data: [75], backgroundColor: "rgba(255, 205, 86, 1)" },
-            { data: [35], backgroundColor: "rgba(255, 159, 64, 1)" },
-            { data: [75], backgroundColor: "rgba(255, 205, 86, 1)" },
-        ],
-        borderWidth: 1
-    }]
-};
-
 Chart.register(ChartjsPluginStacked100.default);
-new Chart(document.getElementById("CurrentLoss"), {
+
+var chrtLoss = document.getElementById("CurrentLoss");
+
+var CurrentLoss = new Chart(chrtLoss, {
     type: "bar",
     data: {
         labels: ["MFG.1 Alt", "MFG.2 Sta", "MFG.3 ECC", "Part MFG.1", "Part MFG.2"],
         datasets: [
             {
-                label: "Loss1",
-                data: [5, 25, 5, 25, 46],
-                backgroundColor: "rgba(251, 181, 55, 1)",
+                label: "1.M/C DOWN TIME LOSS",
+                data: [0, 0, 0, 0, 0],
+                backgroundColor: "#fbb537rgba(157, 1, 6, 1)",
             },
             {
-                label: "Loss2",
-                data: [5, 25, 5, 25, 46],
-                backgroundColor: "rgba(244, 140, 6, 1)"
-            },
-            {
-                label: "Loss3",
-                data: [5, 25, 5, 25, 46],
-                backgroundColor: "rgba(232, 93, 4, 1)"
-            },
-            {
-                label: "Loss4",
-                data: [5, 25, 5, 25, 46],
+                label: "2.QUALITY",
+                data: [0, 0, 0, 0, 0],
                 backgroundColor: "rgba(208, 0, 0, 1)"
             },
             {
-                label: "Loss5",
-                data: [5, 25, 5, 25, 46],
-                backgroundColor: "rgba(157, 1, 6, 1)"
+                label: "3.MAT & Part Loss",
+                data: [0, 0, 0, 0, 0],
+                backgroundColor: "rgba(232, 93, 4, 1)"
+            },
+            {
+                label: "4.WAITTING KANBAN",
+                data: [0, 0, 0, 0, 0],
+                backgroundColor: "rgba(244, 140, 6, 1)"
+            },
+            {
+                label: "5.Daily Loss",
+                data: [0, 0, 0, 0, 0],
+                backgroundColor: "#fbb537"
             },
         ],
     },
     options: {
         fontColor: "rgba(255, 255, 255,1)",
-        barPercentage: 1,
-        barThickness: 30,
-        catrgoryPercentage: 1,
+        barPercentage: 5,
+        barThickness: 50,
+        catrgoryPercentage: 5,
         aspectRatio: 3.5,
         indexAxis: "x",
+        scales: {
+            // pcs: {
+            //     beginAtZero: true,
+            //     type: 'linear',
+            //     position: 'left'
+            // },
+            y: {
+                ticks: {
+                    color: 'white',
+                    beginAtZero: true
+                }
+            },
+            x: {
+                ticks: {
+                    color: 'white',
+                    beginAtZero: true
+                }
+            }
+        },
         plugins: {
             stacked100: {
                 enable: true
             },
             legend: {
-                position: 'left',
-                align: 'center',
+                // position: 'left',
+                // align: 'center',
+                display: false
             },
         },
         labels: {
@@ -374,14 +491,41 @@ new Chart(document.getElementById("CurrentLoss"), {
 });
 
 /*----------------------------------------------------------------*/
-new Chart(document.getElementById("ActiveWorker"), {
+var CrtActiveWorker = document.getElementById("ActiveWorker")
+
+var ActiveWorker = new Chart(CrtActiveWorker, {
     type: "bar",
     data: {
         labels: ["MFG.1 Alt", "MFG.2 Sta", "MFG.3 ECC", "Part MFG.1", "Part MFG.2"],
         datasets:
             [
-                { data: [65, 240, 80, 200, 244], backgroundColor: "rgba(0, 204, 153, 1)" },
-                { data: [5, 29, 8, 29, 40], backgroundColor: "rgba(255, 37, 37, 1)" }
+                {
+                    label: "1.TL",
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: "#003f5c",
+                },
+                {
+                    label: "2.LL",
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: "#2f6b85"
+                },
+                {
+                    label: "3.Mizusumashi",
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: "#599aad"
+                },
+                {
+                    label: "4.Out Line",
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: "#88ccd6"
+                },
+                {
+                    label: "5.In Line",
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: "#bbffff"
+                },
+                // { data: [65, 240, 80, 200, 244], backgroundColor: "rgba(0, 204, 153, 1)" },
+                // { data: [5, 29, 8, 29, 40], backgroundColor: "rgba(255, 37, 37, 1)" }
             ]
     },
     options: {
@@ -396,9 +540,17 @@ new Chart(document.getElementById("ActiveWorker"), {
         scales: {
             x: {
                 stacked: true,
+                ticks: {
+                    color: 'white',
+                    beginAtZero: true
+                }
             },
             y: {
-                stacked: true
+                stacked: true,
+                ticks: {
+                    color: 'white',
+                    beginAtZero: true
+                }
             }
         }
     },

@@ -43,32 +43,32 @@ new Chart(document.getElementById("OALossSum"), {
 /*----------------------------------------------------------------*/
 const ctx = document.getElementById('CurrentLossDetailSum');
 
-new Chart(ctx, {
+const CurrentLossDetailSum = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
         datasets: [
             {
-                label: 'Actual',
-                data: [12, 19, 3, 5, 2, 3, 36, 8, 3, 15, 14, 18, 23, 12, 24, 25, 12, 24, 24, 24, 24, 24, 24, 24, 24, 14, 16],
-                backgroundColor: ['rgba(0, 204, 153,1)'],
-                borderColor: ['rgba(255, 255, 255, 1)'],
+                label: 'Plan',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                backgroundColor: ['rgba(91, 120, 255, 1)'],
+                borderColor: ['rgba(91, 120, 255, 1)'],
+                type: 'line',
                 // yAxisID: 'Actual'
             },
             {
                 label: 'Diff',
-                data: [1, 2, 3, 4, 6, 7, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 27, 33, 37, 39, 40, 41, 42, 43, 44, 45, 46],
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 backgroundColor: 'rgba(255, 192, 0, 1)',
                 borderColor: 'rgba(255, 192, 0, 1)',
                 type: 'line',
                 // yAxisID: 'Plan'
             },
             {
-                label: 'Plan',
-                data: [32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32],
-                backgroundColor: ['rgba(91, 120, 255, 1)'],
-                borderColor: ['rgba(91, 120, 255, 1)'],
-                type: 'line',
+                label: 'Actual',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                backgroundColor: ['rgba(0, 204, 153,1)'],
+                borderColor: ['rgba(255, 255, 255, 1)'],
                 // yAxisID: 'Date'
             }]
     },
@@ -118,11 +118,11 @@ const doughnutLabelLossClar = {
 const chartIdLossClar = new Chart(chrtLossClar, {
     type: "doughnut",
     data: {
-        labels: ["Loss 1", "Loss 2", "Loss 3", "Loss 4", "Loss 5"],
+        labels: ["1.M/C DOWN TIME LOSS", "2.QUALITY", "3.MAT & Part Loss", "4.WAITTING KANBAN", "5.Daily Loss"],
         datasets: [
             {
 
-                data: [3100, 2500, 3300, 3900, 3800],
+                data: [0, 0, 0, 0, 0],
                 backgroundColor: ["rgba(192,144,0,1)", "rgba(226,170,0,1)", "rgba(255,192,0,1)", "rgba(255,209,132,1)", "rgba(255,224,181,1)"],
                 borderWidth: 0,
             },
@@ -130,7 +130,7 @@ const chartIdLossClar = new Chart(chrtLossClar, {
     },
     options: {
         responsive: false,
-        aspectRatio: 1.5,
+        aspectRatio: 2,
         cutout: "70%",
         layout: {
             padding: {
@@ -151,6 +151,12 @@ const chartIdLossClar = new Chart(chrtLossClar, {
             //     type: "linear",
             //     position: "right"
             // }
+        },
+        plugins: {
+            legend: {
+                color: 'white',
+                position: 'right'
+            }
         }
     },
     plugins: [doughnutLabelLossClar],
@@ -174,13 +180,13 @@ new Chart(Dekidaka, {
                 backgroundColor: 'rgba(91, 120, 255, 1)',
                 borderColor: 'rgba(255, 255, 255, 1)',
             },
-            {
-                label: 'Diff',
-                data: [11, 12, 13, 14, 16, 17, 18, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 27, 33, 37, 39, 40, 41, 42, 43, 44, 45, 46],
-                backgroundColor: 'rgba(91, 120, 255, 1)',
-                borderColor: 'rgba(91, 120, 255, 1)',
-                type: 'line'
-            }
+            // {
+            //     label: 'Diff',
+            //     data: [11, 12, 13, 14, 16, 17, 18, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 27, 33, 37, 39, 40, 41, 42, 43, 44, 45, 46],
+            //     backgroundColor: 'rgba(91, 120, 255, 1)',
+            //     borderColor: 'rgba(91, 120, 255, 1)',
+            //     type: 'line'
+            // }
         ]
     },
     options: {
@@ -196,6 +202,7 @@ new Chart(Dekidaka, {
                 ticks: {
                     color: 'white',
                     beginAtZero: true
+
                 }
             },
             x: {
@@ -213,7 +220,7 @@ new Chart(Dekidaka, {
                 //     const colorMap = ['rgba(91, 120, 255, 1)', 'rgba(0, 204, 153,1)'];
                 //     return colorMap[datasetIndex] || 'write';
                 // })
-            }
+            },
         }
     },
     plugins: [ChartDataLabels],

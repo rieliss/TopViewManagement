@@ -736,18 +736,22 @@
         <div class="Prod_Modal Prod_Modal_72">
           <span class="Prod_Modal Prod_Modal_72 header">MP Attendance</span
           ><br />
-          <span class="Prod_Modal Prod_Modal_72 date">(20 July 2023)</span>
+          <!-- <span class="Prod_Modal Prod_Modal_72 date">(20 July 2023)</span> -->
         </div>
         <div class="Prod_Modal Prod_Modal_73">
-          <span class="Prod_Modal Prod_Modal_73 first"><b>635</b></span>
-          <span class="Prod_Modal Prod_Modal_73 second">/ 635</span>
+          <span class="Prod_Modal Prod_Modal_73 first" id="first_MP"
+            ><b>635</b></span
+          >
+          <span class="Prod_Modal Prod_Modal_73 second" id="second_MP"
+            >/ 635</span
+          >
         </div>
         <div class="Prod_Modal Prod_Modal_74"><b>Active</b> <br />Workers</div>
         <div class="Prod_Modal Prod_Modal_75">
           <canvas id="ActiveWorker"></canvas>
         </div>
         <div class="Prod_Modal Prod_Modal_78"></div>
-        <div class="Prod_Modal Prod_Modal_76"><b>6</b></div>
+        <div class="Prod_Modal Prod_Modal_76"><b>0</b></div>
         <div class="Prod_Modal Prod_Modal_77">Leaves</div>
       </div>
       <div class="Prod_Modal Prod_Modal_9">
@@ -775,7 +779,7 @@
         <div class="Prod_Modal Prod_Modal_3"><b>Productivity Progress</b></div>
         <div class="Prod_Modal Prod_Modal_4">Current production level</div>
         <div class="Prod_Modal Prod_Modal_6"><b>0</b></div>
-        <div class="Prod_Modal Prod_Modal_7">units</div>
+        <!-- <div class="Prod_Modal Prod_Modal_7">units</div> -->
         <div class="Prod_Modal Prod_Modal_10">
           <canvas id="CurrentPord"></canvas>
         </div>
@@ -905,10 +909,9 @@
       <div class="energy_Modal energy_Modal_box3"></div> -->
     </div>
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"
-      integrity="sha512-+sXUwEYakGznuXubXLO/7LWSAPcm+U3NxMJaSu3S5OcvruAAAzaC50Uh4TW9KWj0hA6vfPAjB7E1uuIXgn9vmQ=="
+      src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+      integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-stacked100@1.0.0"></script>

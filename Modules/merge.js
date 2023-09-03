@@ -98,30 +98,81 @@
 // console.log(uniqueArr); // [1, 2, 3, 4, 5]
 
 
-const arr = [
+// const arr = [
+//     {
+//         name: 'Kate',
+//         location: 'New York',
+//     },
+//     {
+//         name: 'Mike',
+//         location: 'New York',
+//     },
+//     {
+//         name: 'Kate',
+//         location: 'New York',
+//     },
+// ];
+
+// const unique = [];
+// for (const item of arr) {
+//     // 👇 "name" and "location" used for duplicate check
+//     const duplicate = unique.find(
+//         (obj) => obj.location === item.location && obj.name === item.name
+//     );
+//     if (!duplicate) {
+//         unique.push(item);
+//     }
+// }
+// console.log(arr);
+// console.log(unique);
+
+// var aIn = new Array("A_0", "A_1", "A_2", "A.3", "A_4", "A_5", "A_6", "A_7");
+// var aSum = new Array("B_0", "B_1", "B_2", "B_3", "B_4", "B_5", "B_6", "B_7");
+
+// function SUMIF(aRange, sCriteria, aSum_Range) {
+//     var fSum = 0;
+//     for (i = 0; i < aRange.length; i++) {
+//         if (this.getField(aRange[i]).value.toString() == sCriteria) {
+//             fSum = fSum + Number(this.getField(aSum_Range[i]).value)
+//         }
+//     }
+
+//     return fSum;
+// }
+// event.value = SUMIF(aIn, ">61", aSum);
+
+let cart = [
     {
-        name: 'Kate',
-        location: 'New York',
+        name: "JavaScript book",
+        quantity: 3,
+        price: 4,
     },
     {
-        name: 'Mike',
-        location: 'New York',
+        name: "UGG Women's Hazel Ankle Boot",
+        quantity: 2,
+        price: 79,
     },
     {
-        name: 'Kate',
-        location: 'New York',
+        name: "OXO Good Grips 11-Inch Balloon Whisk",
+        quantity: 5,
+        price: 9,
     },
 ];
 
-const unique = [];
-for (const item of arr) {
-    // 👇 "name" and "location" used for duplicate check
-    const duplicate = unique.find(
-        (obj) => obj.location === item.location && obj.name === item.name
-    );
-    if (!duplicate) {
-        unique.push(item);
-    }
-}
-console.log(arr);
-console.log(unique);
+// totalPrice is 215
+
+// let totalPrice = cart.reduce(function (accumulator, item) {
+//     return accumulator + item.quantity * item.price;
+// }, 0);
+
+let totalPrice = cart
+    .filter(
+        (item) =>
+            item.name === "JavaScript book" ||
+            item.name === "UGG Women's Hazel Ankle Boot"
+    )
+    .reduce((accumulator, item) => {
+        return accumulator + item.quantity * item.price;
+    }, 0);
+
+console.log(totalPrice)
