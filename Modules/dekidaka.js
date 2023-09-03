@@ -53,7 +53,7 @@ function formatNumber(num, precision = 2) {
     return num;
 }
 
-var MonthValue;
+// var MonthValue;
 var LineSummary = [];
 var Prod_Actual_Value = [];
 var Prod_Actual_Value2 = [];
@@ -96,8 +96,8 @@ var holderLoss = [];
 var ValueLoss = [];
 var sumLossClar = [];
 
-var MonthValue;
-var ProdPlanDeki;
+var MonthValueLoss;
+var ProdPlanDeki = 0;
 var sumProdPlanDeki = 0;
 
 function calculateSum(array, property) {
@@ -119,14 +119,25 @@ function Update_Deki() {
     })
 }
 
+let dayLoss = objectDate.getDate();
+let monthLoss = objectDate.getMonth() + 1;
+let yearLoss = objectDate.getFullYear();
+if (dayLoss < 10) {
+    dayLoss = '01';
+}
+if (monthLoss < 10) {
+    monthLoss = `0${monthLoss}`;
+}
+let formatLoss = `${yearLoss}${monthLoss}01`;
+
 function dataWorkingDay_deki() {
     socket.on("CommonDay", (data) => {
         data.recordset.filter((e) => {
-            if (e.DataCode == format) {
-                MonthValue = e.DataValue;
+            if (e.DataCode == formatLoss) {
+                MonthValueLoss = e.DataValue;
             }
             // console.log(MonthValue)
-            return MonthValue;
+            return MonthValueLoss;
         });
     })
 }
@@ -156,33 +167,40 @@ function check(check_sim, e, x) {
     }
     return check_sim
 }
-
+updateprodActDeki()
 Update_Deki()
 dataWorkingDay_deki()
-updateprodActDeki()
+// Update_PlanDeki()
+// updateprodActDeki()
 
 var SumAct_deki = 0;
 var SumPlan_deki = 0;
+var SumDiff_deki = 0;
 
-function Update_PlanDeki() {
-    socket.on("MasterPlan", (data) => {
-        data.recordset.map((e) => {
-            // console.log(e)
-            // Prod_Actual_ValueDeki.push(e);
-            Prod_Actual_ValueDeki.push(e);
-            ProdPlanDeki = calculateSum(data.recordset, 'ProdPlanPerMonth');
-            // console.log(ProdPlanDeki)
-            // console.log(ProdPlan)
-            // console.log(MonthValue)
-            sumProdPlanDeki = ProdPlanDeki / MonthValue
-            // console.log(sumProdPlanDeki)
-            // IntProdPlan = formatNumber((parseFloat(sumProdPlan)), 2)
-        })
-        // console.log(sumProdPlanDeki)
-        return sumProdPlanDeki
-    })
+// function Update_PlanDeki() {
+//     socket.on("MasterPlan", (data) => {
+//         data.recordset.map((e) => {
+//             // console.log(e)
+//             // Prod_Actual_ValueDeki.push(e);
+//             Prod_Actual_ValueDeki.push(e);
+//             ProdPlanDeki = calculateSum(data.recordset, 'ProdPlanPerMonth');
+//             // console.log(ProdPlanDeki)
+//             // console.log(ProdPlan)
+//             // console.log(MonthValue)
+//             sumProdPlanDeki = ProdPlanDeki / MonthValue
+//         })
+//         // console.log(sumProdPlanDeki)
+//         return sumProdPlanDeki
+//     })
+// }
+
+function twoGreaterThanZero(arr) {
+    let counter = 0
+    for (let x of arr) {
+        if (x != 0 && (++counter > 1)) return counter++
+    }
+    return false
 }
-Update_PlanDeki()
 
 function updateprodActDeki() {
     socket.on("LineSummary", (data) => {
@@ -202,6 +220,16 @@ function updateprodActDeki() {
             return unique;
         });
     });
+    socket.on("MasterPlan", (data) => {
+        data.recordset.map((e) => {
+            Prod_Actual_ValueDeki.push(e);
+            console.log(MonthValueLoss)
+            ProdPlanDeki = calculateSum(data.recordset, 'ProdPlanPerMonth');
+            sumProdPlanDeki = ProdPlanDeki / MonthValueLoss
+        })
+        // console.log(sumProdPlanDeki)
+        return sumProdPlanDeki
+    })
     socket.on('ProdActPerDay', (data) => {
         // console.log(data)
         for (let i = 0; i < data.recordset.length; i++) {
@@ -219,6 +247,13 @@ function updateprodActDeki() {
             return 0;
         });
         // console.log(res)
+        ACC_plan.forEach((item) => {
+            console.log(sumProdPlanDeki)
+            SumPlan_deki = sumProdPlanDeki * twoGreaterThanZero(res)
+            console.log(twoGreaterThanZero(res))
+            console.log(SumPlan_deki)
+            item.innerHTML = `<b>${formatNumber(SumPlan_deki, 2)}</b>`;
+        })
         ACC_Act.forEach((item) => {
             res.map((e) => {
                 SumAct_deki += e.Value;
@@ -226,14 +261,10 @@ function updateprodActDeki() {
             })
             item.innerHTML = `<b>${formatNumber(SumAct_deki, 2)}</b>`;
         })
-        ACC_plan.forEach((item) => {
-            console.log(sumProdPlanDeki)
-            SumPlan_deki += sumProdPlanDeki
-            item.innerHTML = `<b>${formatNumber(SumPlan_deki, 2)}</b>`;
-        })
         ACC_Diff.forEach((item) => {
-            // SumPlan_deki - SumAct_deki
-            item.innerHTML = `<b>${formatNumber(SumPlan_deki - SumAct_deki, 2)}</b>`;
+            SumDiff_deki = SumPlan_deki - SumAct_deki
+            console.log(SumDiff_deki)
+            item.innerHTML = `<b>${formatNumber(SumDiff_deki, 2)}</b>`;
         })
         res.map((e) => {
             // console.log(sumProdPlanDeki)
@@ -245,7 +276,7 @@ function updateprodActDeki() {
                 check(sumProdPlanDeki, e, 1)
                 // CurrentLossDetailSum.data.datasets[0].data[0] = sumProdPlanDeki;
             } else if (e.ProductionDate === Date_Modify(2)) {
-                console.log(e)
+                // console.log(e)
                 CurrentLossDetailSum.data.datasets[2].data[1] = e.Value;
                 check(sumProdPlanDeki, e, 2)
                 // CurrentLossDetailSum.data.datasets[0].data[1] = sumProdPlanDeki;
@@ -496,10 +527,49 @@ function updateLoss() {
                 chartIdLossClar.update()
                 // console.log(item)
             }
-            console.log(item)
+            // console.log(item)
             // console.log(CurrentLoss.data.datasets[4].data)
         })
         // CurrentLoss.data.datasets = mergedArrayLoss
         return mergedArrayLoss;
+    })
+}
+
+function Raking_Loss() {
+    socket.on("LineSummary", (data) => {
+        data.filter((e) => {
+            if (e.RxNo_Line != null) {
+                LineSummary.push(e)
+                return LineSummary
+            }
+            for (const item of LineSummary) {
+                // 👇 "name" and "location" used for duplicate check
+                const duplicate = uniqueLossClar.find(
+                    (obj) => obj.RxNo_Line === item.RxNo_Line);
+                if (!duplicate) {
+                    uniqueLossClar.push(item);
+                }
+            }
+            // console.log(uniqueLossClar)
+            return uniqueLossClar;
+        });
+    });
+    socket.on("Loss", (data) => {
+        data.recordset.filter((e) => {
+            LossRecorderClar.push(e)
+            // console.log(LossRecorderClar)
+        })
+        for (const item of LossRecorderClar) {
+            const duplicate = sumLossClar.find((obj) => obj.RxNo === item.RxNo);
+            if (!duplicate) {
+                sumLossClar.push(item);
+                // console.log(sumLossClar)
+            }
+        }
+        mergedArrayLoss = sumLossClar.map((item) => {
+            const matchedObjectLoss = uniqueLossClar.find(
+                (obj) => obj.RxNo_Line === item.RxNo_Line);
+            return { ...item, ...matchedObjectLoss };
+        });
     })
 }

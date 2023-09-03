@@ -175,7 +175,7 @@ new Chart(Dekidaka, {
                 borderColor: ['rgba(255, 255, 255, 1)'],
             },
             {
-                label: 'Diff',
+                label: 'Plan',
                 data: [11, 12, 13, 14, 16, 17, 18, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 27, 33, 37, 39, 40, 41, 42, 43, 44, 45, 46],
                 backgroundColor: 'rgba(91, 120, 255, 1)',
                 borderColor: 'rgba(255, 255, 255, 1)',
