@@ -102,17 +102,11 @@
     </div>
     <div class="dropdown dropSectionCodetext">Section Code :</div>
     <div class="dropdown dropSectionCode">
-        <!-- <label for="cars">Section Code :</label> -->
         <label class="select" for="slct">
-          <select id="slct" required="required">
-            <option value="" disabled="disabled" selected="selected">Select option</option>
-            <option value="#">One</option>
-            <option value="#">Two</option>
-            <option value="#">Three</option>
-            <option value="#">Four</option>
-            <option value="#">Five</option>
-            <option value="#">Six</option>
-            <option value="#">Seven</option>
+          <select class="form-select"
+            id="filterBySectionCode"
+            onchange="searchFilter()">
+            <option value="414111-EPD-B-Press Parts" disabled>Select option</option>
           </select>
           <svg>
             <use xlink:href="#select-arrow-down"></use>
@@ -125,50 +119,18 @@
           </symbol>
         </svg>
     </div>
-    <div class="dropdown dropSectionNametext">Section Name :</div>
-    <div class="dropdown dropSectionName">
-      <!-- <label for="cars">Section Name :</label> -->
-      <label class="select" for="slct">
-        <select id="slct" required="required">
-          <option value="" disabled="disabled" selected="selected">Select option</option>
-          <option value="#">One</option>
-          <option value="#">Two</option>
-          <option value="#">Three</option>
-          <option value="#">Four</option>
-          <option value="#">Five</option>
-          <option value="#">Six</option>
-          <option value="#">Seven</option>
-        </select>
-        <svg>
-          <use xlink:href="#select-arrow-down"></use>
-        </svg>
-      </label>
-      <!-- SVG Sprites-->
-      <svg class="sprites">
-        <symbol id="select-arrow-down" viewbox="0 0 10 6">
-          <polyline points="1 1 5 5 9 1"></polyline>
-        </symbol>
-      </svg>
-    </div>
-    <div class="dropdown dropLineNametext">Section Code :</div>
+    <div class="dropdown dropLineNametext">Line Name :</div>
     <div class="dropdown dropLineName">
-      <!-- <label for="cars">Line Name :</label> -->
       <label class="select" for="slct">
-        <select id="slct" required="required">
-          <option value="" disabled="disabled" selected="selected">Select option</option>
-          <option value="#">One</option>
-          <option value="#">Two</option>
-          <option value="#">Three</option>
-          <option value="#">Four</option>
-          <option value="#">Five</option>
-          <option value="#">Six</option>
-          <option value="#">Seven</option>
+          <select class="form-select"
+            id="filterByLineName"
+            onchange="searchFilterLineCode()">
+            <option value="Stamping 2AC" disabled>Select option</option>
         </select>
         <svg>
           <use xlink:href="#select-arrow-down"></use>
         </svg>
       </label>
-      <!-- SVG Sprites-->
       <svg class="sprites">
         <symbol id="select-arrow-down" viewbox="0 0 10 6">
           <polyline points="1 1 5 5 9 1"></polyline>
@@ -176,7 +138,7 @@
       </svg>
     </div>
     <div class="deki deki-5">
-      <div class="deki deki-5-1">Loss Detail Summary</div>
+      <div class="deki deki-5-1">Daily Production Progress</div>
       <div class="deki deki-5-2">
         <span class="deki deki-5-2-topic">Acc.Plan</span><br>
         <span class="deki deki-5-2-number"><b>100,000</b></span>
@@ -215,14 +177,14 @@
         <span class="deki deki-8-3-number"><b>10</b></span>
         <span class="deki deki-8-3-text">Acc.Actual Q'ty</span>
       </div>
-      <div class="deki deki-8-4">
+      <!-- <div class="deki deki-8-4">
         <span class="deki deki-8-4-number"><b>10</b></span>
         <span class="deki deki-8-4-text">Red Point/Day</span>
-      </div>
-      <div class="deki deki-8-5">
+      </div> -->
+      <!-- <div class="deki deki-8-5">
         <span class="deki deki-8-5-number"><b>2.0</b></span>
         <span class="deki deki-8-5-text">AVG./Day</span>
-      </div>
+      </div> -->
       <div class="deki deki-8-6">
         <canvas id="CurrentLossDekidaka"></canvas>
       </div>
@@ -231,19 +193,20 @@
       <div class="deki deki-9-1">Raking Loss Summary</div>
       <div class="deki deki-9-2">
         <span class="deki deki-9-2-top">Total Loss Time</span>
-        <span class="deki deki-9-2-number"><b>100</b></span>
+        <span class="deki deki-9-2-number"><b>0</b></span>
         <span class="deki deki-9-2-text">Minutes / Month</span>
       </div>
       <div class="deki deki-9-3">
-        <span class="deki deki-9-3-number"><b>25</b></span>
+        <span class="deki deki-9-3-number"><b>0</b></span>
         <span class="deki deki-9-3-text">Minutes / Day</span>
       </div>
       <div class="deki deki-9-4">
-        <canvas id="RakingLoss"></canvas>
+        <canvas id="RakingLossChart"></canvas>
       </div>
     </div>
     <div class="deki deki-10">
       <div class="deki deki-10-1">Loss Detail Summary</div>
+      <div class="tableFixHead" id="table-container"></div>
     </div>
     </section>
     <!-- <script
@@ -260,8 +223,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js" integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-stacked100@1.0.0"></script>
+      <script src="/Modules/dekidaka.js"></script>
     <script src="/Modules/chartdeki.js"></script>
     <script src="/Modules/chart.js"></script>
-    <script src="/Modules/dekidaka.js"></script>
   </body>
 </html>

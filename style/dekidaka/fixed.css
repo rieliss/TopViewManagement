@@ -362,10 +362,10 @@
 }
 .deki-8-2-number {
   position: fixed;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: rgba(0, 204, 153, 1);
-  top: 430px;
-  left: 645px;
+  top: 435px;
+  left: 630px;
 }
 .deki-8-2-text {
   position: fixed;
@@ -375,10 +375,10 @@
 }
 .deki-8-3-number {
   position: fixed;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: rgba(0, 204, 153, 1);
-  top: 430px;
-  left: 745px;
+  top: 435px;
+  left: 735px;
 }
 .deki-8-3-text {
   position: fixed;
@@ -440,10 +440,10 @@
 }
 .deki-9-2-number {
   position: fixed;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: rgba(255, 192, 0, 1);
-  top: 775px;
-  left: 60px;
+  top: 780px;
+  left: 50px;
 }
 .deki-9-2-text {
   position: fixed;
@@ -453,10 +453,10 @@
 }
 .deki-9-3-number {
   position: fixed;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: rgba(255, 192, 0, 1);
-  top: 855px;
-  left: 65px;
+  top: 860px;
+  left: 50px;
 }
 .deki-9-3-text {
   position: fixed;
@@ -484,6 +484,45 @@
   top: 440px;
   left: 1040px;
 }
+
+#table-container {
+  position: fixed;
+  font-size: 0.8rem;
+  top: 470px;
+  left: 1030px;
+  height: 480px;
+  width: 870px;
+}
+
+.tableFixHead {
+  overflow-y: auto;
+  /* make the table scrollable if height is more than 200 px  */
+  height: 200px;
+  /* gives an initial height of 200px to the table */
+  border-radius: 5px;
+}
+.tableFixHead th {
+  position: sticky; /* make the table heads sticky */
+  top: -1px; /* table head will be placed from the top of the table and sticks to it */
+}
+table {
+  border-collapse: collapse; /* make the table borders collapse to each other */
+  width: 100%;
+  border-radius: 10px;
+}
+th,
+td {
+  padding: 5px 5px;
+  border: 1px solid #ccc;
+}
+th {
+  color: black;
+  background: #eee;
+}
+/* td {
+  background-color: thistle;
+} */
+
 .dropSectionCodetext {
   position: fixed;
   font-size: 1rem;
@@ -511,13 +550,13 @@
   position: fixed;
   font-size: 1rem;
   top: 115px;
-  left: 980px;
+  left: 500px;
 }
 .dropLineName {
   position: fixed;
   font-size: 1rem;
   top: 110px;
-  left: 1100px;
+  left: 600px;
 }
 .select {
   position: fixed;

@@ -1,6 +1,6 @@
 .Prod_Modal_1 {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   top: 150px;
   left: 405px;
 }
@@ -127,10 +127,10 @@
 }
 .Prod_Modal_15 {
   position: fixed;
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: red;
-  top: 505px;
-  left: 540px;
+  top: 517px;
+  left: 530px;
   /* z-index: 2; */
 }
 .Prod_Modal_16 {
@@ -150,7 +150,7 @@
 }
 .Prod_Modal_18 {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   top: 470px;
   left: 430px;
 }
@@ -163,7 +163,7 @@
 .Prod_Modal_20 {
   color: rgba(0, 240, 153, 1);
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   top: 470px;
   left: 530px;
 }
@@ -175,7 +175,7 @@
 }
 .Prod_Modal_22 {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgba(0, 240, 153, 1);
   top: 420px;
   left: 430px;
@@ -210,7 +210,7 @@
 }
 .Prod_Modal_26 {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   top: 470px;
   left: 650px;
 }
@@ -223,7 +223,7 @@
 .Prod_Modal_28 {
   color: rgba(0, 240, 153, 1);
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   top: 470px;
   left: 750px;
 }
@@ -235,7 +235,7 @@
 }
 .Prod_Modal_30 {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgba(0, 240, 153, 1);
   top: 420px;
   left: 650px;
@@ -271,7 +271,7 @@
 }
 .Prod_Modal_34 {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   top: 470px;
   left: 870px;
 }
@@ -284,7 +284,7 @@
 .Prod_Modal_36 {
   color: rgba(0, 240, 153, 1);
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   top: 470px;
   left: 970px;
 }
@@ -296,7 +296,7 @@
 }
 .Prod_Modal_38 {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgba(0, 240, 153, 1);
   top: 420px;
   left: 870px;
@@ -333,7 +333,7 @@
 }
 .Prod_Modal_42 {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   top: 470px;
   left: 1090px;
 }
@@ -346,7 +346,7 @@
 .Prod_Modal_44 {
   color: rgba(0, 240, 153, 1);
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   top: 470px;
   left: 1190px;
 }
@@ -358,7 +358,7 @@
 }
 .Prod_Modal_46 {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgba(0, 240, 153, 1);
   top: 420px;
   left: 1090px;
@@ -395,7 +395,7 @@
 }
 .Prod_Modal_50 {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   top: 470px;
   left: 1310px;
 }
@@ -408,7 +408,7 @@
 .Prod_Modal_52 {
   color: rgba(0, 240, 153, 1);
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   top: 470px;
   left: 1410px;
 }
@@ -420,7 +420,7 @@
 }
 .Prod_Modal_54 {
   position: fixed;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: rgba(0, 240, 153, 1);
   top: 420px;
   left: 1310px;
@@ -448,12 +448,10 @@
 }
 .Prod_Modal_57 {
   position: fixed;
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: red;
-  top: 415px;
-  left: 1044px;
-  top: 505px;
-  left: 760px;
+  top: 517px;
+  left: 755px;
   /* z-index: 2; */
 }
 /*----------------------------------------------------------------*/
@@ -478,10 +476,10 @@
 }
 .Prod_Modal_60 {
   position: fixed;
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: red;
-  top: 505px;
-  left: 980px;
+  top: 517px;
+  left: 975px;
   /* z-index: 2; */
 }
 /*----------------------------------------------------------------*/
@@ -506,11 +504,10 @@
 }
 .Prod_Modal_63 {
   position: fixed;
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: red;
-
-  top: 505px;
-  left: 1200px;
+  top: 517px;
+  left: 1195px;
   /* z-index: 2; */
 }
 /*----------------------------------------------------------------*/
@@ -535,10 +532,10 @@
 }
 .Prod_Modal_66 {
   position: fixed;
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: red;
-  top: 505px;
-  left: 1420px;
+  top: 517px;
+  left: 1415px;
   /* z-index: 2; */
 }
 /*----------------------------------------------------------------*/

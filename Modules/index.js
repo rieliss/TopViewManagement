@@ -25,81 +25,101 @@ var Energy_Modal = document.getElementById("Energy_Modal");
 var Energy_Btn = document.getElementById("Energy_Btn");
 
 Safety_Btn.onclick = function () {
-    safety_Modal.style.display = "block";
-    hide.style.display = "none";
-}
+  safety_Modal.style.display = "block";
+  hide.style.display = "none";
+};
 QC_Btn.onclick = function () {
-    QC_Modal.style.display = "block";
-    hide.style.display = "none";
-}
+  QC_Modal.style.display = "block";
+  hide.style.display = "none";
+};
 cost_Btn.onclick = function () {
-    cost_Modal.style.display = "block";
-    hide.style.display = "none";
-}
+  cost_Modal.style.display = "block";
+  hide.style.display = "none";
+};
 delivery_Btn.onclick = function () {
-    delivery_Modal.style.display = "block";
-    hide.style.display = "none";
-}
+  delivery_Modal.style.display = "block";
+  hide.style.display = "none";
+};
 Prod_Btn.onclick = function () {
-    Prod_Modal.style.display = "block";
-    hide.style.display = "none";
-}
+  Prod_Modal.style.display = "block";
+  hide.style.display = "none";
+};
 Energy_Btn.onclick = function () {
-    Energy_Modal.style.display = "block";
-    hide.style.display = "none";
-}
+  Energy_Modal.style.display = "block";
+  hide.style.display = "none";
+};
 
 span_safety.onclick = function () {
-    safety_Modal.style.display = "none";
-    hide.style.display = "block";
-}
+  safety_Modal.style.display = "none";
+  hide.style.display = "block";
+};
 span_QC_.onclick = function () {
-    QC_Modal.style.display = "none";
-    hide.style.display = "block";
-}
+  QC_Modal.style.display = "none";
+  hide.style.display = "block";
+};
 
 span_cost.onclick = function () {
-    cost_Modal.style.display = "none";
-    hide.style.display = "block";
-}
+  cost_Modal.style.display = "none";
+  hide.style.display = "block";
+};
 
 span_delivery.onclick = function () {
-    delivery_Modal.style.display = "none";
-    hide.style.display = "block";
-}
+  delivery_Modal.style.display = "none";
+  hide.style.display = "block";
+};
 
 span_Prod.onclick = function () {
-    Prod_Modal.style.display = "none";
-    hide.style.display = "block";
-}
+  Prod_Modal.style.display = "none";
+  hide.style.display = "block";
+};
 
 span_Energy.onclick = function () {
+  Energy_Modal.style.display = "none";
+  hide.style.display = "block";
+};
+
+window.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    safety_Modal.style.display = "none";
+    QC_Modal.style.display = "none";
+    cost_Modal.style.display = "none";
+    delivery_Modal.style.display = "none";
+    Prod_Modal.style.display = "none";
     Energy_Modal.style.display = "none";
     hide.style.display = "block";
-}
-
-window.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-        safety_Modal.style.display = "none";
-        QC_Modal.style.display = "none";
-        cost_Modal.style.display = "none";
-        delivery_Modal.style.display = "none";
-        Prod_Modal.style.display = "none";
-        Energy_Modal.style.display = "none";
-        hide.style.display = "block";
-    }
-})
+  }
+});
 
 window.onclick = function (event) {
-    if (event.target == QC_Modal || event.target == safety_Modal || event.target == cost_Modal || event.target == delivery_Modal || event.target == Prod_Modal || event.target == Energy_Modal) {
-        safety_Modal.style.display = "none";
-        QC_Modal.style.display = "none";
-        cost_Modal.style.display = "none";
-        delivery_Modal.style.display = "none";
-        Prod_Modal.style.display = "none";
-        Energy_Modal.style.display = "none";
-        hide.style.display = "block";
-    }
-}
+  if (
+    event.target == QC_Modal ||
+    event.target == safety_Modal ||
+    event.target == cost_Modal ||
+    event.target == delivery_Modal ||
+    event.target == Prod_Modal ||
+    event.target == Energy_Modal
+  ) {
+    safety_Modal.style.display = "none";
+    QC_Modal.style.display = "none";
+    cost_Modal.style.display = "none";
+    delivery_Modal.style.display = "none";
+    Prod_Modal.style.display = "none";
+    Energy_Modal.style.display = "none";
+    hide.style.display = "block";
+  }
+};
 
-// Prod_Modal.style.display = "block"
+var myDIV1 = document.getElementById("myDIV1");
+var myDIV2 = document.getElementById("myDIV2");
+var IV_btn = document.getElementById("toggleDivButtonIV");
+var EC_btn = document.getElementById("toggleDivButtonEC");
+
+IV_btn.onclick = function () {
+  myDIV2.style.display = "none";
+  myDIV1.style.display = "block";
+};
+
+EC_btn.onclick = function () {
+  myDIV2.style.display = "block";
+  myDIV1.style.display = "none";
+};

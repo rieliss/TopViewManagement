@@ -1,4 +1,4 @@
-@media only screen and (min-width: 1300px) and (max-width: 1900px) {
+@media only screen and (min-width: 1900) {
   @font-face {
     font-family: myFirstFont;
     src: url(/fonts/DENSOSans-Regular.ttf);
@@ -234,45 +234,6 @@
     border: 1px solid white;
     border-collapse: collapse;
   } */
-
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted rgba(89, 89, 89, 0.8);
-    z-index: 5;
-  }
-
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 300px;
-    height: 180px;
-    /* background-color: black; */
-    background-color: rgba(89, 89, 89, 0.8);
-    color: #fff;
-    text-align: left;
-    border-radius: 6px;
-    /* margin-left: 100px; */
-    /* border: solid 1px red; */
-    padding: 10px 20px;
-    margin-left: 10px;
-    position: absolute;
-    z-index: 5;
-    top: -20px;
-    left: 110%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  }
-
-  .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    margin-top: -70px;
-    border-width: 10px;
-    z-index: 5;
-    border-style: solid;
-    border-color: transparent rgba(89, 89, 89, 0.8) transparent transparent;
-  }
 
   .item-1 {
     position: fixed;

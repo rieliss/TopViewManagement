@@ -45,7 +45,7 @@
         </div>
         <div class="item item-2-4">
           <a
-            href="/VisualInventory/inventory.html"
+            href="http://172.23.32.56:5503/VisualInventory/inventory.html"
             target="_blank"
             class="button button_in"
             >Inventory</a
@@ -166,14 +166,32 @@
           />
           <div class="item item-8-1"><b>Cost</b></div>
           <div class="item item-8-2"><b>Normal</b></div>
-          <div class="item item-8-3"><b>● Investment</b></div>
-          <div class="item item-8-4">(Acc. KB/Month)</div>
-          <div class="item item-8-5">
+          <div
+            class="item item-8-3"
+            type="button"
+            id="toggleDivButtonIV"
+          >
+            <b>● Investment</b>
+            <!-- <span class="tooltiptext">Investment</span> -->
+          </div>
+          <div class="item item-8-4" type="button"
+            id="toggleDivButtonIV">(Acc. KB/Month)</div>
+          <div class="item item-8-5" type="button"
+            id="toggleDivButtonIV">
             <b><span>0 K </span>/ 0 K</b>
           </div>
-          <div class="item item-8-6"><b>● Expense control </b></div>
-          <div class="item item-8-7">(Acc. KB/Month)</div>
-          <div class="item item-8-8">
+          <div
+            class="item item-8-6"
+            type="button"
+            id="toggleDivButtonEC"
+          >
+            <b>● Expense control </b>
+            <!-- <span class="tooltiptext">Expense control</span> -->
+          </div>
+          <div class="item item-8-7" type="button"
+            id="toggleDivButtonEC">(Acc. KB/Month)</div>
+          <div class="item item-8-8" type="button"
+            id="toggleDivButtonEC">
             <b><span style="color: rgb(0, 0, 0)">0%</span> / 0%</b>
           </div>
         </div>
@@ -303,20 +321,20 @@
     </section>
 
     <div class="Alternator Product">
-      <div class="AltProd AltProd-1" id="4463">4463</div>
-      <div class="AltProd AltProd-2" id="4464">4464</div>
-      <div class="AltProd AltProd-3" id="4461">4461</div>
-      <div class="AltProd AltProd-4" id="4278">4278</div>
-      <div class="AltProd AltProd-5" id="4274">4274</div>
-      <div class="AltProd AltProd-6" id="4268">4268</div>
-      <div class="AltProd AltProd-7" id="4267">4267</div>
-      <div class="AltProd AltProd-8" id="4273">4273</div>
-      <div class="AltProd AltProd-9" id="4277">4277</div>
-      <div class="AltProd AltProd-10" id="4271">4271</div>
-      <div class="AltProd AltProd-11" id="4276">4276</div>
-      <div class="AltProd AltProd-12" id="4272">4272</div>
-      <div class="AltProd AltProd-13" id="4290">4290</div>
-      <div class="AltProd AltProd-14" id="4291">4291</div>
+      <div class="AltProd AltProd-1" id="A104">4463</div>
+      <div class="AltProd AltProd-2" id="A105">4464</div>
+      <div class="AltProd AltProd-3" id="A100">4461</div>
+      <div class="AltProd AltProd-4" id="A181">4278</div>
+      <div class="AltProd AltProd-5" id="A215">4274</div>
+      <div class="AltProd AltProd-6" id="A219">4268</div>
+      <div class="AltProd AltProd-7" id="A221">4267</div>
+      <div class="AltProd AltProd-8" id="A214">4273</div>
+      <div class="AltProd AltProd-9" id="A218">4277</div>
+      <div class="AltProd AltProd-10" id="A209">4271</div>
+      <div class="AltProd AltProd-11" id="A217">4276</div>
+      <div class="AltProd AltProd-12" id="A213">4272</div>
+      <div class="AltProd AltProd-13" id="A220">4290</div>
+      <div class="AltProd AltProd-14" id="A222">4291</div>
     </div>
     <div class="Starter Product">
       <div class="StrProd StrProd-1" id="S100">4452</div>
@@ -491,20 +509,28 @@
         </button>
       </div>
       <div class="Cost_Modal Cost_Modal_1"><b>Cost Information</b></div>
-      <div class="Cost_Modal Cost_Modal_2">
+      <!-- <div class="Cost_Modal Cost_Modal_2">
         <a
           href="http://172.23.36.47:5503/Main/dekidaka.html"
           target="_blank"
           class="button button_in"
           >Detail >></a
         >
-      </div>
-      <div class="Cost_Modal Cost_Modal_iframe">
+      </div> -->
+      <div class="Cost_Modal Cost_Modal_iframe" id="myDIV1">
         <iframe
-          src="https://app.powerbi.com/reportEmbed?reportId=8dcadf18-a131-44e6-b620-a5af111c7459&autoAuth=true&pageName=ReportSection7ba5d50b807e35a92c22"
+          src="https://app.powerbi.com/reportEmbed?reportId=990e596c-cc5c-48f0-a251-7304bc09f406&autoAuth=true&pageName=ReportSectiond821c42fbe941610c007"
           frameborder="0"
           allowfullscreen="true"
         ></iframe>
+        </div>
+        <div class="Cost_Modal Cost_Modal_iframe" id="myDIV2">
+        <iframe
+          src="https://app.powerbi.com/reportEmbed?reportId=5ae7dea9-5fe7-4c03-8d35-4fa54a1d75ec&autoAuth=true&pageName=ReportSection75071587a1a28623bb20"
+          frameborder="0"
+          allowfullscreen="true"
+        ></iframe>
+        </div>
       </div>
       <!-- <div class="Cost_Modal Cost_Modal_5">
         <div class="Cost_Modal Cost_Modal_3"><b>Expense</b></div>
@@ -595,7 +621,7 @@
             <div>Part MFG.2</div>
           </div>
           <hr class="line9" />
-          <div class="Cost_Modal Cost_Modal_47"></div>
+          <div class="Cost_Modhttps://www.udemy.com/course/nextjs-react-the-complete-guide/learn/lecture/25146616#overviewal Cost_Modal_47"></div>
           <div class="Cost_Modal Cost_Modal_48">
             <canvas id="chartIdCostPart2"></canvas>
           </div>
@@ -918,6 +944,6 @@
     <script src="/Modules/socket.js"></script>
     <script src="/Modules/index.js"></script>
     <script src="/Modules/chart.js"></script>
-    <script src="/Modules/chartdeli.js"></script>
+    <!-- <script src="/Modules/chartdeli.js"></script> -->
   </body>
 </html>

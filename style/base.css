@@ -361,7 +361,7 @@ td {
   border-width: 10px;
   z-index: 5;
   border-style: solid;
-  border-color: transparent rgba(89, 89, 89, 0.8) transparent transparent;
+  border-color: transparent rgba(150, 150, 150, 0.8) transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {
