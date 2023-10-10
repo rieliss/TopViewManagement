@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style/base.css" />
     <link rel="stylesheet" href="/style/fixed.css" />
-    <link rel="stylesheet" href="/style/square.css" />
+    <!-- <link rel="stylesheet" href="/style/square.css" /> -->
     <link rel="stylesheet" href="/style/169res.css" />
     <link rel="stylesheet" href="/style/button.css" />
     <link rel="stylesheet" href="/style/position.css" />
@@ -28,7 +28,7 @@
         </div>
         <div class="item item-2">MORE INFORMATION</div>
         <div class="item item-2-1">
-          <a href="#" target="_blank" class="button button_safe"
+          <a href="#" target="_blank" class="button button_safe" id="none"
             >Safety Control</a
           >
         </div>
@@ -41,21 +41,27 @@
           >
         </div>
         <div class="item item-2-3">
-          <a href="#" target="_blank" class="button button_man">Manpower</a>
+          <a href="#" target="_blank" class="button button_man" id="none"
+            >Manpower</a
+          >
         </div>
         <div class="item item-2-4">
           <a
-            href="http://172.23.32.56:5503/VisualInventory/inventory.html"
+            href="http://172.23.32.56:3001/"
             target="_blank"
             class="button button_in"
             >Inventory</a
           >
         </div>
         <div class="item item-2-5">
-          <a href="#" target="_blank" class="button button_truck">TruckTime</a>
+          <a href="#" target="_blank" class="button button_truck" id="none"
+            >TruckTime</a
+          >
         </div>
         <div class="item item-2-6">
-          <a href="#" target="_blank" class="button button_qa">Quality</a>
+          <a href="#" target="_blank" class="button button_qa" id="none"
+            >Quality</a
+          >
         </div>
         <div class="item item-2-7">
           <a
@@ -72,9 +78,10 @@
           <img src="/icons/Picture1.png" alt="imagetopview" />
         </div>
         <div class="item item-4">
-          <p>PoweBlack by EPD DX Promotion</p>
+          <p>Powered by EPD DX Promotion</p>
           <hr />
         </div>
+
         <div class="item item-4-1">
           <span id="ct">
             <script type="text/javascript">
@@ -146,7 +153,7 @@
             style="margin-top: 10px; margin-left: 10px"
           />
           <div class="item item-7-1"><b>Quality Control</b></div>
-          <div class="item item-7-2"><b>Abnormal</b></div>
+          <div class="item item-7-2"><b>Active</b></div>
           <div class="item item-7-3"><b>● Defect Ratio</b></div>
           <div class="item item-7-4">(% : P-Chart)</div>
           <div class="item item-7-5">
@@ -165,34 +172,26 @@
             style="margin-top: 10px; margin-left: 10px"
           />
           <div class="item item-8-1"><b>Cost</b></div>
-          <div class="item item-8-2"><b>Normal</b></div>
-          <div
-            class="item item-8-3"
-            type="button"
-            id="toggleDivButtonIV"
-          >
+          <div class="item item-8-2"><b>Active</b></div>
+          <div class="item item-8-3" type="button" id="toggleDivButtonIV">
             <b>● Investment</b>
             <!-- <span class="tooltiptext">Investment</span> -->
           </div>
-          <div class="item item-8-4" type="button"
-            id="toggleDivButtonIV">(Acc. KB/Month)</div>
-          <div class="item item-8-5" type="button"
-            id="toggleDivButtonIV">
-            <b><span>0 K </span>/ 0 K</b>
+          <div class="item item-8-4" type="button" id="toggleDivButtonIV">
+            (Acc. KB/Month)
           </div>
-          <div
-            class="item item-8-6"
-            type="button"
-            id="toggleDivButtonEC"
-          >
+          <div class="item item-8-5" type="button" id="toggleDivButtonIV">
+            <b><span id="toggleDivButtonIV">0 K </span>/ 0 K</b>
+          </div>
+          <div class="item item-8-6" type="button" id="toggleDivButtonEC">
             <b>● Expense control </b>
             <!-- <span class="tooltiptext">Expense control</span> -->
           </div>
-          <div class="item item-8-7" type="button"
-            id="toggleDivButtonEC">(Acc. KB/Month)</div>
-          <div class="item item-8-8" type="button"
-            id="toggleDivButtonEC">
-            <b><span style="color: rgb(0, 0, 0)">0%</span> / 0%</b>
+          <div class="item item-8-7" type="button" id="toggleDivButtonEC">
+            (Acc. KB/Month)
+          </div>
+          <div class="item item-8-8" type="button" id="toggleDivButtonEC">
+            <b><span id="toggleDivButtonEC" style="color: rgb(0, 0, 0)">0%</span> / 0%</b>
           </div>
         </div>
         <div class="item_hide_MGR" id="item_hide_MGR">
@@ -224,31 +223,34 @@
           <div class="item item-14-18">
             <img src="/icons/AssyMGR.png" alt="AssyMGR" />
           </div>
-          <div class="item item-9">
+          <div class="item item-detail">
+            <span>*Judge by Productivity</span>
+          </div>
+          <div class="item item-9" id="mng_mfg1">
             <div class="item item-9-1"><b>Mfg. 1 Alternator</b></div>
             <div class="item item-9-2">Mr. Rangsan Thongsiri</div>
           </div>
-          <div class="item item-10">
+          <div class="item item-10" id="mng_mfg2">
             <div class="item item-10-1"><b>Mfg. 2 Starter</b></div>
             <div class="item item-10-2">Mr. Suraphun Paenthongrong</div>
           </div>
-          <div class="item item-11">
+          <div class="item item-11" id="mng_mfg3">
             <div class="item item-11-1"><b>Mfg. 3 ECC,ABS,ASMO</b></div>
             <div class="item item-11-2">Mr. Nuttapark Sutthitearranun</div>
           </div>
-          <div class="item item-12">
+          <div class="item item-12" id="mng_part1">
             <div class="item item-12-1"><b>Part Manufacturing 1</b></div>
             <div class="item item-12-2">Mr. Sirichai Kitjumroen</div>
           </div>
-          <div class="item item-13">
+          <div class="item item-13" id="mng_part2">
             <div class="item item-13-1"><b>Part Manufacturing 2</b></div>
             <div class="item item-13-2">Mr. Jaruek Sujawipan</div>
           </div>
-          <div class="item item-31">
+          <div class="item item-31" id="mng_assy">
             <div class="item item-31-1"><b>Assy Manufacturing</b></div>
             <div class="item item-31-2">Mr. Thanong Wongsukjit</div>
           </div>
-          <div class="item item-14-1">
+          <div class="item item-14-1" id="mng_part">
             <div class="item item-14-1-1"><b>Part Manufacturing</b></div>
             <div class="item item-14-1-2">Mr. Sirichai Kitjumroen</div>
           </div>
@@ -260,11 +262,11 @@
             style="margin-top: 10px; margin-left: 10px"
           />
           <div class="item item-14-2-1"><b>Delivery</b></div>
-          <div class="item item-14-2-2"><b>Abnormal</b></div>
+          <div class="item item-14-2-2"><b>Active</b></div>
           <div class="item item-14-2-3"><b>● In-house Stock</b></div>
           <div class="item item-14-2-4">(DOH)</div>
           <div class="item item-14-2-5">
-            <b><span style="color: Black">0%</span> / 0%</b>
+            <b><span style="color: Black">0</span></b>
           </div>
           <div class="item item-14-2-6"><b>● Shipment</b></div>
           <div class="item item-14-2-7">(Rounds)</div>
@@ -285,7 +287,7 @@
             style="margin-top: 10px; margin-left: 10px"
           />
           <div class="item item-14-3-1"><b>Productivity</b></div>
-          <div class="item item-14-3-2"><b>Normal</b></div>
+          <div class="item item-14-3-2"><b>Active</b></div>
           <div class="item item-14-3-3"><b>● PROD. Progress</b></div>
           <div class="item item-14-3-4">(Acc. Q’ty/Day)</div>
           <div class="item item-14-3-5">
@@ -310,7 +312,7 @@
             style="margin-top: 10px; margin-left: 10px"
           />
           <div class="item item-14-4-1"><b>Energy</b></div>
-          <div class="item item-14-4-2"><b>Normal</b></div>
+          <div class="item item-14-4-2"><b>Active</b></div>
           <div class="item item-14-4-3"><b>● CO2 Emission</b></div>
           <div class="item item-14-4-4">(Kg./piece)</div>
           <div class="item item-14-4-5">
@@ -320,196 +322,1300 @@
       </div>
     </section>
 
-    <div class="Alternator Product">
-      <div class="AltProd AltProd-1" id="A104">4463</div>
-      <div class="AltProd AltProd-2" id="A105">4464</div>
-      <div class="AltProd AltProd-3" id="A100">4461</div>
-      <div class="AltProd AltProd-4" id="A181">4278</div>
-      <div class="AltProd AltProd-5" id="A215">4274</div>
-      <div class="AltProd AltProd-6" id="A219">4268</div>
-      <div class="AltProd AltProd-7" id="A221">4267</div>
-      <div class="AltProd AltProd-8" id="A214">4273</div>
-      <div class="AltProd AltProd-9" id="A218">4277</div>
-      <div class="AltProd AltProd-10" id="A209">4271</div>
-      <div class="AltProd AltProd-11" id="A217">4276</div>
-      <div class="AltProd AltProd-12" id="A213">4272</div>
-      <div class="AltProd AltProd-13" id="A220">4290</div>
-      <div class="AltProd AltProd-14" id="A222">4291</div>
-    </div>
-    <div class="Starter Product">
-      <div class="StrProd StrProd-1" id="S100">4452</div>
-      <div class="StrProd StrProd-2" id="S200">4251</div>
-      <div class="StrProd StrProd-3" id="S101">4451</div>
-      <div class="StrProd StrProd-4" id="S201">4253</div>
-      <div class="StrProd StrProd-5" id="S102">4453</div>
-      <div class="StrProd StrProd-6" id="S203">4260</div>
-      <div class="StrProd StrProd-7" id="S203Pluge">4260</div>
-      <div class="StrProd StrProd-9" id="S202">4259</div>
-      <div class="StrProd StrProd-10" id="S103">4454</div>
-      <!-- <div class="StrProd StrProd-11" id="S254S255">4280</div>
-    <div class="StrProd StrProd-12" id="S212S222">4281</div>
-    <div class="StrProd StrProd-13" id="S212S222">4282</div> -->
-      <div class="StrProd StrProd-14" id="S251">4254</div>
-      <div class="StrProd StrProd-15" id="S232">4286</div>
-      <div class="StrProd StrProd-16" id="S230S231">4256</div>
-      <div class="StrProd StrProd-17" id="Y345Y357">4120</div>
-      <div class="StrProd StrProd-18" id="Y276">4120</div>
-      <div class="StrProd StrProd-19" id="Y360">4120</div>
-    </div>
-    <div class="ECC, ABS & Asmo Product">
-      <div class="ECCABS ECCABS-1" id="M100">4441</div>
-      <!-- <div class="ECCABS ECCABS-2" id="M203">4245</div> -->
-      <!-- <div class="ECCABS ECCABS-3" id="M220">4241</div> -->
-      <!-- <div class="ECCABS ECCABS-4" id="M202">4247</div> -->
-      <div class="ECCABS ECCABS-5" id="B1001">4419</div>
-      <div class="ECCABS ECCABS-6" id="B1002">4419</div>
-      <div class="ECCABS ECCABS-7" id="B1003">4419</div>
-      <div class="ECCABS ECCABS-8" id="B1004">4419</div>
-      <div class="ECCABS ECCABS-9" id="B200">4419</div>
-      <div class="ECCABS ECCABS-10" id="H1001">4443</div>
-      <div class="ECCABS ECCABS-11" id="H1002">4443</div>
-      <div class="ECCABS ECCABS-12" id="H200">4443</div>
-      <div class="ECCABS ECCABS-13" id="A208">4269</div>
-      <div class="ECCABS ECCABS-14" id="A216">4275</div>
-      <!-- <div class="ECCABS ECCABS-15" id="A202">4279</div> -->
-      <div class="ECCABS ECCABS-16" id="Y100">4499</div>
-      <!-- <div class="ECCABS ECCABS-17" id="Converyan">4499</div> -->
-      <!-- <div class="ECCABS ECCABS-18" id="Pragnant">4498</div> -->
-      <div class="ECCABS ECCABS-19" id="Z100">4433</div>
-      <div class="ECCABS ECCABS-20" id="Z1001">4433</div>
-      <div class="ECCABS ECCABS-21" id="V102">4420</div>
-      <div class="ECCABS ECCABS-22" id="W100">4412</div>
-      <div class="ECCABS ECCABS-23" id="W103W104">4412</div>
-    </div>
-    <!-- <div class="Parts Manufacturing 1">
-      <div class="Parts1 Parts1-1" id="Y301">4111</div>
-      <div class="Parts1 Parts1-2" id="Y309">4111</div>
-      <div class="Parts1 Parts1-3" id="Y302">4111</div>
-      <div class="Parts1 Parts1-4" id="Y309500T">4111</div>
-      <div class="Parts1 Parts1-5" id="Y231">4141</div>
-      <div class="Parts1 Parts1-6" id="Y216">4141</div>
-      <div class="Parts1 Parts1-7" id="Y311Fin">4141</div>
-      <div class="Parts1 Parts1-8" id="Y270">4141</div>
-      <div class="Parts1 Parts1-9" id="Y311PA64">4141</div>
-      <div class="Parts1 Parts1-10" id="Y306">4114</div>
-      <div class="Parts1 Parts1-11" id="Y312">4114</div>
-      <div class="Parts1 Parts1-12" id="Y313">4114</div>
-      <div class="Parts1 Parts1-13" id="Y266">4156</div>
-      <div class="Parts1 Parts1-14" id="Y252CF">4151</div>
-      <div class="Parts1 Parts1-15" id="CF0002">4131</div>
-      <div class="Parts1 Parts1-16" id="CF0003">4131</div>
-      <div class="Parts1 Parts1-17" id="Y258">4136</div>
-      <div class="Parts1 Parts1-18" id="Y352HP5">4133</div>
-      <div class="Parts1 Parts1-19" id="Y352HP3">4133</div>
-    </div>
-    <div class="Parts Manufacturing 2">
-      <div class="Parts2 Parts2-1" id="Y254P">15</div>
-      <div class="Parts2 Parts2-2" id="Y254Before">16</div>
-      <div class="Parts2 Parts2-3" id="Y254RA">17</div>
-      <div class="Parts2 Parts2-4" id="Y255RA">18</div>
-      <div class="Parts2 Parts2-5" id="Y255PGA">19</div>
-      <div class="Parts2 Parts2-6" id="Y255PA70">20</div>
-      <div class="Parts2 Parts2-7" id="Y254PA70">21</div>
-      <div class="Parts2 Parts2-8" id="Y252After">22</div>
-      <div class="Parts2 Parts2-9" id="Y253Lathe">23</div>
-      <div class="Parts2 Parts2-10" id="Y277">24</div>
-      <div class="Parts2 Parts2-11" id="Y253Weld">25</div>
-      <div class="Parts2 Parts2-12" id="Y278">15</div>
-      <div class="Parts2 Parts2-13" id="Y278-1">16</div>
-      <div class="Parts2 Parts2-14" id="Y278-2">17</div>
-      <div class="Parts2 Parts2-15" id="Y278-3">18</div>
-      <div class="Parts2 Parts2-16" id="Y278-4">19</div>
-      <div class="Parts2 Parts2-17" id="Y222">20</div>
-      <div class="Parts2 Parts2-18" id="Y227">21</div>
-      <div class="Parts2 Parts2-19" id="Y261">22</div>
-      <div class="Parts2 Parts2-20" id="Y233">23</div>
-      <div class="Parts2 Parts2-21" id="Y232">24</div>
-      <div class="Parts2 Parts2-22" id="Y200">25</div>
-      <div class="Parts2 Parts2-23" id="Y204">15</div>
-      <div class="Parts2 Parts2-24" id="Y214">16</div>
-      <div class="Parts2 Parts2-25" id="Y362">17</div>
-      <div class="Parts2 Parts2-26" id="Y215">18</div>
-      <div class="Parts2 Parts2-27" id="Y234">19</div>
-      <div class="Parts2 Parts2-28" id="Y229">20</div>
-      <div class="Parts2 Parts2-29" id="Y228">20</div>
-      <div class="Parts2 Parts2-30" id="Y361">17</div>
-      <div class="Parts2 Parts2-31" id="4134GDP">18</div>
-      <div class="Parts2 Parts2-32" id="Tool0011">19</div>
-      <div class="Parts2 Parts2-33" id="4132Lathe">20</div>
-    </div> -->
-
-    <div id="safety_Modal" class="modal">
-      <div class="hide-item-7"></div>
-      <div class="hide-item-8"></div>
-      <div class="hide-item-14-2"></div>
-      <div class="hide-item-14-3"></div>
-      <div class="hide-item-14-4"></div>
-      <!-- Modal content -->
-      <div class="modal-content">
-        <button class="safety_btn_close">
-          <span class="icon_cross"></span>
-        </button>
-      </div>
-      <div class="safety_Modal safety_Modal_1">Safety Information</div>
-      <div class="safety_Modal safety_Modal_2">
-        <a
-          href="http://172.23.36.47:5503/Main/dekidaka.html"
-          class="button button_in"
-          >Detail >></a
+    <div class="Alternator Product" id="item_hide_Alternator_Product">
+      <div class="tooltip AltProd AltProd-1" id="PRS0000000000489">
+        <span class="tooltiptext">
+          LineCode : A104 <br />
+          Name : 2nd SE Alt.Assy <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
         >
       </div>
-      <!-- <div class="safety_Modal safety_Modal_box1"></div>
+      <div class="tooltip AltProd AltProd-2" id="A105">
+        <span class="tooltiptext">
+          LineCode : A105 <br />
+          Name : 3rd SE Alt.Assy <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip AltProd AltProd-3" id="A100">
+        <span class="tooltiptext">
+          LineCode : A100 <br />
+          Name : Alternator Assy General <br />Prod.Plan : 0 <br />Actual Prod.
+          : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip AltProd AltProd-4" id="A181">
+        <span class="tooltiptext">
+          LineCode : A181 <br />
+          Name : Alt. SE Service Kit (STATOR,ROTOR) <br />Prod.Plan : 0
+          <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip AltProd AltProd-5" id="A215">
+        <span class="tooltiptext">
+          LineCode : A215 <br />
+          Name : 2nd SE Rectifier Assy <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip AltProd AltProd-6" id="A219">
+        <span class="tooltiptext">
+          LineCode : A219 <br />
+          Name : 3rd SE Rectifier Assy <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip AltProd AltProd-7" id="A221">
+        <span class="tooltiptext">
+          LineCode : A221 <br />
+          Name : SE Rotor Coil Winding <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip AltProd AltProd-8" id="A214">
+        <span class="tooltiptext">
+          LineCode : A214 <br />
+          Name : 2nd SE Rotor Assy <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip AltProd AltProd-9" id="A218">
+        <span class="tooltiptext">
+          LineCode : A218 <br />
+          Name : 3rd SE Rotor Assy <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip AltProd AltProd-10" id="A209">
+        <span class="tooltiptext">
+          LineCode : A209 <br />
+          Name : 1st SE Slip Ring <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip AltProd AltProd-11" id="A217">
+        <span class="tooltiptext">
+          LineCode : A217 <br />
+          Name : 2nd SE Slip Ring <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip AltProd AltProd-12" id="A213">
+        <span class="tooltiptext">
+          LineCode : A213 <br />
+          Name : 1st & 2nd SE Stator Assy <br />Prod.Plan : 0 <br />Actual Prod.
+          : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip AltProd AltProd-13" id="A220">
+        <span class="tooltiptext">
+          LineCode : A220 <br />
+          Name : 3rd SE Stator Assy <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip AltProd AltProd-14" id="A222">
+        <span class="tooltiptext">
+          LineCode : A222 <br />
+          Name : 4th SE Stator Assy <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+    </div>
+    <div class="Starter Product" id="item_hide_Starter_Product">
+      <div class="tooltip StrProd StrProd-1" id="S100">
+        <span class="tooltiptext">
+          LineCode : S100 <br />
+          Name : Starter Assy General <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip StrProd StrProd-2" id="S200">
+        <span class="tooltiptext">
+          LineCode : S200 <br />
+          Name : Mag.Sw.G <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip StrProd StrProd-3" id="S101">
+        <span class="tooltiptext">
+          LineCode : S101 <br />
+          Name : Starter Assy RA <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip StrProd StrProd-4" id="S201">
+        <span class="tooltiptext">
+          LineCode : S201 <br />
+          Name : Mag.Sw.RA <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip StrProd StrProd-5" id="S102">
+        <span class="tooltiptext">
+          LineCode : S102 <br />
+          Name : Starter Assy R5.0 <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip StrProd StrProd-6" id="S203">
+        <span class="tooltiptext">
+          LineCode : S203 <br />
+          Name : Mag.Sw.R2.7 <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip StrProd StrProd-7" id="S203Plunge">
+        <span class="tooltiptext">
+          LineCode : S203Plunge <br />
+          Name : Plunger RA-Type <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip StrProd StrProd-9" id="S202">
+        <span class="tooltiptext">
+          LineCode : S202 <br />
+          Name : Mag.Sw.PA <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip StrProd StrProd-10" id="S103">
+        <span class="tooltiptext">
+          LineCode : S103 <br />
+          Name : Starter Assy PA70 <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <!-- <div class="tooltip StrProd StrProd-11" id="S254S255"><span class="tooltiptext">
+            LineCode : S254S255 <br />
+            Name : Clutch Assy PA70 <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          ></div>
+    <div class="tooltip StrProd StrProd-12" id="S212S222"><span class="tooltiptext">
+            LineCode : S212S222 <br />
+            Name : Brush & Yoke PA70 <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          ></div> -->
+      <div class="tooltip StrProd StrProd-14" id="S251">
+        <span class="tooltiptext">
+          LineCode : S251 <br />
+          Name : Clutch Assy P,GA <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip StrProd StrProd-15" id="S232">
+        <span class="tooltiptext">
+          LineCode : S232 <br />
+          Name : Starter Armature R5.0 <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip StrProd StrProd-16" id="S230S231">
+        <span class="tooltiptext">
+          LineCode : S230S231 <br />
+          Name : Starter Armature PA70 P Type <br />Prod.Plan : 0 <br />Actual
+          Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip StrProd StrProd-18" id="Y276">
+        <span class="tooltiptext">
+          LineCode : Y276 <br />
+          Name : Commutator sub assy <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip StrProd StrProd-19" id="Y360">
+        <span class="tooltiptext">
+          LineCode : Y360 <br />
+          Name : Shaft B-Type & R-Large <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <!-- 
+      <div class="tooltip StrProd StrProd-21" id="Y354Y357">
+        <span class="tooltiptext">
+            LineCode : Y354Y357 <br />
+            Name : Shaft & Core sub Arm. <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span>
+        </div> -->
+    </div>
+    <div class="ECC, ABS & Asmo Product" id="item_hide_ECC_ABS">
+      <div class="tooltip ECCABS ECCABS-1" id="M100">
+        <span class="tooltiptext">
+          LineCode : M100 <br />
+          Name : Magneto Assy <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-2" id="M203">
+        <span class="tooltiptext">
+          LineCode : M203 <br />
+          Name : Magneto Sensor <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-3" id="M220">
+        <span class="tooltiptext">
+          LineCode : M220 <br />
+          Name : Magneto Armature <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-4" id="M202">
+        <span class="tooltiptext">
+          LineCode : M202 <br />
+          Name : Magneto Molding <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-5" id="B1001">
+        <span class="tooltiptext">
+          LineCode : B1001 <br />
+          Name : Air bag sensor line1 <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-6" id="B1002">
+        <span class="tooltiptext">
+          LineCode : B1002 <br />
+          Name : Air bag sensor line2 <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-7" id="B1003">
+        <span class="tooltiptext">
+          LineCode : B1003 <br />
+          Name : Air bag sensor line3 <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-8" id="B1004">
+        <span class="tooltiptext">
+          LineCode : B1004 <br />
+          Name : Air bag sensor line4 <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-9" id="B200">
+        <span class="tooltiptext">
+          LineCode : B200 <br />
+          Name : Air bag sensor molding <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-10" id="H1001">
+        <span class="tooltiptext">
+          LineCode : H1001 <br />
+          Name : GCU Assy1 <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-11" id="H1002">
+        <span class="tooltiptext">
+          LineCode : H1002 <br />
+          Name : GCU Assy2 <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-12" id="H200">
+        <span class="tooltiptext">
+          LineCode : H200 <br />
+          Name : GCU Molding <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-13" id="A208">
+        <span class="tooltiptext">
+          LineCode : A208 <br />
+          Name : 1st SE.Holder Regulator <br />Prod.Plan : 0 <br />Actual Prod.
+          : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-14" id="A216">
+        <span class="tooltiptext">
+          LineCode : A216 <br />
+          Name : 2nd SE Regulator Line <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-15" id="A202">
+        <span class="tooltiptext">
+          LineCode : A202 <br />
+          Name : Sub Regulator Line <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-16" id="Y100">
+        <span class="tooltiptext">
+          LineCode : Y100 <br />
+          Name : Re-Packing <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <!-- <div class="tooltip ECCABS ECCABS-17" id="Converyan"><span class="tooltiptext">
+            LineCode : Converyan <br />
+            Name : Conveyance Centralized <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          ></div> -->
+      <div class="tooltip ECCABS ECCABS-18" id="Pregnant">
+        <span class="tooltiptext">
+          LineCode : Pregnant <br />
+          Name : Pregnant Room <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-19" id="Z100">
+        <span class="tooltiptext">
+          LineCode : Z100 <br />
+          Name : Glow Plug Assy <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-20" id="Z1001">
+        <span class="tooltiptext">
+          LineCode : Z1001 <br />
+          Name : Tube Sub Assy Glow Plug <br />Prod.Plan : 0 <br />Actual Prod.
+          : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-21" id="V102">
+        <span class="tooltiptext">
+          LineCode : V102 <br />
+          Name : Wiper & Link Assy (IMV) <br />Prod.Plan : 0 <br />Actual Prod.
+          : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-22" id="W100">
+        <span class="tooltiptext">
+          LineCode : W100 <br />
+          Name : Tank Motor Assy <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip ECCABS ECCABS-23" id="W103W104">
+        <span class="tooltiptext">
+          LineCode : W103W104 <br />
+          Name : Hose Assy & Nozzle Assy Washer <br />Prod.Plan : 0 <br />Actual
+          Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+    </div>
+      <div class="Parts Manufacturing 2" id="item_hide_Parts2">
+        <div class="tooltip Parts2 Parts2-1" id="Y254P">
+          <span class="tooltiptext">
+            LineCode : Y254P <br />
+            Name : Pinion lathing P <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-2" id="Y254Before">
+          <span class="tooltiptext">
+            LineCode : Y254Before <br />
+            Name : Pinion lathing PA64 (Before Heat) <br />Prod.Plan : 0
+            <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-3" id="Y254RA">
+          <span class="tooltiptext">
+            LineCode : Y254RA <br />
+            Name : Pinion lathing RA <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-7" id="Y254PA70">
+          <span class="tooltiptext">
+            LineCode : Y254PA70 <br />
+            Name : Pinion lathing PA70 <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-8" id="Y254After">
+          <span class="tooltiptext">
+            LineCode : Y254After <br />
+            Name : Pinion lathing PA64 (After Heat) <br />Prod.Plan : 0
+            <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-4" id="Y255RA">
+          <span class="tooltiptext">
+            LineCode : Y255RA <br />
+            Name : Barrel lathing RA <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-5" id="Y255PGA">
+          <span class="tooltiptext">
+            LineCode : Y255PGA <br />
+            Name : Barrel lathing P,GA <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-6" id="Y255PA70">
+          <span class="tooltiptext">
+            LineCode : Y255PA70 <br />
+            Name : Barrel lathing PA70 <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-9" id="Y253Lathe">
+          <span class="tooltiptext">
+            LineCode : Y253Lathe <br />
+            Name : Frame Starter Lathing <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-10" id="Y277">
+          <span class="tooltiptext">
+            LineCode : Y277 <br />
+            Name : Barrel B-Type lathing <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-11" id="Y253Weld">
+          <span class="tooltiptext">
+            LineCode : Y253Weld <br />
+            Name : Frame Starter Welding <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-12" id="Y278">
+          <span class="tooltiptext">
+            LineCode : Y278 <br />
+            Name : Pinion Bar Cutting <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-13" id="Y278-1">
+          <span class="tooltiptext">
+            LineCode : Y278-1 <br />
+            Name : Pinion R-Large G1 Lathing <br />Prod.Plan : 0 <br />Actual
+            Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-14" id="Y278-2">
+          <span class="tooltiptext">
+            LineCode : Y278-2 <br />
+            Name : Pinion R-Large G2 Lathing <br />Prod.Plan : 0 <br />Actual
+            Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-15" id="Y278-3">
+          <span class="tooltiptext">
+            LineCode : Y278-3 <br />
+            Name : Barrel R-Large Lathing <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-16" id="Y278-4">
+          <span class="tooltiptext">
+            LineCode : Y278-4 <br />
+            Name : Pinion & Barrel R-Large Lathing
+            <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-17" id="Y222">
+          <span class="tooltiptext">
+            LineCode : Y222 <br />
+            Name : FCC lathing & finishing <br />Prod.Plan : 0 <br />Actual
+            Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-18" id="Y227">
+          <span class="tooltiptext">
+            LineCode : Y227 <br />
+            Name : Boss Clutch lathing <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-19" id="Y261">
+          <span class="tooltiptext">
+            LineCode : Y261 <br />
+            Name : Boss rotor lathing <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-20" id="Y233">
+          <span class="tooltiptext">
+            LineCode : Y233 <br />
+            Name : Sta.Housing Lathe <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-21" id="Y232">
+          <span class="tooltiptext">
+            LineCode : Y232 <br />
+            Name : Sta.Frame Lathe <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-22" id="Y200">
+          <span class="tooltiptext">
+            LineCode : Y200 <br />
+            Name : Center case Lathe <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-24" id="Y214">
+          <span class="tooltiptext">
+            LineCode : Y214 <br />
+            Name : Tube Sub Assy RA & R-large <br />Prod.Plan : 0 <br />Actual
+            Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-48" id="S204">
+          <span class="tooltiptext">
+            LineCode : S204 <br />
+            Name : Center case powder <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-25" id="Y362">
+          <span class="tooltiptext">
+            LineCode : Y362 <br />
+            Name : Shaft Arm. P-Drive & Run out <br />Prod.Plan : 0 <br />Actual
+            Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-26" id="Y215">
+          <span class="tooltiptext">
+            LineCode : Y215 <br />
+            Name : Tube PA70 <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-27" id="Y234">
+          <span class="tooltiptext">
+            LineCode : Y234 <br />
+            Name : Shaft PA70 <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-28" id="Y229">
+          <span class="tooltiptext">
+            LineCode : Y229 <br />
+            Name : SE Frame Drive lathing <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-29" id="Y228">
+          <span class="tooltiptext">
+            LineCode : Y228 <br />
+            Name : SE Frame Rear lathing <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-30" id="Y361">
+          <span class="tooltiptext">
+            LineCode : Y361 <br />
+            Name : Shaft SE0 <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <!--<div class="tooltip Parts2 Parts2-31" id="4134GDP">
+          <span class="tooltiptext">
+            LineCode : 4134GDP <br />
+            Name : GD-P3 Lathing <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div> -->
+        <div class="tooltip Parts2 Parts2-32" id="Tool0011">
+          <span class="tooltiptext">
+            LineCode : Tool0011 <br />
+            Name : Tool Presetter <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <!--<div class="tooltip Parts2 Parts2-33" id="4132Lathe">
+          <span class="tooltiptext">
+            LineCode : 4132Lathe <br />
+            Name : Housing starter sv 1,2,3 & Nozzle body <br />Prod.Plan : 0
+            <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>-->
+        <div class="tooltip Parts2 Parts2-39" id="Y282_GDP_1">
+          <span class="tooltiptext">
+            LineCode : Y282_GDP_1 <br />
+            Name : GD-P3 Lathing Line 1-2 <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-34" id="Y282_GDP_2">
+          <span class="tooltiptext">
+            LineCode : Y282_GDP_2 <br />
+            Name : GD-P3 Lathing Line 3-4 <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-35" id="Y282_GDP_3">
+          <span class="tooltiptext">
+            LineCode : Y282_GDP_3 <br />
+            Name : GD-P3 Lathing Line 5-6 <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-36" id="Y282_GDP_4">
+          <span class="tooltiptext">
+            LineCode : Y282_GDP_4 <br />
+            Name : GD-P3 Lathing Line 7-8 <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-37" id="Y282_GDP_5">
+          <span class="tooltiptext">
+            LineCode : Y282_GDP_5 <br />
+            Name : GD-P3 Lathing Line 9-10 <br />Prod.Plan : 0 <br />Actual
+            Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-23" id="Y282_GDP_6">
+          <span class="tooltiptext">
+            LineCode : Y282_GDP_6 <br />
+            Name : GD-P3 Finishing <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-40" id="Y262_BODY">
+          <span class="tooltiptext">
+            LineCode : Y262_BODY <br />
+            Name : BODY Nozzle <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-41" id="Y262SV1-3A">
+          <span class="tooltiptext">
+            LineCode : Y262SV1-3A <br />
+            Name : Housing SV1-SV3 Line A <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-42" id="Y262SV1-3B">
+          <span class="tooltiptext">
+            LineCode : Y262SV1-3B <br />
+            Name : Housing SV1-SV3 Line B <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-43" id="Y262SV1-3C">
+          <span class="tooltiptext">
+            LineCode : Y262SV1-3C <br />
+            Name : Housing SV1-SV3 Line C <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-44" id="Y262SV1-3D">
+          <span class="tooltiptext">
+            LineCode : Y262SV1-3D <br />
+            Name : Housing SV1-SV3 Line D <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-45" id="Y262SV1-3E">
+          <span class="tooltiptext">
+            LineCode : Y262SV1-3E <br />
+            Name : Housing SV1-SV3 Line E <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-46" id="Y262SV1-3F">
+          <span class="tooltiptext">
+            LineCode : Y262SV1-3F <br />
+            Name : Housing SV1-SV3 Line F <br />Prod.Plan : 0 <br />Actual Prod.
+            : 0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+        <div class="tooltip Parts2 Parts2-47" id="Y262_SCV">
+          <span class="tooltiptext">
+            LineCode : Y262_SCV <br />
+            Name : SCV Housing Stator <br />Prod.Plan : 0 <br />Actual Prod. :
+            0<br />
+            Judge : - <br />
+            OA : 0% <br />
+            Record Time : -</span
+          >
+        </div>
+      </div>
+<div class="Parts Manufacturing 1" id="item_hide_Parts1">
+      <div class="tooltip Parts1 Parts1-1" id="Y301">
+        <span class="tooltiptext">
+          LineCode : Y301 <br />
+          Name : Stamping 2AC <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-2" id="Y309">
+        <span class="tooltiptext">
+          LineCode : Y309 <br />
+          Name : Stamping 2G <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-3" id="Y302">
+        <span class="tooltiptext">
+          LineCode : Y302 <br />
+          Name : Stamping 3 <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-4" id="Y309500T">
+        <span class="tooltiptext">
+          LineCode : Y309500T <br />
+          Name : Stamping 500T <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-5" id="Y231">
+        <span class="tooltiptext">
+          LineCode : Y231 <br />
+          Name : Washing Yoke (WS-66) <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-6" id="Y216">
+        <span class="tooltiptext">
+          LineCode : Y216 <br />
+          Name : Washing Gen.(WS-39) <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-7" id="Y311Fin">
+        <span class="tooltiptext">
+          LineCode : Y311Fin <br />
+          Name : Stamping Fin Rectifier Finishing <br />Prod.Plan : 0
+          <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-8" id="Y270">
+        <span class="tooltiptext">
+          LineCode : Y270 <br />
+          Name : Pinion & Barrel Finishing <br />Prod.Plan : 0 <br />Actual
+          Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-9" id="Y311PA64">
+        <span class="tooltiptext">
+          LineCode : Y311PA64 <br />
+          Name : 100% PA64 <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-10" id="Y306">
+        <span class="tooltiptext">
+          LineCode : Y306 <br />
+          Name : 1st SE.Stator Core <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-11" id="Y312">
+        <span class="tooltiptext">
+          LineCode : Y312 <br />
+          Name : 2nd SE.Stator Core <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-12" id="Y313">
+        <span class="tooltiptext">
+          LineCode : Y313 <br />
+          Name : cSE0 Stator Core <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-13" id="Y266">
+        <span class="tooltiptext">
+          LineCode : Y266 <br />
+          Name : Pole Core 1/N <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-14" id="Y252CF">
+        <span class="tooltiptext">
+          LineCode : Y252CF <br />
+          Name : Bonderite Treatment & Cold Forging <br />Prod.Plan : 0
+          <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-15" id="CF0002">
+        <span class="tooltiptext">
+          LineCode : CF0002 <br />
+          Name : Cold Forge 2 (400T,250T,630T) <br />Prod.Plan : 0 <br />Actual
+          Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-16" id="CF0003">
+        <span class="tooltiptext">
+          LineCode : CF0003 <br />
+          Name : Cold Forge 3 (Former, Orbital, Annealing) <br />Prod.Plan : 0
+          <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-17" id="Y258">
+        <span class="tooltiptext">
+          LineCode : Y258 <br />
+          Name : (2000T1, 2, Magnetic & App.) <br />Prod.Plan : 0 <br />Actual
+          Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-20" id="Y258_1">
+        <span class="tooltiptext">
+          LineCode : Y258_1 <br />
+          Name : Warm Forge 2000T1 M/C <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-21" id="Y258_2">
+        <span class="tooltiptext">
+          LineCode : Y258_2 <br />
+          Name : Warm Forge 2000T2 M/C <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-22" id="Y258WF_FIN">
+        <span class="tooltiptext">
+          LineCode : Y258WF_FIN <br />
+          Name : Warm Forge Finishing GD-P3,HP5,HP3 <br />Prod.Plan : 0
+          <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-23" id="Y258_Mag_1">
+        <span class="tooltiptext">
+          LineCode : Y258_Mag_1 <br />
+          Name : Warm Forge Magnetic check creack M/C No.1 <br />Prod.Plan : 0
+          <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-24" id="Y258_Mag_2">
+        <span class="tooltiptext">
+          LineCode : Y258_Mag_2 <br />
+          Name : Warm Forge Magnetic check creack M/C No.2 <br />Prod.Plan : 0
+          <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-25" id="Y350DC_VCT">
+        <span class="tooltiptext">
+          LineCode : Y350DC_VCT <br />
+          Name : Die Casting VCT <br />Prod.Plan : 0 <br />Actual Prod. : 0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-18" id="Y352DC_HP5">
+        <span class="tooltiptext">
+          LineCode : Y352DC_HP5 <br />
+          Name : Die Casting 3 (HP5) <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+      <div class="tooltip Parts1 Parts1-19" id="Y350DC_HP3">
+        <span class="tooltiptext">
+          LineCode : Y350DC_HP3 <br />
+          Name : Die Casting 1 (HP3) <br />Prod.Plan : 0 <br />Actual Prod. :
+          0<br />
+          Judge : - <br />
+          OA : 0% <br />
+          Record Time : -</span
+        >
+      </div>
+    </div>
+      <div id="safety_Modal" class="modal">
+        <div class="hide-item-7"></div>
+        <div class="hide-item-8"></div>
+        <div class="hide-item-14-2"></div>
+        <div class="hide-item-14-3"></div>
+        <div class="hide-item-14-4"></div>
+        <!-- Modal content -->
+        <div class="modal-content">
+          <button class="safety_btn_close">
+            <span class="icon_cross"></span>
+          </button>
+        </div>
+        <div class="safety_Modal safety_Modal_1">Safety Information</div>
+        <div class="safety_Modal safety_Modal_2">
+          <a
+            href="http://172.23.36.47:5503/Main/dekidaka.html"
+            class="button button_in"
+            >Detail >></a
+          >
+        </div>
+        <!-- <div class="safety_Modal safety_Modal_box1"></div>
       <div class="safety_Modal safety_Modal_box2"></div>
       <div class="safety_Modal safety_Modal_box3"></div> -->
-      <div class="safety_Modal safety_Modal_iframe">
-        <h1>On Process...</h1>
+        <div class="safety_Modal safety_Modal_iframe">
+          <h1>On Process...</h1>
+        </div>
       </div>
-    </div>
-    <div id="QC_Modal" class="modal">
-      <div class="hide-item-6"></div>
-      <!-- <div class=" hide-item-7"></div> -->
-      <div class="hide-item-8"></div>
-      <div class="hide-item-14-2"></div>
-      <div class="hide-item-14-3"></div>
-      <div class="hide-item-14-4"></div>
-      <!-- Modal content -->
-      <div class="modal-content">
-        <button class="QC_btn_close">
-          <span class="icon_cross"></span>
-        </button>
-      </div>
-      <div class="QC_Modal QC_Modal_1">Quality Control Information</div>
-      <div class="QC_Modal QC_Modal_2">
-        <a
-          href="http://172.23.36.47:5503/Main/dekidaka.html"
-          target="_blank"
-          class="button button_in"
-          >Detail >></a
-        >
-      </div>
-      <!-- <div class="QC_Modal QC_Modal_box1"></div>
+      <div id="QC_Modal" class="modal">
+        <div class="hide-item-6"></div>
+        <!-- <div class="hide-item-7"></div> -->
+        <div class="hide-item-8"></div>
+        <div class="hide-item-14-2"></div>
+        <div class="hide-item-14-3"></div>
+        <div class="hide-item-14-4"></div>
+        <!-- Modal content -->
+        <div class="modal-content">
+          <button class="QC_btn_close">
+            <span class="icon_cross"></span>
+          </button>
+        </div>
+        <div class="QC_Modal QC_Modal_1">Quality Control Information</div>
+        <div class="QC_Modal QC_Modal_2">
+          <a
+            href="http://172.23.36.47:5503/Main/dekidaka.html"
+            target="_blank"
+            class="button button_in"
+            >Detail >></a
+          >
+        </div>
+        <!-- <div class="QC_Modal QC_Modal_box1"></div>
       <div class="QC_Modal QC_Modal_box2"></div>
       <div class="QC_Modal QC_Modal_box3"></div> -->
-      <div class="QC_Modal QC_Modal_iframe">
-        <h1>On Process...</h1>
+        <div class="QC_Modal QC_Modal_iframe" id="">
+          <iframe
+            src="https://app.powerbi.com/reportEmbed?reportId=2cf417ec-0a2c-487b-a87a-61c9cd7fc5cf&autoAuth=true&pageName=ReportSectionf2244a2a74ac0a19cbd5"
+            frameborder="0"
+            allowfullscreen="true"
+          ></iframe>
+        </div>
       </div>
-    </div>
 
-    <div id="cost_Modal" class="modal">
-      <div class="hide-item-6"></div>
-      <div class="hide-item-7"></div>
-      <!-- <div class="hide-item-8"></div> -->
-      <div class="hide-item-14-2"></div>
-      <div class="hide-item-14-3"></div>
-      <div class="hide-item-14-4"></div>
-      <!-- Modal content -->
-      <div class="modal-content">
-        <button class="cost_btn_close">
-          <span class="icon_cross"></span>
-        </button>
-      </div>
-      <div class="Cost_Modal Cost_Modal_1"><b>Cost Information</b></div>
-      <!-- <div class="Cost_Modal Cost_Modal_2">
+      <div id="cost_Modal" class="modal">
+        <div class="hide-item-6"></div>
+        <div class="hide-item-7"></div>
+        <!-- <div class="hide-item-8"></div> -->
+        <div class="hide-item-14-2"></div>
+        <div class="hide-item-14-3"></div>
+        <div class="hide-item-14-4"></div>
+        <!-- Modal content -->
+        <div class="modal-content">
+          <button class="cost_btn_close">
+            <span class="icon_cross"></span>
+          </button>
+        </div>
+        <div class="Cost_Modal Cost_Modal_1"><b>Cost Information</b></div>
+        <!-- <div class="Cost_Modal Cost_Modal_2">
         <a
           href="http://172.23.36.47:5503/Main/dekidaka.html"
           target="_blank"
@@ -517,19 +1623,19 @@
           >Detail >></a
         >
       </div> -->
-      <div class="Cost_Modal Cost_Modal_iframe" id="myDIV1">
-        <iframe
-          src="https://app.powerbi.com/reportEmbed?reportId=990e596c-cc5c-48f0-a251-7304bc09f406&autoAuth=true&pageName=ReportSectiond821c42fbe941610c007"
-          frameborder="0"
-          allowfullscreen="true"
-        ></iframe>
+        <div class="Cost_Modal Cost_Modal_iframe" id="myDIV1">
+          <iframe
+            src="https://app.powerbi.com/reportEmbed?reportId=990e596c-cc5c-48f0-a251-7304bc09f406&autoAuth=true&pageName=ReportSectionce80582531d422dd84ab"
+            frameborder="0"
+            allowfullscreen="true"
+          ></iframe>
         </div>
         <div class="Cost_Modal Cost_Modal_iframe" id="myDIV2">
-        <iframe
-          src="https://app.powerbi.com/reportEmbed?reportId=5ae7dea9-5fe7-4c03-8d35-4fa54a1d75ec&autoAuth=true&pageName=ReportSection75071587a1a28623bb20"
-          frameborder="0"
-          allowfullscreen="true"
-        ></iframe>
+          <iframe
+            src="https://app.powerbi.com/reportEmbed?reportId=5ae7dea9-5fe7-4c03-8d35-4fa54a1d75ec&autoAuth=true&pageName=ReportSection75071587a1a28623bb20"
+            frameborder="0"
+            allowfullscreen="true"
+          ></iframe>
         </div>
       </div>
       <!-- <div class="Cost_Modal Cost_Modal_5">
@@ -621,7 +1727,7 @@
             <div>Part MFG.2</div>
           </div>
           <hr class="line9" />
-          <div class="Cost_Modhttps://www.udemy.com/course/nextjs-react-the-complete-guide/learn/lecture/25146616#overviewal Cost_Modal_47"></div>
+          <div class="Cost_Modal Cost_Modal_47"></div>
           <div class="Cost_Modal Cost_Modal_48">
             <canvas id="chartIdCostPart2"></canvas>
           </div>
@@ -647,7 +1753,6 @@
         <div class="Cost_Modal Cost_Modal_unit">Unit in Million</div>
       </div> -->
     </div>
-
     <div id="delivery_Modal" class="modal">
       <div class="hide-item-6"></div>
       <div class="hide-item-7"></div>
@@ -664,84 +1769,136 @@
       <div class="delivery_Modal delivery_Modal_1">Delivery Information</div>
       <div class="delivery_Modal delivery_Modal_2">
         <a
-          href="http://172.23.36.47:5503/Main/dekidaka.html"
+          href="http://172.23.32.56:5503/VisualInventory/inventory.html"
           target="_blank"
-          class="button button_deki"
+          class="button button_in"
           >Detail >></a
         >
       </div>
-      <!-- <div class="delivery_Modal delivery_Modal_box1">
-        <div class="delivery_Modal delivery_Modal_3">In-house Stock</div>
-        <div class="delivery_Modal delivery_Modal_4"></div>
+      <div class="delivery_Modal delivery_Modal_box1">
+        <div class="delivery_Modal delivery_Modal_3"><b>In-house Stock</b></div>
         <div class="delivery_Modal delivery_Modal_5">
-          <span class="delivery_Modal delivery_Modal_5-number"
-            ><b>2.3%</b></span
-          >
-          <span class="delivery_Modal delivery_Modal_5-text">/ 1.0%</span>
-        </div>
-        <div class="delivery_Modal delivery_Modal_6">
-          <canvas id="CurrentLossInHouseStock"></canvas>
-        </div>
-      </div> -->
-      <!-- <div class="delivery_Modal delivery_Modal_box2">
-        <div class="delivery_Modal delivery_Modal_7">Risk Stock</div>
-        <div class="delivery_Modal delivery_Modal_8">
-          <span class="delivery_Modal delivery_Modal_8-number"
-            ><b>6.28</b></span
-          >
-          <span class="delivery_Modal delivery_Modal_8-text">/ 5.00</span>
-        </div>
-        <div class="delivery_Modal delivery_Modal_9">
           <canvas id="CurrentLossRiskStock"></canvas>
         </div>
-      </div> -->
-      <!-- <div class="delivery_Modal delivery_Modal_box3">
-        <div class="delivery_Modal delivery_Modal_10">Shipment</div>
-        <div class="delivery_Modal delivery_Modal_11">Total</div>
+        <div class="delivery_Modal delivery_Modal_4">
+          <canvas id="CurrentLossInHouseStock"></canvas>
+          <span class="delivery_Modal delivery_Modal_4-box1">111</span>
+          <span class="delivery_Modal delivery_Modal_4-box2">ASSY</span>
+          <span class="delivery_Modal delivery_Modal_4-box3">111</span>
+          <span class="delivery_Modal delivery_Modal_4-box4">SUB-ASSY</span>
+          <span class="delivery_Modal delivery_Modal_4-box5">111</span>
+          <span class="delivery_Modal delivery_Modal_4-box6">PART</span>
+        </div>
+        <div class="delivery_Modal delivery_Modal_6">
+          <span class="delivery_Modal delivery_Modal_6-text"
+            >Abnormal Stock</span
+          >
+          <span class="delivery_Modal delivery_Modal_6-text1">(Lower MIN)</span>
+          <div class="delivery_Modal delivery_Modal_6-s">
+            <span class="delivery_Modal delivery_Modal_6-box1"></span>
+            <span class="delivery_Modal delivery_Modal_6-box2"></span><br />
+            <span class="delivery_Modal delivery_Modal_6-box3"></span>
+            <span class="delivery_Modal delivery_Modal_6-box4"></span><br />
+            <span class="delivery_Modal delivery_Modal_6-box5"></span>
+            <span class="delivery_Modal delivery_Modal_6-box6"></span><br />
+            <span class="delivery_Modal delivery_Modal_6-box7"></span>
+            <span class="delivery_Modal delivery_Modal_6-box8"></span><br />
+            <span class="delivery_Modal delivery_Modal_6-box9"></span>
+            <span class="delivery_Modal delivery_Modal_6-box10"></span>
+          </div>
+        </div>
+        <div class="delivery_Modal delivery_Modal_7">
+          <span class="delivery_Modal delivery_Modal_7-text"
+            >Required (pcs)</span
+          >
+          <span class="delivery_Modal delivery_Modal_7-text1"><b>0</b></span>
+        </div>
+        <div class="delivery_Modal delivery_Modal_8">
+          <canvas id="AbnormalProd"></canvas>
+        </div>
+      </div>
+      <div class="delivery_Modal delivery_Modal_box2">
+        <div class="delivery_Modal delivery_Modal_18">● Ware-House Stock</div>
+        <div class="delivery_Modal delivery_Modal_box2-w">
+          <span class="delivery_Modal delivery_Modal_box2-text"
+            >Required (pcs)</span
+          >
+          <span class="delivery_Modal delivery_Modal_box2-number"
+            ><b>2,000</b></span
+          >
+        </div>
+        <div class="delivery_Modal delivery_Modal_19">
+          <canvas id="CurrentRiskStock"></canvas>
+        </div>
+      </div>
+
+      <div class="delivery_Modal delivery_Modal_9">Risk Stock</div>
+      <div class="delivery_Modal delivery_Modal_box20">
+        <div class="delivery_Modal delivery_Modal_21">● Risk Stock</div>
+        <div class="delivery_Modal delivery_Modal_21-w">by Process</div>
+        <div class="delivery_Modal delivery_Modal_box22-w">
+          <span class="delivery_Modal delivery_Modal_box22-text"
+            >Required (pcs)</span
+          >
+          <span class="delivery_Modal delivery_Modal_box22-number"
+            ><b>2,000</b></span
+          >
+        </div>
+        <div class="delivery_Modal delivery_Modal_23">
+          <canvas id="SubCurrentRiskStock"></canvas>
+        </div>
+      </div>
+      <div class="delivery_Modal delivery_Modal_24">
+        <span class="delivery_Modal delivery_Modal_24-box1"></span>
+        <span class="delivery_Modal delivery_Modal_24-box2"
+          >Min Risk Stock</span
+        >
+        <span class="delivery_Modal delivery_Modal_24-box3"></span>
+        <span class="delivery_Modal delivery_Modal_24-box4"
+          >Max Risk Stock</span
+        >
+        <span class="delivery_Modal delivery_Modal_24-box5"></span>
+        <span class="delivery_Modal delivery_Modal_24-box6">Ware House</span>
+      </div>
+      <div class="delivery_Modal delivery_Modal_25">
+        <span class="delivery_Modal delivery_Modal_25-box1"></span>
+        <span class="delivery_Modal delivery_Modal_25-box2"
+          >Min Risk Stock</span
+        >
+        <span class="delivery_Modal delivery_Modal_25-box3"></span>
+        <span class="delivery_Modal delivery_Modal_25-box4"
+          >Max Risk Stock</span
+        >
+        <span class="delivery_Modal delivery_Modal_25-box5"></span>
+        <span class="delivery_Modal delivery_Modal_25-box6">Ware House</span>
+      </div>
+      <div class="delivery_Modal delivery_Modal_box3">
+        <div class="delivery_Modal delivery_Modal_10">
+          Shipment (Truck Arrival Timing Status)
+        </div>
+        <div class="delivery_Modal delivery_Modal_11">
+          <span class="delivery_Modal delivery_Modal_11-text"><b>325</b></span
+          ><br />
+          <span class="delivery_Modal delivery_Modal_11-number">On plan</span>
+        </div>
         <div class="delivery_Modal delivery_Modal_12">
-          <span class="delivery_Modal delivery_Modal_12-number">475</span>
-          <span class="delivery_Modal delivery_Modal_12-text">rounds</span>
+          <span class="delivery_Modal delivery_Modal_12-number"><b>20</b></span
+          ><br />
+          <span class="delivery_Modal delivery_Modal_12-text">Delay</span>
         </div>
         <div class="delivery_Modal delivery_Modal_13">
-          <canvas id="chartIdShipment"></canvas>
+          <canvas id="ShipmentChart"></canvas>
         </div>
-        <div class="delivery_Modal delivery_Modal_14"></div>
+        <div class="delivery_Modal delivery_Modal_14">
+          Delayed Count (Times)
+        </div>
         <div class="delivery_Modal delivery_Modal_15">
-          <span class="delivery_Modal delivery_Modal_15-number"
-            ><b>325</b></span
-          >
-          <span class="delivery_Modal delivery_Modal_15-text">On plan</span>
+          <canvas id="DelayedRatioChart"></canvas>
         </div>
-        <div class="delivery_Modal delivery_Modal_16">
-          <span class="delivery_Modal delivery_Modal_16-number"><b>20</b></span>
-          <span class="delivery_Modal delivery_Modal_16-text">Delay</span>
-        </div>
+        <div class="delivery_Modal delivery_Modal_16">Delayed Ratio</div>
         <div class="delivery_Modal delivery_Modal_17">
-          <span class="delivery_Modal delivery_Modal_17-number"
-            ><b>130</b></span
-          >
-          <span class="delivery_Modal delivery_Modal_17-text">On progress</span>
+          <canvas id="DelayCountChart"></canvas>
         </div>
-      </div> -->
-      <!-- <div class="delivery_Modal delivery_Modal_box4">
-        <div class="delivery_Modal delivery_Modal_18">AGV</div>
-        <div class="delivery_Modal delivery_Modal_19"></div>
-        <div class="delivery_Modal delivery_Modal_20">
-          <span class="delivery_Modal delivery_Modal_20-number">10</span>
-          <span class="delivery_Modal delivery_Modal_20-text">13</span>
-          <span class="delivery_Modal delivery_Modal_20-units">units</span>
-        </div>
-        <div class="delivery_Modal delivery_Modal_21">
-          <span class="delivery_Modal delivery_Modal_21-Ac">Active</span>
-          <span class="delivery_Modal delivery_Modal_21-AGV">AGV</span>
-          <span class="delivery_Modal delivery_Modal_21-Num">70%</span>
-        </div>
-        <div class="delivery_Modal delivery_Modal_22">
-          <canvas id=""></canvas>
-        </div>
-      </div> -->
-      <div class="delivery_Modal delivery_Modal_iframe">
-        <h1>On Process...</h1>
       </div>
     </div>
 
@@ -908,7 +2065,7 @@
       <div class="hide-item-8"></div>
       <div class="hide-item-14-2"></div>
       <div class="hide-item-14-3"></div>
-      <div class="hide-item-14-4"></div>
+      <!-- <div class="hide-item-14-4"></div> -->
       <!-- Modal content -->
       <div class="modal-content">
         <button class="Energy_btn_close">
@@ -941,9 +2098,10 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-stacked100@1.0.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.js"></script>
     <script src="/Modules/socket.js"></script>
     <script src="/Modules/index.js"></script>
     <script src="/Modules/chart.js"></script>
-    <!-- <script src="/Modules/chartdeli.js"></script> -->
+    <script src="/Modules/chartdeli.js"></script>
   </body>
 </html>

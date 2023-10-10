@@ -1,7 +1,7 @@
 var socket = io("http://172.23.36.47:5000");
 
 const objectDate = new Date();
-// const objectDate = new Date("2023-09-16");
+// const objectDate = new Date("2023-09-21");
 let day = objectDate.getDate();
 let month = objectDate.getMonth() + 1;
 let year = objectDate.getFullYear();
@@ -95,13 +95,21 @@ function calculateSum(array, property) {
 var perOA = 0;
 function Update_Deki() {
   socket.on("req_message_OALossSum", (data) => {
-    // console.log(data.recordset);
-    // data.recordset.forEach((e) => {
-    //   // console.log(data.recordset.length);
-    //   perOA += e.perOA;
-    //   // console.log(perOA);
-    //   const TGOA = perOA / data.recordset.length;
-    //   console.log(TGOA);
+    // console.log(OALossSum);
+    data.recordset.filter((e) => {
+      OALossSum.data.calculatedData[0][1] = e.perOA.toFixed(1);
+      OALossSum.update;
+      OALossSum.data.calculatedData[1][1] = (100 - e.perOA).toFixed(1);
+      OALossSum.update;
+      OALossSum.data.datasets[0].data[1] = e.perOA.toFixed(1);
+      OALossSum.update;
+      OALossSum.data.datasets[1].data[1] = (100 - e.perOA).toFixed(1);
+      OALossSum.update;
+      OALossSum.data.originalData[0][1] = e.perOA.toFixed(1);
+      OALossSum.update;
+      OALossSum.data.originalData[1][1] = (100 - e.perOA).toFixed(1);
+      OALossSum.update;
+    });
   });
 }
 
@@ -135,20 +143,20 @@ function check(check_sim, e, x) {
   if (e.Value <= 0) {
     CurrentLossDetailSum.data.datasets[0].data[x - 1] = 0;
     CurrentLossDetailSum.update();
-    CurrentLossDetailSum.data.datasets[1].data[x - 1] = 0;
-    CurrentLossDetailSum.update();
+    //   CurrentLossDetailSum.data.datasets[1].data[x - 1] = 0;
+    //   CurrentLossDetailSum.update();
   } else {
     check_sim = check_sim;
     CurrentLossDetailSum.data.datasets[0].data[x - 1] = check_sim;
     CurrentLossDetailSum.update();
-    sim = check_sim - e.Value;
-    if (sim > 0) {
-      CurrentLossDetailSum.data.datasets[1].data[x - 1] = sim;
-      CurrentLossDetailSum.update();
-    } else {
-      CurrentLossDetailSum.data.datasets[1].data[x - 1] = 0;
-      CurrentLossDetailSum.update();
-    }
+    // sim = check_sim - e.Value;
+    // if (sim > 0) {
+    //   // CurrentLossDetailSum.data.datasets[1].data[x - 1] = sim;
+    //   // CurrentLossDetailSum.update();
+    // } else {
+    //   // CurrentLossDetailSum.data.datasets[1].data[x - 1] = 0;
+    //   // CurrentLossDetailSum.update();
+    // }
   }
   x = 0;
   e = 0;
@@ -198,8 +206,8 @@ function updateprodActDeki() {
     res = [];
     CurrentLossDetailSum.data.datasets[0].data = 0;
     CurrentLossDetailSum.update();
-    CurrentLossDetailSum.data.datasets[1].data = 0;
-    CurrentLossDetailSum.update();
+    // CurrentLossDetailSum.data.datasets[1].data = 0;
+    // CurrentLossDetailSum.update();
     CurrentLossDetailSum.data.datasets[2].data = 0;
     CurrentLossDetailSum.update();
     for (let i = 0; i < data.recordset.length; i++) {
@@ -365,6 +373,8 @@ function updateLoss() {
     chartIdLossClar.update();
     chartIdLossClar.data.datasets[0].data[3] = 0;
     chartIdLossClar.update();
+    chartIdLossClar.data.datasets[0].data[4] = 0;
+    chartIdLossClar.update();
     sum_code1 = 0;
     sum_code2 = 0;
     sum_code3 = 0;
@@ -505,7 +515,7 @@ var count = 0;
 Loss_Raking();
 function Loss_Raking() {
   socket.on("req_message_LossRanking", (data) => {
-    console.log(data.recordset);
+    // console.log(data.recordset);
     while (RakingLossChart.data.labels.length) {
       RakingLossChart.data.labels.pop();
       RakingLossChart.update();
@@ -525,7 +535,6 @@ function Loss_Raking() {
   });
 }
 
-var Dekidaka = document.getElementById("CurrentLossDekidaka");
 const AccPlan = document.querySelectorAll(".deki-8-2-number");
 const AccActual = document.querySelectorAll(".deki-8-3-number");
 var AccPlan_Deki = 0;
@@ -546,67 +555,52 @@ function Houly_Dekidaka() {
         item.innerHTML = `<b>${formatNumber(AccActual_Deki, 1)}</b>`;
       });
     });
-    // data.recordset.filter((e) => {
-    // console.log(data.recordset);
-    const CurrentLossDekidaka = new Chart(Dekidaka, {
-      type: "bar",
-      data: {
-        labels: [
-          "Hour 1",
-          "Hour 2",
-          "Hour 3",
-          "Hour 4",
-          "Hour 5",
-          "Hour 6",
-          "Hour 7",
-          "Hour 8",
-          "Hour 9",
-          "Hour 10",
-        ],
-        datasets: [
-          {
-            label: "Actual",
-            data: data.recordset,
-            parsing: {
-              yAxisKey: "Value",
-            },
-            backgroundColor: ["rgba(0, 204, 153,1)", "rgba(0, 204, 153,1)"],
-            borderColor: ["rgba(255, 255, 255, 1)"],
-          },
-          {
-            label: "Plan",
-            data: data.recordset,
-            parsing: {
-              yAxisKey: "CTAvg",
-            },
-            backgroundColor: "rgba(91, 120, 255, 1)",
-            borderColor: "rgba(255, 255, 255, 1)",
-          },
-        ],
-      },
-      options: {
-        barPercentage: 0.7,
-        aspectRatio: 4.5,
-        scales: {
-          y: {
-            ticks: {
-              color: "white",
-              beginAtZero: true,
-            },
-          },
-          x: {
-            ticks: {
-              color: "white",
-              beginAtZero: true,
-            },
-          },
-        },
-        plugins: {
-          datalabels: {
-            color: "white",
-          },
-        },
-      },
+    CurrentLossDekidaka.data.datasets[0].data = 0;
+    CurrentLossDekidaka.update();
+    data.recordset.forEach((e) => {
+      console.log(e);
+      console.log(CurrentLossDekidaka);
+      if (e.x === 1) {
+        CurrentLossDekidaka.data.datasets[0].data[0] = e.Value;
+        CurrentLossDekidaka.data.datasets[1].data[0] = 0;
+        CurrentLossDekidaka.update();
+      } else if (e.x === 2) {
+        CurrentLossDekidaka.data.datasets[0].data[1] = e.Value;
+        CurrentLossDekidaka.data.datasets[1].data[1] = 0;
+        CurrentLossDekidaka.update();
+      } else if (e.x === 3) {
+        CurrentLossDekidaka.data.datasets[0].data[2] = e.Value;
+        CurrentLossDekidaka.data.datasets[1].data[2] = 0;
+        CurrentLossDekidaka.update();
+      } else if (e.x === 4) {
+        CurrentLossDekidaka.data.datasets[0].data[3] = e.Value;
+        CurrentLossDekidaka.data.datasets[1].data[3] = 0;
+        CurrentLossDekidaka.update();
+      } else if (e.x === 5) {
+        CurrentLossDekidaka.data.datasets[0].data[4] = e.Value;
+        CurrentLossDekidaka.data.datasets[1].data[4] = 0;
+        CurrentLossDekidaka.update();
+      } else if (e.x === 6) {
+        CurrentLossDekidaka.data.datasets[0].data[5] = e.Value;
+        CurrentLossDekidaka.data.datasets[1].data[5] = 0;
+        CurrentLossDekidaka.update();
+      } else if (e.x === 7) {
+        CurrentLossDekidaka.data.datasets[0].data[6] = e.Value;
+        CurrentLossDekidaka.data.datasets[1].data[6] = 0;
+        CurrentLossDekidaka.update();
+      } else if (e.x === 8) {
+        CurrentLossDekidaka.data.datasets[0].data[7] = e.Value;
+        CurrentLossDekidaka.data.datasets[1].data[7] = 0;
+        CurrentLossDekidaka.update();
+      } else if (e.x === 9) {
+        CurrentLossDekidaka.data.datasets[0].data[8] = e.Value;
+        CurrentLossDekidaka.data.datasets[1].data[8] = 0;
+        CurrentLossDekidaka.update();
+      } else if (e.x === 10) {
+        CurrentLossDekidaka.data.datasets[0].data[9] = e.Value;
+        CurrentLossDekidaka.data.datasets[1].data[9] = 0;
+        CurrentLossDekidaka.update();
+      }
     });
   });
 }

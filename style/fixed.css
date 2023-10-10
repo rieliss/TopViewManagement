@@ -21,6 +21,11 @@
   /* background-color: #344; */
 }
 
+#none {
+  background-color: #8b8f8c;
+  color: beige;
+}
+
 .button:hover {
   background-color: white;
   box-shadow: 0 5px #666;
@@ -52,7 +57,7 @@
   text-decoration: none;
   cursor: pointer;
   color: white;
-  background-color: transparent;
+  /* background-color: transparent; */
   box-shadow: 0 2px #999;
 }
 
@@ -71,7 +76,7 @@
   text-decoration: none;
   cursor: pointer;
   color: #fff;
-  background-color: transparent;
+  /* background-color: transparent; */
   box-shadow: 0 2px #999;
 }
 
@@ -90,7 +95,7 @@
   text-decoration: none;
   cursor: pointer;
   color: #fff;
-  background-color: transparent;
+  /* background-color: transparent; */
   box-shadow: 0 2px #999;
 }
 
@@ -109,7 +114,7 @@
   text-decoration: none;
   cursor: pointer;
   color: #fff;
-  background-color: transparent;
+  /* background-color: transparent; */
   box-shadow: 0 2px #999;
 }
 
@@ -128,7 +133,7 @@
   text-decoration: none;
   cursor: pointer;
   color: #fff;
-  background-color: transparent;
+  /* background-color: transparent; */
   box-shadow: 0 2px #999;
 }
 
@@ -147,7 +152,7 @@
   text-decoration: none;
   cursor: pointer;
   color: #fff;
-  background-color: transparent;
+  /* background-color: transparent; */
   box-shadow: 0 2px #999;
 }
 
@@ -166,7 +171,7 @@
   text-decoration: none;
   cursor: pointer;
   color: #fff;
-  background-color: transparent;
+  /* background-color: transparent; */
   box-shadow: 0 2px #999;
 }
 
@@ -498,8 +503,9 @@
   z-index: 3;
   width: 100px;
   height: 20px;
-  /* background-color: rgb(251, 193, 201); */
+  background-color: rgb(251, 193, 201);
   background-color: #8b8f8c;
+  background-color: rgb(66, 230, 132);
 }
 
 .item-7-3 {
@@ -577,7 +583,8 @@
   width: 120px;
   height: 20px;
   /* background-color: #ffc000; */
-  background-color: #8b8f8c;
+  background-color: rgb(174, 244, 202);
+  /* background-color: #8b8f8c; */
 }
 
 .item-8 {
@@ -641,6 +648,7 @@
   z-index: 3;
   width: 300px;
   height: 20px;
+
   /* background-color: #8b8f8c; */
 }
 
@@ -658,7 +666,7 @@
 
 .item-8-5 {
   position: fixed;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-align: center;
   color: #000;
   top: 760px;
@@ -667,7 +675,9 @@
   z-index: 3;
   width: 120px;
   height: 20px;
-  background-color: #8b8f8c;
+  background-color: rgb(174, 244, 202);
+  /* background-color: rgb(66, 230, 132); */
+  /* background-color: #8b8f8c; */
 }
 
 .item-8-6 {
@@ -696,7 +706,7 @@
 
 .item-8-8 {
   position: fixed;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-align: center;
   color: #000;
   top: 810px;
@@ -705,7 +715,8 @@
   z-index: 3;
   width: 120px;
   height: 20px;
-  background-color: #8b8f8c;
+  background-color: rgb(174, 244, 202);
+  /* background-color: #8b8f8c; */
 }
 
 .item-9 {
@@ -1044,15 +1055,16 @@
   font-size: 0.9rem;
   text-align: center;
   font-style: italic;
-  color: black;
+  color: rgb(89, 89, 89);
   top: 168px;
   left: 1795px;
   border-radius: 100px;
   z-index: 3;
   width: 100px;
   height: 20px;
+  background-color: rgb(66, 230, 132);
   /* background-color: rgb(251, 193, 201); */
-  background-color: #8b8f8c;
+  /* background-color: #8b8f8c; */
 }
 
 .item-14-2-3 {
@@ -1090,8 +1102,9 @@
   z-index: 3;
   width: 120px;
   height: 20px;
+  background-color: rgb(174, 244, 202);
   /* background-color: rgb(251, 193, 201); */
-  background-color: #8b8f8c;
+  /* background-color: #8b8f8c; */
 }
 
 .item-14-2-6 {
@@ -1168,7 +1181,8 @@
   z-index: 3;
   width: 120px;
   height: 20px;
-  background-color: #8b8f8c;
+  /* background-color: #8b8f8c; */
+  background-color: rgb(174, 244, 202);
 }
 
 .item-14-2-12 {
@@ -1341,7 +1355,8 @@
   z-index: 3;
   width: 120px;
   height: 20px;
-  background-color: #8b8f8c;
+  /* background-color: #8b8f8c; */
+  background-color: rgb(174, 244, 202);
 }
 
 .item-14-3-9 {
@@ -1379,7 +1394,7 @@
   z-index: 3;
   width: 120px;
   height: 20px;
-  background-color: #8b8f8c;
+  background-color: rgb(174, 244, 202);
 }
 
 .item-14-4 {
@@ -1469,7 +1484,8 @@
   z-index: 3;
   width: 120px;
   height: 20px;
-  background-color: #8b8f8c;
+  /* background-color: #8b8f8c; */
+  background-color: rgb(174, 244, 202);
 }
 
 .item-14-5 {

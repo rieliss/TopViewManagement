@@ -23,7 +23,8 @@ body {
   color: white;
   /* font-family: myFirstFont; */
   background: url(/icons/Background.png);
-  background-color: antiquewhite;
+  background-color: #0a0c18;
+  background-repeat: no-repeat;
   /* background-color: var(--clr-light);
   /* color: var(--clr-dark); */
 }

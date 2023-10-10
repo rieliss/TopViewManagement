@@ -79,7 +79,7 @@ span_Energy.onclick = function () {
 };
 
 window.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
+  if (event.key === "Escape" || event.key === "Enter") {
     safety_Modal.style.display = "none";
     QC_Modal.style.display = "none";
     cost_Modal.style.display = "none";
@@ -87,6 +87,11 @@ window.addEventListener("keydown", function (event) {
     Prod_Modal.style.display = "none";
     Energy_Modal.style.display = "none";
     hide.style.display = "block";
+    hide_point2.style.display = "block";
+    hide_point3.style.display = "block";
+    hide_point4.style.display = "block";
+    hide_point5.style.display = "block";
+    hide_point1.style.display = "block";
   }
 });
 
@@ -109,6 +114,98 @@ window.onclick = function (event) {
   }
 };
 
+var hide_point1 = document.getElementById("item_hide_Alternator_Product");
+var hide_point2 = document.getElementById("item_hide_Starter_Product");
+var hide_point3 = document.getElementById("item_hide_ECC_ABS");
+var hide_point4 = document.getElementById("item_hide_Parts2");
+var hide_point5 = document.getElementById("item_hide_Parts1");
+
+var mng_mfg1 = document.getElementById("mng_mfg1");
+var mng_mfg2 = document.getElementById("mng_mfg2");
+var mng_mfg3 = document.getElementById("mng_mfg3");
+var mng_part1 = document.getElementById("mng_part1");
+var mng_part2 = document.getElementById("mng_part2");
+var mng_assy = document.getElementById("mng_assy");
+var mng_part = document.getElementById("mng_part");
+
+mng_mfg1.onclick = function () {
+  hide_point2.style.display = "none";
+  hide_point3.style.display = "none";
+  hide_point4.style.display = "none";
+  hide_point5.style.display = "none";
+  hide_point1.style.display = "block";
+};
+mng_mfg2.onclick = function () {
+  hide_point2.style.display = "block";
+  hide_point3.style.display = "none";
+  hide_point4.style.display = "none";
+  hide_point5.style.display = "none";
+  hide_point1.style.display = "none";
+};
+mng_mfg3.onclick = function () {
+  hide_point2.style.display = "none";
+  hide_point3.style.display = "block";
+  hide_point4.style.display = "none";
+  hide_point5.style.display = "none";
+  hide_point1.style.display = "none";
+};
+mng_part1.onclick = function () {
+  hide_point2.style.display = "none";
+  hide_point3.style.display = "none";
+  hide_point4.style.display = "block";
+  hide_point5.style.display = "none";
+  hide_point1.style.display = "none";
+};
+mng_part2.onclick = function () {
+  hide_point2.style.display = "none";
+  hide_point3.style.display = "none";
+  hide_point4.style.display = "none";
+  hide_point5.style.display = "block";
+  hide_point1.style.display = "none";
+};
+mng_assy.onclick = function () {
+  hide_point2.style.display = "block";
+  hide_point3.style.display = "block";
+  hide_point4.style.display = "none";
+  hide_point5.style.display = "none";
+  hide_point1.style.display = "block";
+};
+mng_part.onclick = function () {
+  hide_point2.style.display = "none";
+  hide_point3.style.display = "none";
+  hide_point4.style.display = "block";
+  hide_point5.style.display = "block";
+  hide_point1.style.display = "none";
+};
+
+var QC_hide = document.querySelectorAll(".hide-item-7");
+var safety_hide = document.querySelectorAll(".hide-item-6");
+var cost_hide = document.querySelectorAll(".hide-item-8");
+var delivery_hide = document.querySelectorAll(".hide-item-14-2");
+var Prod_hide = document.querySelectorAll(".hide-item-14-3");
+var Energy_hide = document.querySelectorAll(".hide-item-14-4");
+
+// window.onclick = function (event) {
+//   if (
+//     event.target == QC_hide ||
+//     event.target == safety_hide ||
+//     event.target == cost_hide ||
+//     event.target == delivery_hide ||
+//     event.target == Prod_hide ||
+//     event.target == Energy_hide
+//   ) {
+//     safety_Modal.style.display = "none";
+//     QC_Modal.style.display = "none";
+//     cost_Modal.style.display = "none";
+//     delivery_Modal.style.display = "none";
+//     Prod_Modal.style.display = "none";
+//     Energy_Modal.style.display = "none";
+//     hide.style.display = "block";
+//   }
+// };
+
+// delivery_Modal.style.display = "block";
+
 var myDIV1 = document.getElementById("myDIV1");
 var myDIV2 = document.getElementById("myDIV2");
 var IV_btn = document.getElementById("toggleDivButtonIV");
@@ -117,9 +214,23 @@ var EC_btn = document.getElementById("toggleDivButtonEC");
 IV_btn.onclick = function () {
   myDIV2.style.display = "none";
   myDIV1.style.display = "block";
+  safety_Modal.style.display = "none";
+  QC_Modal.style.display = "none";
+  cost_Modal.style.display = "none";
+  delivery_Modal.style.display = "none";
+  Prod_Modal.style.display = "none";
+  Energy_Modal.style.display = "none";
+  hide.style.display = "none";
 };
 
 EC_btn.onclick = function () {
   myDIV2.style.display = "block";
   myDIV1.style.display = "none";
+  safety_Modal.style.display = "none";
+  QC_Modal.style.display = "none";
+  cost_Modal.style.display = "none";
+  delivery_Modal.style.display = "none";
+  Prod_Modal.style.display = "none";
+  Energy_Modal.style.display = "none";
+  hide.style.display = "none";
 };

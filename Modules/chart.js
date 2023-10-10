@@ -19,6 +19,7 @@ const getOrCreateTooltip = (chart) => {
 
     const table = document.createElement("table");
     table.style.margin = "0px";
+    table.style.width = "180px";
 
     tooltipEl.appendChild(table);
     chart.canvas.parentNode.appendChild(tooltipEl);
@@ -69,6 +70,7 @@ const externalTooltipHandler = (context) => {
       span.style.height = "10px";
       span.style.width = "10px";
       span.style.display = "inline-block";
+      // span.style.top = "10px";
 
       const tr = document.createElement("tr");
       tr.style.backgroundColor = "inherit";
@@ -102,10 +104,10 @@ const externalTooltipHandler = (context) => {
   // Display, position, and set styles for font
   tooltipEl.style.opacity = 1;
   tooltipEl.style.left = positionX + tooltip.caretX + "px";
-  tooltipEl.style.top = positionY + tooltip.caretY + "px";
+  tooltipEl.style.top = positionY + (tooltip.caretY - 120) + "px";
   tooltipEl.style.font = tooltip.options.bodyFont.string;
   tooltipEl.style.padding =
-    tooltip.options.padding + "px " + tooltip.options.padding + "px";
+    tooltip.options.padding + 5 + "px " + (tooltip.options.padding + 5) + "px";
 };
 
 const CurrentPord = new Chart(CurrentPordchart, {

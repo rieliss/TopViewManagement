@@ -68,17 +68,16 @@ const CurrentLossDetailSum = new Chart(ctx, {
         backgroundColor: ["rgba(91, 120, 255, 1)"],
         borderColor: ["rgba(91, 120, 255, 1)"],
         type: "line",
+        tension: 0.5,
         // yAxisID: 'Actual'
       },
       {
-        label: "Diff",
-        data: [
-          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, 0, 0, 0, 0,
-        ],
-        backgroundColor: "rgba(255, 192, 0, 1)",
-        borderColor: "rgba(255, 192, 0, 1)",
+        label: "",
+        data: [],
+        backgroundColor: "transparent",
+        borderColor: "transparent",
         type: "line",
+        tension: 0.5,
         // yAxisID: 'Plan'
       },
       {
@@ -104,6 +103,7 @@ const CurrentLossDetailSum = new Chart(ctx, {
       //     position: 'left'
       // },
       y: {
+        beginAtZero: true,
         ticks: {
           color: "white",
           beginAtZero: true,
@@ -190,3 +190,64 @@ const chartIdLossClar = new Chart(chrtLossClar, {
   plugins: [doughnutLabelLossClar],
 });
 /*----------------------------------------------------------------*/
+var DekidakaChart = document.getElementById("CurrentLossDekidaka");
+var CurrentLossDekidaka = new Chart(DekidakaChart, {
+  type: "bar",
+  data: {
+    labels: [
+      "Hour 1",
+      "Hour 2",
+      "Hour 3",
+      "Hour 4",
+      "Hour 5",
+      "Hour 6",
+      "Hour 7",
+      "Hour 8",
+      "Hour 9",
+      "Hour 10",
+    ],
+    datasets: [
+      {
+        label: "Actual",
+        data: [],
+        parsing: {
+          yAxisKey: "Value",
+        },
+        backgroundColor: ["rgba(0, 204, 153,1)", "rgba(0, 204, 153,1)"],
+        borderColor: ["rgba(255, 255, 255, 1)"],
+      },
+      {
+        label: "Plan",
+        data: [1, 2, 3],
+        parsing: {
+          yAxisKey: "CTAvg",
+        },
+        backgroundColor: "rgba(91, 120, 255, 1)",
+        borderColor: "rgba(255, 255, 255, 1)",
+      },
+    ],
+  },
+  options: {
+    barPercentage: 0.7,
+    aspectRatio: 4.5,
+    scales: {
+      y: {
+        ticks: {
+          color: "white",
+          beginAtZero: true,
+        },
+      },
+      x: {
+        ticks: {
+          color: "white",
+          beginAtZero: true,
+        },
+      },
+    },
+    plugins: {
+      datalabels: {
+        color: "white",
+      },
+    },
+  },
+});

@@ -23,7 +23,8 @@ body {
   color: white;
   /* font-family: myFirstFont; */
   background: url(/icons/Background.png);
-  background-color: antiquewhite;
+  background-color: #0a0c18;
+  background-repeat: no-repeat;
   /* background-color: var(--clr-light);
   /* color: var(--clr-dark); */
 }
@@ -101,6 +102,15 @@ body {
   align-items: center; */
   /* text-align: center; */
   /* font-size: 0.75rem; */
+}
+.item-detail {
+  position: fixed;
+  left: 1340px;
+  top: 140px;
+  background-color: rgba(123, 166, 249, 0.2);
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
 }
 
 .item-5 {
@@ -329,7 +339,7 @@ td {
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted rgba(89, 89, 89, 0.8);
-  z-index: 5;
+  z-index: 10;
 }
 
 .tooltip .tooltiptext {
@@ -346,7 +356,7 @@ td {
   padding: 10px 20px;
   margin-left: 10px;
   position: absolute;
-  z-index: 5;
+  z-index: 10;
   top: -20px;
   left: 110%;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
@@ -359,7 +369,7 @@ td {
   right: 100%;
   margin-top: -70px;
   border-width: 10px;
-  z-index: 5;
+  z-index: 10;
   border-style: solid;
   border-color: transparent rgba(150, 150, 150, 0.8) transparent transparent;
 }
