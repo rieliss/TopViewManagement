@@ -1,8 +1,15 @@
 {
-  "crons": [
+  "version": 2,
+  "build": [
     {
-      "path": "/api/cron",
-      "schedule": "0 10 * * *"
+      "src": "Modules/connect.js",
+      "use": "@vercal/node"
+    }
+  ],
+  "route": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }
