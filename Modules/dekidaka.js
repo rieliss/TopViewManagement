@@ -147,7 +147,7 @@ function check(check_sim, e, x) {
     //   CurrentLossDetailSum.update();
   } else {
     check_sim = check_sim;
-    CurrentLossDetailSum.data.datasets[0].data[x - 1] = check_sim;
+    CurrentLossDetailSum.data.datasets[0].data[x - 1] = check_sim.toFixed(0);
     CurrentLossDetailSum.update();
     // sim = check_sim - e.Value;
     // if (sim > 0) {
@@ -558,8 +558,8 @@ function Houly_Dekidaka() {
     CurrentLossDekidaka.data.datasets[0].data = 0;
     CurrentLossDekidaka.update();
     data.recordset.forEach((e) => {
-      console.log(e);
-      console.log(CurrentLossDekidaka);
+      // console.log(e);
+      // console.log(CurrentLossDekidaka);
       if (e.x === 1) {
         CurrentLossDekidaka.data.datasets[0].data[0] = e.Value;
         CurrentLossDekidaka.data.datasets[1].data[0] = 0;
@@ -665,6 +665,7 @@ AddOption();
 function AddOption() {
   var SectionCode = document.getElementById("filterBySectionCode");
   socket.on("req_message_Data", (data) => {
+    console.log(data.recordset);
     removeAll(SectionCode);
     data.recordset.filter((e) => {
       var optionSectionCode = document.createElement("option");
@@ -694,8 +695,9 @@ function AddOptionLine() {
     removeAll(LineName);
     data.recordset.filter((e) => {
       var optionLineName = document.createElement("option");
-      optionLineName.text = e.LineName;
+      optionLineName.text = e.sumCode;
       LineName.add(optionLineName);
+      return e.LineName;
     });
   });
 }
@@ -711,6 +713,8 @@ var searchFilter = () => {
 var searchFilterLineCode = () => {
   let selectedLineName = document.getElementById("filterByLineName").value;
 
-  console.log(selectedLineName);
-  socket.emit("filterdataLineName", selectedLineName);
+  // console.log(selectedLineName);
+  const selected = selectedLineName.slice(7);
+  // console.log(selected);
+  socket.emit("filterdataLineName", selected);
 };

@@ -21,12 +21,13 @@ body {
   line-height: 1.6;
   word-spacing: 1.4px;
   color: white;
-  /* font-family: myFirstFont; */
-  background: url(/icons/Background.png);
+  background: url(/icons/BG2.jpg);
   background-color: #0a0c18;
   background-repeat: no-repeat;
-  /* background-color: var(--clr-light);
-  /* color: var(--clr-dark); */
+  align-items: center;
+  background-size: cover;
+  width: "100vw";
+  height: "100vh";
 }
 
 .sticky {

@@ -1,0 +1,56 @@
+.first_row {
+  display: flex;
+  justify-content: center;
+}
+
+.name_box {
+  position: fixed;
+  height: 270px;
+  width: 300px;
+  /* top: 150px;
+  left: 10px; */
+  background-color: rgba(77, 169, 226, 0);
+  border: 0.5px solid rgba(77, 169, 226, 1);
+  border-radius: 10px;
+}
+
+.div_first_row {
+  display: flex;
+  gap: 10px;
+}
+
+.safety_box {
+  height: 270px;
+  width: 300px;
+  background-color: rgba(77, 169, 226, 0.15);
+  border: 0.5px solid rgba(77, 169, 226, 1);
+  border-radius: 10px;
+}
+.Quality_box {
+  height: 270px;
+  width: 300px;
+  background-color: rgba(77, 169, 226, 0.15);
+  border: 0.5px solid rgba(77, 169, 226, 1);
+  border-radius: 10px;
+}
+.Cost_box {
+  height: 270px;
+  width: 300px;
+  background-color: rgba(77, 169, 226, 0.15);
+  border: 0.5px solid rgba(77, 169, 226, 1);
+  border-radius: 10px;
+}
+.Delivery_box {
+  height: 270px;
+  width: 300px;
+  background-color: rgba(77, 169, 226, 0.15);
+  border: 0.5px solid rgba(77, 169, 226, 1);
+  border-radius: 10px;
+}
+.Prod_box {
+  height: 270px;
+  width: 300px;
+  background-color: rgba(77, 169, 226, 0.15);
+  border: 0.5px solid rgba(77, 169, 226, 1);
+  border-radius: 10px;
+}

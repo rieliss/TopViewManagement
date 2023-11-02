@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/overallkpi/base.css" />
+    <link rel="stylesheet" href="/style/overallkpi/layout.css" />
+    <link rel="icon" href="/icons/water-shortage.png" />
+    <title>OVERALL KPI SITUATION SUMMARY</title>
+  </head>
+  <body onload="display_ct();">
+    <section>
+      <div class="container">
+        <div class="item item-1">
+          <h1>EPD Manufacturing Top View Management</h1>
+        </div>
+        <div class="item item-2">MORE INFORMATION</div>
+        <div class="item item-2-1">
+          <a href="#" target="_blank" class="button button_safe" id="none"
+            >Safety Control</a
+          >
+        </div>
+        <div class="item item-2-2">
+          <a
+            href="/Main/dekidaka.html"
+            target="_blank"
+            class="button button_deki"
+            >DEKIDAKA</a
+          >
+        </div>
+        <div class="item item-2-3">
+          <a href="#" target="_blank" class="button button_man" id="none"
+            >Manpower</a
+          >
+        </div>
+        <div class="item item-2-4">
+          <a
+            href="http://172.23.32.56:3001/"
+            target="_blank"
+            class="button button_in"
+            >Inventory</a
+          >
+        </div>
+        <div class="item item-2-5">
+          <a href="#" target="_blank" class="button button_truck" id="none"
+            >TruckTime</a
+          >
+        </div>
+        <div class="item item-2-6">
+          <a href="#" target="_blank" class="button button_qa" id="none"
+            >Quality</a
+          >
+        </div>
+        <div class="item item-2-7">
+          <a
+            href="http://10.122.77.12/energy-visualize/daily"
+            target="_blank"
+            class="button button_co2"
+            >CO2 Emission</a
+          >
+        </div>
+        <div class="item item-2-8">
+          <a><b>OVERALL KPI SITUATION SUMMARY</b></a>
+        </div>
+
+        <div class="item item-4">
+          <p>Powered by EPD DX Promotion</p>
+          <hr />
+        </div>
+
+        <div class="item item-4-1">
+          <span id="ct">
+            <script type="text/javascript">
+              function display_c() {
+                var refresh = 1000; // Refresh rate in milli seconds
+                mytime = setTimeout("display_ct()", refresh);
+              }
+
+              function display_ct() {
+                var x = new Date();
+                // document.getElementById('ct').innerHTML = x3;
+                // date part ///
+                var month = x.getMonth() + 1;
+                var day = x.getDate();
+                var year = x.getFullYear();
+                if (month < 10) {
+                  month = "0" + month;
+                }
+                if (day < 10) {
+                  day = "0" + day;
+                }
+                var x3 = day + "-" + month + "-" + year;
+
+                // time part //
+                var hour = x.getHours();
+                var minute = x.getMinutes();
+                var second = x.getSeconds();
+                if (hour < 10) {
+                  hour = "0" + hour;
+                }
+                if (minute < 10) {
+                  minute = "0" + minute;
+                }
+                if (second < 10) {
+                  second = "0" + second;
+                }
+                var x3 = x3 + " " + hour + ":" + minute + ":" + second;
+                document.getElementById("ct").innerHTML = x3;
+                display_c();
+              }
+            </script>
+          </span>
+        </div>
+        <div class="first_row">
+          <div class="name_box"></div>
+          <div class="div_first_row">
+            <div class="safety_box"></div>
+            <div class="Quality_box"></div>
+            <div class="Cost_box"></div>
+            <div class="Delivery_box"></div>
+            <div class="Prod_box"></div>
+          </div>
+        </div>
+    </section>
+  </body>
+</html>

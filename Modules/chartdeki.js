@@ -131,7 +131,7 @@ const doughnutLabelLossClar = {
     ctx.fillStyle = "rgba(255,224,181,1)";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("11.2%", xCoor, yCoor);
+    ctx.fillText("Loss%", xCoor, yCoor);
   },
 };
 

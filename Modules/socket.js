@@ -119,6 +119,7 @@ const update_prodOAPart2 = document.querySelectorAll(".Prod_Modal_54");
 
 var ProdPlanAct = 0;
 var SumCurrent = 0;
+var PerSumCurrent = 0;
 
 var ProdActualAlt_value = 0;
 var ProdActualSta_value = 0;
@@ -194,8 +195,8 @@ var OA_Part1 = 0;
 var OA_Part2 = 0;
 
 updateprodAct();
-function updateprodAct() {
-  socket.on("Manpower_Daily", (data) => {
+async function updateprodAct() {
+  await socket.on("Manpower_Daily", (data) => {
     data.recordset.filter((e) => {
       if (e.Department === "Alternator Product") {
         ProdPlanAlt_value += e.ProdPlan;
@@ -222,7 +223,7 @@ function updateprodAct() {
       });
     });
   });
-  socket.on("req_message_ProdAct_s", (data) => {
+  await socket.on("req_message_ProdAct_s", (data) => {
     update_prodActAlt.forEach((item) => {
       data.recordset.filter((data) => {
         if (data.Department === "Alternator Product") {
@@ -384,9 +385,10 @@ function updateprodAct() {
         SumCurrent = ProdPlanAct - ProdActualAct;
         CurrentPord.data.datasets[1].data[0] = SumCurrent.toFixed(2);
         CurrentPord.update();
+        PerSumCurrent = (ProdActualAct / ProdPlanAct) * 100;
       });
       update_prodActCurrent.forEach((item) => {
-        item.innerHTML = `<b>${formatNumber(SumCurrent)}</b>`;
+        item.innerHTML = `<b>${PerSumCurrent.toFixed(2)}%</b>`;
       });
     });
   });
@@ -880,7 +882,7 @@ AddColorToolTip();
 function AddColorToolTip() {
   tooltiptext.forEach((item) => {
     socket.on("req_message_for_point", (data) => {
-      console.log(data.recordset);
+      // console.log(data.recordset);
       data.recordset.filter((e) => {
         if (item.innerHTML.includes("2nd SE Alt.Assy")) {
           if (e.LineCode == "A104" || e.RxNo_Line === "PRS0000000000489") {
@@ -1473,18 +1475,22 @@ function AddColorToolTip() {
 }
 
 function PointChange(item, e) {
-  if (e.perOA > 90) {
-    ChangePoint(item, e, "42e684");
+  console.log(e.perOA);
+  if (e.perOA >= 90) {
+    ChangePoint(item, e, "42e684", "o");
   } else if (e.perOA >= 85 && e.perOA < 90) {
     // item.parentNode.style.backgroundColor = "#ffc000";
-    ChangePoint(item, e, "ff0000");
+    ChangePoint(item, e, "ff0000", "x");
+  } else if (e.perOA < 85 && e.perOA >= 0) {
+    // item.parentNode.style.backgroundColor = "#ffc000";
+    ChangePoint(item, e, "ff0000", "x");
   } else {
     // item.parentNode.style.backgroundColor = "#ff0000";
-    ChangePoint(item, e, "ff0000");
+    ChangePoint(item, e, "ff0000", "-");
   }
 }
 
-function ChangePoint(item, e, color) {
+function ChangePoint(item, e, color, Judge) {
   var date = new Date(e.UpdateDate);
   // console.log(date);
   // console.log(formatDate(date));
@@ -1493,7 +1499,7 @@ function ChangePoint(item, e, color) {
     e.LineName
   } <br>Prod.Plan ${e.ProdPlanPerDay.toFixed(0)} <br>Actual Prod. : ${
     e.Value
-  } <br> Judge : X<br> OA : ${e.perOA.toFixed(
+  } <br> Judge : ${Judge}<br> OA : ${e.perOA.toFixed(
     1
   )} <br> Record Time : ${formatDate(date)}`;
 }

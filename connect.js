@@ -55,9 +55,9 @@ function getPreviousDay(date = new Date()) {
   return previous;
 }
 
-const nowdate = new Date();
+const nowdate = new Date("2023-10-30");
 const Date_Today = nowdate.toISOString();
-// const today = new Date("2023-09-21");
+// const Date_Today = new Date("2023-10-30").toISOString();
 const today = getPreviousDay();
 const todayDate = today.toISOString();
 let todayDate_result = todayDate.slice(0, 10);
@@ -179,10 +179,10 @@ const req_message_LossSum =
   " AND DataModule = 'LOSS' AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') ORDER BY LineName";
 
 const req_message_Data =
-  "SELECT DISTINCT([tbSection].[Name]) AS SectionName, [tbLine].[Name] AS LineName FROM [RTDensoLineInfo].[dbo].[tbLine] LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2')";
+  "SELECT DISTINCT([tbSection].[Name]) AS SectionName, [tbSection].[Code] AS Code,[tbLine].[Name] AS LineName, CONCAT([tbSection].[Code], '-',[tbLine].[Name]) AS sumCode FROM [RTDensoLineInfo].[dbo].[tbLine] LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2')";
 
 const req_message_Data_Line =
-  "SELECT DISTINCT([tbSection].[Name]) AS SectionName, [tbLine].[Name] AS LineName FROM [RTDensoLineInfo].[dbo].[tbLine] LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2')";
+  "SELECT DISTINCT([tbSection].[Name]) AS SectionName, [tbLine].[Name] AS LineName, CONCAT([tbSection].[Code], '-',[tbLine].[Name]) AS sumCode FROM [RTDensoLineInfo].[dbo].[tbLine] LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2')";
 
 const req_message_OALossSum =
   "SELECT MAX(tbLine.Code) AS LineCode, MAX(tbLine.Name) AS LineName, MAX(tbSection.Department) AS Department, SUM(Value) AS ProdAct, SUM(Value) / (MAX(53568) / (SUM(Value * CycleTime) / SUM(Value))) AS OA, (SUM(Value) / (MAX(53568) / (SUM(Value * CycleTime) / SUM(Value)))) * 100 AS perOA FROM tbProductionActual LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'OK' AND ProductionDate = " +
@@ -225,7 +225,7 @@ const req_message_expense =
 const req_message_invest =
   "SELECT SUM(Actual) AS Actual, SUM(Target) AS Target FROM inventory_db.investment where dataMonth = '102023'";
 
-console.log(req_message_expense);
+console.log(req_message_Dekidaka);
 
 app.get("/Loss", function (req, res) {
   req.app.locals.db.query(req_message_Loss, function (err, recorfset) {
