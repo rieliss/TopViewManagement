@@ -218,7 +218,7 @@ var CurrentLossDekidaka = new Chart(DekidakaChart, {
       },
       {
         label: "Plan",
-        data: [1, 2, 3],
+        data: [0, 0, 0],
         parsing: {
           yAxisKey: "CTAvg",
         },

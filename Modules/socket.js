@@ -815,7 +815,6 @@ function Manpower_Attendance() {
         ActiveWorker.data.datasets[0].data[4] = sumMPTL_Part2 +=
           item.TeamLeader_WT;
       }
-      // console.log(item)
       const sumMP =
         sumMPIL_Alt +
         sumMPOL_Alt +
@@ -837,23 +836,16 @@ function Manpower_Attendance() {
         sumMPOL_Part2 +
         sumMPLL_Part2 +
         sumMPLL_Part2;
-      // console.log(sumMP)
       first_MP.forEach((item) => {
         item.innerHTML = `<b>${sumMP.toFixed(1)}</b>`;
-        // console.log(first_MP)
       });
       second_MP.forEach((item) => {
         item.innerHTML = `/ ${sumMP.toFixed(1)}`;
-        // console.log(second_MP)
       });
       main_MP.forEach((item) => {
         item.innerHTML = `<b>${sumMP.toFixed(1)} / ${sumMP.toFixed(1)}</b>`;
       });
-      // }
     });
-    // mergedArrayMP.forEach((item) => {
-    // console.log(item)
-    // })
   });
 }
 
@@ -1475,7 +1467,7 @@ function AddColorToolTip() {
 }
 
 function PointChange(item, e) {
-  console.log(e.perOA);
+  // console.log(e.perOA);
   if (e.perOA >= 90) {
     ChangePoint(item, e, "42e684", "o");
   } else if (e.perOA >= 85 && e.perOA < 90) {
@@ -1672,7 +1664,6 @@ function RiskStock() {
         if (e.Sum_Min != null) {
           RiskStock_pb = RiskStock_pb + parseInt(e.Risk_Stock);
           Summin_bp = Summin_bp + parseInt(e.Sum_Min);
-          // console.log(RiskStock_pb, Summin_bp);
           const sum_pb = RiskStock_pb - Summin_bp;
           item.innerHTML = `<b>${formatNumber(sum_pb)}</b>`;
         }
@@ -1684,16 +1675,11 @@ function RiskStock() {
 function addDataRisk(chart, label, x, y, z) {
   chart.data.labels.push(label);
   chart.data.datasets.forEach((dataset) => {
-    // dataset.data.push(newData);
-    // console.log(dataset);
     if (dataset.label === "Min Risk Stock") {
-      // console.log("Min Risk Stock");
       dataset.data.push(x);
     } else if (dataset.label === "Max Risk Stock") {
-      // console.log("Max Risk Stock");
       dataset.data.push(y);
     } else if (dataset.label === "Order QTY.") {
-      // console.log("Order QTY.");
       dataset.data.push(z);
     }
   });
@@ -1703,7 +1689,6 @@ function addDataRisk(chart, label, x, y, z) {
 RiskStockByProcess();
 function RiskStockByProcess() {
   socket.on("req_message_riskstock", (data) => {
-    // console.log(data);
     data.filter((e) => {
       addDataRisk(
         SubCurrentRiskStock,
@@ -1733,7 +1718,6 @@ const expenses_value = document.querySelectorAll(".item-8-8");
 function expenses() {
   socket.on("req_message_expense", (data) => {
     data.filter((e) => {
-      // console.log(e);
       expenses_value.forEach((item) => {
         item.innerHTML = `<b>${formatNumber(e.Actual)} / ${formatNumber(
           e.Target
@@ -1748,7 +1732,6 @@ const investment_value = document.querySelectorAll(".item-8-5");
 function investment() {
   socket.on("req_message_invest", (data) => {
     data.filter((e) => {
-      // console.log(e);
       investment_value.forEach((item) => {
         item.innerHTML = `<b>${formatNumber(e.Actual)} / ${formatNumber(
           e.Target

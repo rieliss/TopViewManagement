@@ -167,11 +167,9 @@ const req_message_LossRanking_month =
   " AND DataModule = 'LOSS' AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') GROUP BY [tbDailyWorkRecord].[Code] ORDER BY Code";
 
 const req_message_Dekidaka =
-  "SELECT MAX([HourNo]) AS x, SUM([Value]) AS Value, SUM(Value * CycleTime) / (select SUM(Value) AS ActValue from tbProductionActual WHERE ValueType = 'OK' AND ProductionDate = " +
+  "SELECT Distinct([tbProductionActual].[RxNo]) as RxNo,([HourNo]) as HourNo,([ProductionDate]) as ProductionDate,([ShiftNo]) as ShiftNo,([Value]) as Value,[CT].CycleTime as CT FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbPartLine on tbProductionActual.RxNo_Line = tbPartLine.RxNo_Line LEFT JOIN (SELECT MAX([RxNo_Line]) as RxNo_Line, Avg([CycleTime]) as CycleTime FROM [RTDensoLineInfo].[dbo].[tbPartLine] GROUP BY RxNo_Line) as CT on CT.RxNo_Line = tbProductionActual.RxNo_Line LEFT JOIN tbLine on tbPartLine.RxNo_Line  = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'PPA' AND ShiftNo = 'A' AND ProductionDate = " +
   x +
-  " group by ProductionDate) AS CTAvg, MAX([CycleTime]) AS CycleTime, MAX([ManPower]) AS ManPower, MAX([tbLine].[Code]) as LineCode, MAX([tbLine].[Name]) as LineName, MAX([tbSection].[Code]) as SectionCode, MAX([tbSection].[Department]) as Department FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbPart on tbProductionActual.RxNo_Part = tbPart.RxNo LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'PPA' AND ShiftNo = 'A' AND ProductionDate = " +
-  x +
-  " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') GROUP BY tbProductionActual.HourNo ORDER BY tbProductionActual.HourNo";
+  " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2')";
 
 const req_message_LossSum =
   "SELECT [tbLine].[Code] AS LineCode, [tbLine].[Name] AS LineName, [tbDailyWorkRecord].[Code] AS LossCode, [tbDailyWorkRecord].[Description] AS Description, [tbDailyWorkRecord].[Minute] AS Time FROM [RTDensoLineInfo].[dbo].[tbDailyWorkRecord] LEFT JOIN tbLine on tbDailyWorkRecord.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ProductionDate = " +
@@ -461,14 +459,20 @@ io.on("connection", (socket) => {
     appPool.query(req_message_OALossSums, function (err, result, fields) {
       socket.emit("req_message_OALossSum", result);
     });
+    // const req_message_Dekidakas =
+    //   "SELECT MAX([HourNo]) AS x, SUM([Value]) AS Value, SUM(Value * CycleTime) / (select SUM(Value) AS ActValue from tbProductionActual WHERE ValueType = 'OK' AND ProductionDate = " +
+    //   x +
+    //   " group by ProductionDate) AS CTAvg, MAX([CycleTime]) AS CycleTime, MAX([ManPower]) AS ManPower, MAX([tbLine].[Code]) as LineCode, MAX([tbLine].[Name]) as LineName, MAX([tbSection].[Code]) as SectionCode, MAX([tbSection].[Department]) as Department FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbPart on tbProductionActual.RxNo_Part = tbPart.RxNo LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'PPA' AND ShiftNo = 'A' AND ProductionDate = " +
+    //   x +
+    //   " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') " +
+    //   filterLine +
+    //   " GROUP BY tbProductionActual.HourNo ORDER BY tbProductionActual.HourNo";
     const req_message_Dekidakas =
-      "SELECT MAX([HourNo]) AS x, SUM([Value]) AS Value, SUM(Value * CycleTime) / (select SUM(Value) AS ActValue from tbProductionActual WHERE ValueType = 'OK' AND ProductionDate = " +
-      x +
-      " group by ProductionDate) AS CTAvg, MAX([CycleTime]) AS CycleTime, MAX([ManPower]) AS ManPower, MAX([tbLine].[Code]) as LineCode, MAX([tbLine].[Name]) as LineName, MAX([tbSection].[Code]) as SectionCode, MAX([tbSection].[Department]) as Department FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbPart on tbProductionActual.RxNo_Part = tbPart.RxNo LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'PPA' AND ShiftNo = 'A' AND ProductionDate = " +
+      "SELECT Distinct([tbProductionActual].[RxNo]) as RxNo,([tbProductionActual].[RxNo_Line]) as RxNo_Line,([HourNo]) as HourNo,([ProductionDate]) as ProductionDate,([ShiftNo]) as ShiftNo,([Value]) as Value,[CT].CycleTime as CT FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbPartLine on tbProductionActual.RxNo_Line = tbPartLine.RxNo_Line LEFT JOIN (SELECT MAX([RxNo_Line]) as RxNo_Line, Avg([CycleTime]) as CycleTime FROM [RTDensoLineInfo].[dbo].[tbPartLine] GROUP BY RxNo_Line) as CT on CT.RxNo_Line = tbProductionActual.RxNo_Line LEFT JOIN tbLine on tbPartLine.RxNo_Line  = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'PPA' AND ShiftNo = 'A' AND ProductionDate = " +
       x +
       " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') " +
-      filterLine +
-      " GROUP BY tbProductionActual.HourNo ORDER BY tbProductionActual.HourNo";
+      filterLine;
+
     console.log(req_message_Dekidakas);
     appPool.query(req_message_Dekidakas, function (err, result, fields) {
       socket.emit("req_message_Dekidaka", result);

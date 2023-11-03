@@ -211,6 +211,11 @@ var myDIV2 = document.getElementById("myDIV2");
 var IV_btn = document.getElementById("toggleDivButtonIV");
 var EC_btn = document.getElementById("toggleDivButtonEC");
 
+var Defect = document.getElementById("Mydefect");
+var InterLoss = document.getElementById("Myinterloss");
+var Df_btn = document.getElementById("defectbutton");
+var IL_btn = document.getElementById("interlossbutton");
+
 IV_btn.onclick = function () {
   myDIV2.style.display = "none";
   myDIV1.style.display = "block";
@@ -226,6 +231,30 @@ IV_btn.onclick = function () {
 EC_btn.onclick = function () {
   myDIV2.style.display = "block";
   myDIV1.style.display = "none";
+  safety_Modal.style.display = "none";
+  QC_Modal.style.display = "none";
+  cost_Modal.style.display = "none";
+  delivery_Modal.style.display = "none";
+  Prod_Modal.style.display = "none";
+  Energy_Modal.style.display = "none";
+  hide.style.display = "none";
+};
+
+Df_btn.onclick = function () {
+  InterLoss.style.display = "none";
+  Defect.style.display = "block";
+  safety_Modal.style.display = "none";
+  QC_Modal.style.display = "none";
+  cost_Modal.style.display = "none";
+  delivery_Modal.style.display = "none";
+  Prod_Modal.style.display = "none";
+  Energy_Modal.style.display = "none";
+  hide.style.display = "none";
+};
+
+IL_btn.onclick = function () {
+  InterLoss.style.display = "block";
+  Defect.style.display = "none";
   safety_Modal.style.display = "none";
   QC_Modal.style.display = "none";
   cost_Modal.style.display = "none";

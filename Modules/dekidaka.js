@@ -539,66 +539,150 @@ const AccPlan = document.querySelectorAll(".deki-8-2-number");
 const AccActual = document.querySelectorAll(".deki-8-3-number");
 var AccPlan_Deki = 0;
 var AccActual_Deki = 0;
+var AccPlan_Deki = 0;
+var CountDeki = 0;
+
+var AccActual_Deki_1 = 0;
+var AccActual_Deki_2 = 0;
+var AccActual_Deki_3 = 0;
+var AccActual_Deki_4 = 0;
+var AccActual_Deki_5 = 0;
+var AccActual_Deki_6 = 0;
+var AccActual_Deki_7 = 0;
+var AccActual_Deki_8 = 0;
+var AccActual_Deki_9 = 0;
+var AccActual_Deki_10 = 0;
+
+var AccActual_PlanDeki_1 = 0;
+var AccActual_PlanDeki_2 = 0;
+var AccActual_PlanDeki_3 = 0;
+var AccActual_PlanDeki_4 = 0;
+var AccActual_PlanDeki_5 = 0;
+var AccActual_PlanDeki_6 = 0;
+var AccActual_PlanDeki_7 = 0;
+var AccActual_PlanDeki_8 = 0;
+var AccActual_PlanDeki_9 = 0;
+var AccActual_PlanDeki_10 = 0;
+
+var CS = [];
 
 Houly_Dekidaka();
 function Houly_Dekidaka() {
   socket.on("req_message_Dekidaka", (data) => {
-    AccPlan.forEach((item) => {
-      data.recordset.forEach((e) => {
-        AccPlan_Deki += e.CTAvg;
-        item.innerHTML = `<b>${formatNumber(AccPlan_Deki, 1)}</b>`;
-      });
-    });
+    CurrentLossDekidaka.data.datasets[0].data = 0;
+    CurrentLossDekidaka.update();
+    CurrentLossDekidaka.data.datasets[1].data = 0;
+    CurrentLossDekidaka.update();
+    AccActual_Deki_1 = 0;
+    AccActual_Deki_2 = 0;
+    AccActual_Deki_3 = 0;
+    AccActual_Deki_4 = 0;
+    AccActual_Deki_5 = 0;
+    AccActual_Deki_6 = 0;
+    AccActual_Deki_7 = 0;
+    AccActual_Deki_8 = 0;
+    AccActual_Deki_9 = 0;
+    AccActual_Deki_10 = 0;
+
+    AccActual_PlanDeki_1 = 0;
+    AccActual_PlanDeki_2 = 0;
+    AccActual_PlanDeki_3 = 0;
+    AccActual_PlanDeki_4 = 0;
+    AccActual_PlanDeki_5 = 0;
+    AccActual_PlanDeki_6 = 0;
+    AccActual_PlanDeki_7 = 0;
+    AccActual_PlanDeki_8 = 0;
+    AccActual_PlanDeki_9 = 0;
+    AccActual_PlanDeki_10 = 0;
+
+    AccActual_Deki = 0;
+
     AccActual.forEach((item) => {
       data.recordset.forEach((e) => {
         AccActual_Deki += e.Value;
-        item.innerHTML = `<b>${formatNumber(AccActual_Deki, 1)}</b>`;
+        item.innerHTML = `<b>${formatNumber(AccActual_Deki, 2)}</b>`;
       });
     });
-    CurrentLossDekidaka.data.datasets[0].data = 0;
-    CurrentLossDekidaka.update();
+    AccPlan.forEach((item) => {
+      data.recordset.forEach((e) => {
+        const duplicate = CS.find((obj) => obj.RxNo === e.RxNo);
+        console.log(duplicate);
+        AccPlan_Deki = 36300 / e.CT;
+        item.innerHTML = `<b>${formatNumber(AccPlan_Deki, 0)}</b>`;
+      });
+    });
+
     data.recordset.forEach((e) => {
-      // console.log(e);
-      // console.log(CurrentLossDekidaka);
-      if (e.x === 1) {
-        CurrentLossDekidaka.data.datasets[0].data[0] = e.Value;
-        CurrentLossDekidaka.data.datasets[1].data[0] = 0;
+      if (e.HourNo === 1) {
+        // console.log(e);
+        AccActual_Deki_1 += e.Value;
+        AccActual_PlanDeki_1 = 3300 / e.CT;
+        CurrentLossDekidaka.data.datasets[0].data[0] = AccActual_Deki_1;
+        CurrentLossDekidaka.data.datasets[1].data[0] =
+          AccActual_PlanDeki_1.toFixed(0);
         CurrentLossDekidaka.update();
-      } else if (e.x === 2) {
-        CurrentLossDekidaka.data.datasets[0].data[1] = e.Value;
-        CurrentLossDekidaka.data.datasets[1].data[1] = 0;
+      } else if (e.HourNo === 2) {
+        AccActual_Deki_2 += e.Value;
+        AccActual_PlanDeki_2 = 3600 / e.CT;
+        CurrentLossDekidaka.data.datasets[0].data[1] = AccActual_Deki_2;
+        CurrentLossDekidaka.data.datasets[1].data[1] =
+          AccActual_PlanDeki_2.toFixed(0);
         CurrentLossDekidaka.update();
-      } else if (e.x === 3) {
-        CurrentLossDekidaka.data.datasets[0].data[2] = e.Value;
-        CurrentLossDekidaka.data.datasets[1].data[2] = 0;
+      } else if (e.HourNo === 3) {
+        AccActual_Deki_3 += e.Value;
+        AccActual_PlanDeki_3 = 3000 / e.CT;
+        CurrentLossDekidaka.data.datasets[0].data[2] = AccActual_Deki_3;
+        CurrentLossDekidaka.data.datasets[1].data[2] =
+          AccActual_PlanDeki_3.toFixed(0);
         CurrentLossDekidaka.update();
-      } else if (e.x === 4) {
-        CurrentLossDekidaka.data.datasets[0].data[3] = e.Value;
-        CurrentLossDekidaka.data.datasets[1].data[3] = 0;
+      } else if (e.HourNo === 4) {
+        AccActual_Deki_4 += e.Value;
+        AccActual_PlanDeki_4 = 3600 / e.CT;
+        CurrentLossDekidaka.data.datasets[0].data[3] = AccActual_Deki_4;
+        CurrentLossDekidaka.data.datasets[1].data[3] =
+          AccActual_PlanDeki_4.toFixed(0);
         CurrentLossDekidaka.update();
-      } else if (e.x === 5) {
-        CurrentLossDekidaka.data.datasets[0].data[4] = e.Value;
-        CurrentLossDekidaka.data.datasets[1].data[4] = 0;
+      } else if (e.HourNo === 5) {
+        AccActual_Deki_5 += e.Value;
+        AccActual_PlanDeki_5 = 3600 / e.CT;
+        CurrentLossDekidaka.data.datasets[0].data[4] = AccActual_Deki_5;
+        CurrentLossDekidaka.data.datasets[1].data[4] =
+          AccActual_PlanDeki_5.toFixed(0);
         CurrentLossDekidaka.update();
-      } else if (e.x === 6) {
-        CurrentLossDekidaka.data.datasets[0].data[5] = e.Value;
-        CurrentLossDekidaka.data.datasets[1].data[5] = 0;
+      } else if (e.HourNo === 6) {
+        AccActual_Deki_6 += e.Value;
+        AccActual_PlanDeki_6 = 3600 / e.CT;
+        CurrentLossDekidaka.data.datasets[0].data[5] = AccActual_Deki_6;
+        CurrentLossDekidaka.data.datasets[1].data[5] =
+          AccActual_PlanDeki_6.toFixed(0);
         CurrentLossDekidaka.update();
-      } else if (e.x === 7) {
-        CurrentLossDekidaka.data.datasets[0].data[6] = e.Value;
-        CurrentLossDekidaka.data.datasets[1].data[6] = 0;
+      } else if (e.HourNo === 7) {
+        AccActual_Deki_7 += e.Value;
+        AccActual_PlanDeki_7 = 3000 / e.CT;
+        CurrentLossDekidaka.data.datasets[0].data[6] = AccActual_Deki_7;
+        CurrentLossDekidaka.data.datasets[1].data[6] =
+          AccActual_PlanDeki_7.toFixed(0);
         CurrentLossDekidaka.update();
-      } else if (e.x === 8) {
-        CurrentLossDekidaka.data.datasets[0].data[7] = e.Value;
-        CurrentLossDekidaka.data.datasets[1].data[7] = 0;
+      } else if (e.HourNo === 8) {
+        AccActual_Deki_8 += e.Value;
+        AccActual_PlanDeki_8 = 3600 / e.CT;
+        CurrentLossDekidaka.data.datasets[0].data[7] = AccActual_Deki_8;
+        CurrentLossDekidaka.data.datasets[1].data[7] =
+          AccActual_PlanDeki_8.toFixed(0);
         CurrentLossDekidaka.update();
-      } else if (e.x === 9) {
-        CurrentLossDekidaka.data.datasets[0].data[8] = e.Value;
-        CurrentLossDekidaka.data.datasets[1].data[8] = 0;
+      } else if (e.HourNo === 9) {
+        AccActual_Deki_9 += e.Value;
+        AccActual_PlanDeki_9 = 3600 / e.CT;
+        CurrentLossDekidaka.data.datasets[0].data[8] = AccActual_Deki_9;
+        CurrentLossDekidaka.data.datasets[1].data[8] =
+          AccActual_PlanDeki_9.toFixed(0);
         CurrentLossDekidaka.update();
-      } else if (e.x === 10) {
-        CurrentLossDekidaka.data.datasets[0].data[9] = e.Value;
-        CurrentLossDekidaka.data.datasets[1].data[9] = 0;
+      } else if (e.HourNo === 10) {
+        AccActual_Deki_10 += e.Value;
+        AccActual_PlanDeki_10 = 5400 / e.CT;
+        CurrentLossDekidaka.data.datasets[0].data[9] = AccActual_Deki_10;
+        CurrentLossDekidaka.data.datasets[1].data[9] =
+          AccActual_PlanDeki_10.toFixed(0);
         CurrentLossDekidaka.update();
       }
     });
@@ -609,11 +693,6 @@ function deleteRow(btn) {
   var row = btn.parentNode.parentNode;
   row.parentNode.removeChild(row);
 }
-
-// document.getElementById("nameInput").value = "";
-// document.getElementById("emailInput").value = "";
-// document.getElementById("numberInput").value = "";
-// document.getElementById("addressInput").value = "";
 
 LD = [];
 Loss_Detail();
@@ -665,7 +744,7 @@ AddOption();
 function AddOption() {
   var SectionCode = document.getElementById("filterBySectionCode");
   socket.on("req_message_Data", (data) => {
-    console.log(data.recordset);
+    // console.log(data.recordset);
     removeAll(SectionCode);
     data.recordset.filter((e) => {
       var optionSectionCode = document.createElement("option");
@@ -713,8 +792,6 @@ var searchFilter = () => {
 var searchFilterLineCode = () => {
   let selectedLineName = document.getElementById("filterByLineName").value;
 
-  // console.log(selectedLineName);
   const selected = selectedLineName.slice(7);
-  // console.log(selected);
   socket.emit("filterdataLineName", selected);
 };

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/style/SafetyModel.css" />
     <link rel="stylesheet" href="/style/qcmodel.css" />
     <link rel="icon" href="/icons/water-shortage.png" />
+    <meta http-equiv="refresh" content="43200">
     <title>TOP VIEW MANAGEMENT</title>
   </head>
 
@@ -92,8 +93,6 @@
 
               function display_ct() {
                 var x = new Date();
-                // document.getElementById('ct').innerHTML = x3;
-                // date part ///
                 var month = x.getMonth() + 1;
                 var day = x.getDate();
                 var year = x.getFullYear();
@@ -105,7 +104,6 @@
                 }
                 var x3 = day + "-" + month + "-" + year;
 
-                // time part //
                 var hour = x.getHours();
                 var minute = x.getMinutes();
                 var second = x.getSeconds();
@@ -154,15 +152,16 @@
           />
           <div class="item item-7-1"><b>Quality Control</b></div>
           <div class="item item-7-2"><b>Active</b></div>
-          <div class="item item-7-3"><b>● Defect Ratio</b></div>
-          <div class="item item-7-4">(% : P-Chart)</div>
-          <div class="item item-7-5">
-            <b><span style="color: Black">0%</span> / 0%</b>
+          <div class="item item-7-3" type="button" id="defectbutton"><b>● Defect Ratio</b>
           </div>
-          <div class="item item-7-6"><b>● Internal Loss</b></div>
-          <div class="item item-7-7">(%)</div>
-          <div class="item item-7-8">
-            <b><span style="color: Black">0%</span> / 0%</b>
+          <div class="item item-7-4" type="button" id="defectbutton">(% : P-Chart)</div>
+          <div class="item item-7-5" type="button" id="defectbutton">
+            <b>In Process</b>
+          </div>
+          <div class="item item-7-6" type="button" id="interlossbutton"><b>● Internal Loss</b></div>
+          <div class="item item-7-7" type="button" id="interlossbutton">(%)</div>
+          <div class="item item-7-8" type="button" id="interlossbutton">
+            <b>In Process</b>
           </div>
         </div>
         <div class="item item-8" id="cost_Btn">
@@ -316,7 +315,7 @@
           <div class="item item-14-4-3"><b>● CO2 Emission</b></div>
           <div class="item item-14-4-4">(Kg./piece)</div>
           <div class="item item-14-4-5">
-            <b><span style="color: black">0 KB</span> / 0 KB</b>
+            <b>In Process</b>
           </div>
         </div>
       </div>
@@ -1589,10 +1588,14 @@
             >Detail >></a
           >
         </div>
-        <!-- <div class="QC_Modal QC_Modal_box1"></div>
-      <div class="QC_Modal QC_Modal_box2"></div>
-      <div class="QC_Modal QC_Modal_box3"></div> -->
-        <div class="QC_Modal QC_Modal_iframe" id="">
+        <div class="QC_Modal QC_Modal_iframe" id="Mydefect">
+        <iframe
+            src="https://app.powerbi.com/reportEmbed?reportId=2cf417ec-0a2c-487b-a87a-61c9cd7fc5cf&autoAuth=true&pageName=ReportSection97e52f5e093641d0008e"
+            frameborder="0"
+            allowfullscreen="true"
+          ></iframe>
+        </div>
+        <div class="QC_Modal QC_Modal_iframe" id="Myinterloss">
           <iframe
             src="https://app.powerbi.com/reportEmbed?reportId=2cf417ec-0a2c-487b-a87a-61c9cd7fc5cf&autoAuth=true&pageName=ReportSectionf2244a2a74ac0a19cbd5"
             frameborder="0"
