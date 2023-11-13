@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/VisualInventory/position.css">
+  <link rel="stylesheet" href="/VisualInventory/style.css">
+  <link rel="icon" href="/VisualInventory/icon/Inventory.png">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="/semantic.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script> -->
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+
+  <title>EPD Inventory</title>
+</head>
+
+<body onload=display_ct();>
+  <section>
+    <div class="container">
+      <div class="item-0">
+        <p>Powered by EPD DX Promotion </p>
+      </div>
+      <div class="item-0-1">
+        <hr>
+      </div>
+      <div class="item-0-2"><b><span id='ct'>
+            <script type="text/javascript">
+              function display_c() {
+                var refresh = 1000; // Refresh rate in milli seconds
+                mytime = setTimeout('display_ct()', refresh)
+              }
+              function display_ct() {
+                var x = new Date()
+                // document.getElementById('ct').innerHTML = x3;
+                // date part ///
+                var month = x.getMonth() + 1;
+                var day = x.getDate();
+                var year = x.getFullYear();
+                if (month < 10) { month = '0' + month; }
+                if (day < 10) { day = '0' + day; }
+                var x3 = day + '-' + month + '-' + year;
+
+                // time part //
+                var hour = x.getHours();
+                var minute = x.getMinutes();
+                var second = x.getSeconds();
+                if (hour < 10) { hour = '0' + hour; }
+                if (minute < 10) { minute = '0' + minute; }
+                if (second < 10) { second = '0' + second; }
+                var x3 = x3 + ' ' + hour + ':' + minute + ':' + second
+                document.getElementById('ct').innerHTML = x3;
+                display_c();
+              }
+            </script>
+          </span></b>
+      </div>
+    </div>
+    <Div class="item-1">
+      <b>EPD In-house Inventory Control</b>
+    </Div>
+    <Div class="item item-2">
+      <p>INVENTORY STATUS WITH PRODUCTION ACHEIVMENT</p>
+    </Div>
+    <div class="button button-2-1">
+      <a href="#" class="button button_safe">Safety Control</a>
+    </div>
+    <div class="button button-2-2">
+      <a
+      href="/Main/dekidaka.html"
+      class="button button_deki"
+      >DEKIDAKA</a>
+    </div>
+    <div class="button button-2-3">
+      <a href="#" class="button button_man">Manpower</a>
+    </div>
+    <div class="button button-2-4">
+      <a
+        href="/VisualInventory/inventory.html"
+        class="button button_in"
+        >Inventory</a
+      >
+    </div>
+    <div class="button button-2-5">
+      <a href="#" class="button button_truck">TruckTime</a>
+    </div>
+    <div class="button button-2-6">
+      <a href="#" class="button button_qa">Quality</a>
+    </div>
+    <div class="button button-2-7">
+      <a href="#" class="button button_co2">CO2 Emission</a>
+    </div>
+    <div class="item-2-1">
+      <b>Overall EPD Summary</b>
+    </div>
+    <Div class="item item-2-2">
+    <div class="dropdown dropSectionCodetext">Section Code :</div>
+    <div class="dropdown dropSectionCode">
+        <!-- <label for="cars">Section Code :</label> -->
+        <label class="select" for="slct">
+          <select id="slct" required="required">
+            <option value="" disabled="disabled" selected="selected">Select option</option>
+            <option value="#">One</option>
+            <option value="#">Two</option>
+            <option value="#">Three</option>
+            <option value="#">Four</option>
+            <option value="#">Five</option>
+            <option value="#">Six</option>
+            <option value="#">Seven</option>
+          </select>
+          <svg>
+            <use xlink:href="#select-arrow-down"></use>
+          </svg>
+        </label>
+        <!-- SVG Sprites-->
+        <svg class="sprites">
+          <symbol id="select-arrow-down" viewbox="0 0 10 6">
+            <polyline points="1 1 5 5 9 1"></polyline>
+          </symbol>
+        </svg>
+    </div>
+    <div class="dropdown dropSectionNametext">Section Name :</div>
+    <div class="dropdown dropSectionName">
+      <!-- <label for="cars">Section Name :</label> -->
+      <label class="select" for="slct">
+        <select id="slct" required="required">
+          <option value="" disabled="disabled" selected="selected">Select option</option>
+          <option value="#">One</option>
+          <option value="#">Two</option>
+          <option value="#">Three</option>
+          <option value="#">Four</option>
+          <option value="#">Five</option>
+          <option value="#">Six</option>
+          <option value="#">Seven</option>
+        </select>
+        <svg>
+          <use xlink:href="#select-arrow-down"></use>
+        </svg>
+      </label>
+      <!-- SVG Sprites-->
+      <svg class="sprites">
+        <symbol id="select-arrow-down" viewbox="0 0 10 6">
+          <polyline points="1 1 5 5 9 1"></polyline>
+        </symbol>
+      </svg>
+    </div>
+    <div class="dropdown dropLineNametext">Section Code :</div>
+    <div class="dropdown dropLineName">
+      <!-- <label for="cars">Line Name :</label> -->
+      <label class="select" for="slct">
+        <select id="slct" required="required">
+          <option value="" disabled="disabled" selected="selected">Select option</option>
+          <option value="#">One</option>
+          <option value="#">Two</option>
+          <option value="#">Three</option>
+          <option value="#">Four</option>
+          <option value="#">Five</option>
+          <option value="#">Six</option>
+          <option value="#">Seven</option>
+        </select>
+        <svg>
+          <use xlink:href="#select-arrow-down"></use>
+        </svg>
+      </label>
+      <!-- SVG Sprites-->
+      <svg class="sprites">
+        <symbol id="select-arrow-down" viewbox="0 0 10 6">
+          <polyline points="1 1 5 5 9 1"></polyline>
+        </symbol>
+      </svg>
+    </div>
+  </Div>
+    <section class="sc1">
+      <div class="item-3">
+        <img src="/VisualInventory/icon/InvenStatus.png" alt="status">
+        <div class="item-3-1">
+          <p>Inventory Status</p>
+        </div>
+        <div class="item-3-2">
+          <p>∙In-house Stock</p>
+        </div>
+        <div class="item-3-7">
+        <div id="chartDonut"></div>
+      </div>
+        <div class="item-3-3">
+          <p>∙Stock by Customer</p>
+        </div>
+        <div class="item-3-8">
+          <div id="chartStockbar"></div>
+        </div>
+        <div class="item-3-4">
+          <p>Assy Product</p>
+        </div>
+        <div class="item-3-9"> 
+              <p>1.01</p>
+        </div>
+        <div class="item-3-12"> 
+          <p>Day(s)</p>
+       </div>
+        <div class="item-3-5">
+          <p>Sub-Assy Product</p>
+        </div>
+        <div class="item-3-10"> 
+          <p>0.51</p>
+       </div>
+       <div class="item-3-12"> 
+        <p>Day(s)</p>
+     </div>
+       <div class="item-3-6">
+        <p>Part Product</p>
+      </div>
+         <div class="item-3-11"> 
+             <p>1.01</p>
+          </div>
+          <div class="item-3-12"> 
+            <p>Day(s)</p>
+         </div>
+        <!-- <div class="item-3-7"><canvas id="chartIdInv" width="250px" height="250px"
+            style="margin-left:20px;margin-top:-200px;background-color: rgba(165, 42, 42, 0);"></canvas></div> -->
+        <!-- <div class="item-3-8"><canvas id="CusIdStock" width="400px" height="270px" style="margin-left:10px;margin-top:-10px;background-color: rgba(165, 42, 42, 0);"></canvas></div> -->
+      </div>
+      <div class="item-4">
+        <img src="/VisualInventory/icon/OutStock.png" alt="progress">
+        <div class="item-4-1">
+          <p>Abnormal Stock Products</p>
+        </div>
+        <div class="item-4-2">
+          <div id="chartAbnormal"></div>
+        </div>
+        <!-- <div class="item-4-3"><canvas id="chartIdAbnormal" width="380px" height="220px" style="margin-left:-100px;margin-top:50px;background-color: rgba(165, 42, 42, 0);"></canvas></div> -->
+        <div class="item-4-3">
+          <p>Total Required</p>
+        </div>
+        <div class="item-4-4">
+          <p>1,235</p>
+        </div>
+        <div class="item-4-5">
+          <p>pcs.</p>
+        </div>
+      </div>
+    </section>
+
+    </div>
+  </section>
+  <div class="item-2-3"> <b>Detail Summary</b></div>
+  <Div class="item item-2-2">
+    <div class="dropdown dropSectionCodetext2">Section Code :</div>
+    <div class="dropdown dropSectionCode2">
+        <!-- <label for="cars">Section Code :</label> -->
+        <label class="select" for="slct">
+          <select id="slct" required="required">
+            <option value="" disabled="disabled" selected="selected">Select option</option>
+            <option value="#">One</option>
+            <option value="#">Two</option>
+            <option value="#">Three</option>
+            <option value="#">Four</option>
+            <option value="#">Five</option>
+            <option value="#">Six</option>
+            <option value="#">Seven</option>
+          </select>
+          <svg>
+            <use xlink:href="#select-arrow-down"></use>
+          </svg>
+        </label>
+        <!-- SVG Sprites-->
+        <svg class="sprites">
+          <symbol id="select-arrow-down" viewbox="0 0 10 6">
+            <polyline points="1 1 5 5 9 1"></polyline>
+          </symbol>
+        </svg>
+    </div>
+    <div class="dropdown dropSectionNametext2">Section Name :</div>
+    <div class="dropdown dropSectionName2">
+      <!-- <label for="cars">Section Name :</label> -->
+      <label class="select" for="slct">
+        <select id="slct" required="required">
+          <option value="" disabled="disabled" selected="selected">Select option</option>
+          <option value="#">One</option>
+          <option value="#">Two</option>
+          <option value="#">Three</option>
+          <option value="#">Four</option>
+          <option value="#">Five</option>
+          <option value="#">Six</option>
+          <option value="#">Seven</option>
+        </select>
+        <svg>
+          <use xlink:href="#select-arrow-down"></use>
+        </svg>
+      </label>
+      <!-- SVG Sprites-->
+      <svg class="sprites">
+        <symbol id="select-arrow-down" viewbox="0 0 10 6">
+          <polyline points="1 1 5 5 9 1"></polyline>
+        </symbol>
+      </svg>
+    </div>
+    <div class="dropdown dropLineNametext2">Section Code :</div>
+    <div class="dropdown dropLineName2">
+      <!-- <label for="cars">Line Name :</label> -->
+      <label class="select" for="slct">
+        <select id="slct" required="required">
+          <option value="" disabled="disabled" selected="selected">Select option</option>
+          <option value="#">One</option>
+          <option value="#">Two</option>
+          <option value="#">Three</option>
+          <option value="#">Four</option>
+          <option value="#">Five</option>
+          <option value="#">Six</option>
+          <option value="#">Seven</option>
+        </select>
+        <svg>
+          <use xlink:href="#select-arrow-down"></use>
+        </svg>
+      </label>
+      <!-- SVG Sprites-->
+      <svg class="sprites">
+        <symbol id="select-arrow-down" viewbox="0 0 10 6">
+          <polyline points="1 1 5 5 9 1"></polyline>
+        </symbol>
+      </svg>
+    </div>
+  </Div>
+
+  <section class="sc1">
+    <div class="item-5">
+      <img src="/VisualInventory/icon/Acheived.png" alt="outstock">
+      <div class="item-5-1">
+        <p>Production Achievements</p>
+      </div>
+      <div class="item-5-2">
+        <div id="chartAchieve"></div>
+      </div>
+      <!-- <div class="item-5-2"><canvas id="chartid" width="800px" height="430px" style="margin-left:20px;margin-top:10px;background-color: rgba(165, 42, 42, 0);"></canvas></div> -->
+      <div class="item-5-5">
+        <p>Acc. Plan</p>
+      </div>
+      <div class="item-5-8"> 
+            <p>1231</p>
+      </div>
+      <div class="item-5-11"> 
+        <p>pcs.</p>
+     </div>
+      <div class="item-5-6">
+        <p>Acc. Actual</p>
+      </div>
+      <div class="item-5-9"> 
+        <p>1220K</p>
+     </div>
+     <div class="item-5-11"> 
+      <p>pcs.</p>
+   </div>
+     <div class="item-5-7">
+      <p>%Acheivement</p>
+    </div>
+       <div class="item-5-10"> 
+           <p>73.2</p>
+        </div>
+        <div class="item-5-11"> 
+          <p>%</p>
+    </div>
+  </div> 
+    <div class="item-6">
+      <img src="/VisualInventory/icon/Stock.png" alt="stock">
+      <div class="item-6-1">
+        <p>Stock Status by Part Number</p>
+      </div>
+      <div class="item-6-2">
+        <table style="width: 800px;
+                                /* height: 100px; */
+                                overflow-y: auto;
+                                margin-top:0px;
+                                margin-left:0px;
+                                padding: 10px;
+                                text-align: left;
+                                border-collapse: collapse;
+                                border-spacing: 100px;
+                                width: 100%;               
+                                border-bottom: 1px solid #c5c0c0;">
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <th>Customer</th>
+            <th>Part No.</th>
+            <th style="width:32%">Stock Amount</th>
+            <th>Status</th>
+            <th>Due Date</th>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>
+              <div class="progress-container">
+                <progress value="20000" max="23000">95%</progress>
+              </div>
+              20,000
+            </td>
+            <td>
+              <span class="item-6-3">
+                Normal
+              </span>
+            </td>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>
+              <div class="progress-container">
+                <progress value="20000" max="23000">95%</progress>
+              </div>
+              24,000
+            </td>
+            <td>
+              <span class="item-6-3">
+                Normal
+              </span>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>24,000</td>
+            <td> <span class="item-6-4">
+                Shortage
+              </span></td>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>24,000</td>
+            <td> <span class="item-6-4">
+                Shortage
+              </span></td>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>24,000</td>
+            <td> <span class="item-6-4">
+                Shortage
+              </span></td>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>24,000</td>
+            <td> <span class="item-6-3">
+                Normal
+              </span></td>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>
+              <div class="progress-container">
+                <progress value="20000" max="23000">95%</progress>
+              </div>
+              21,000
+            </td>
+            <td> <span class="item-6-5">
+                Over limit
+              </span></td>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>
+              <div class="progress-container">
+                <progress value="20000" max="23000">95%</progress>
+              </div>
+              21,000
+            </td>
+            <td> <span class="item-6-5">
+                Over limit
+              </span></td>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>24,000</td>
+            <td> <span class="item-6-5">
+                Over limit
+              </span></td>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>24,000</td>
+            <td> <span class="item-6-3">
+                Normal
+              </span></td>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>24,000</td>
+            <td> <span class="item-6-3">
+                Normal
+              </span></td>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>24,000</td>
+            <td><span class="item-6-3">
+                Normal
+              </span></td>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>24,000</td>
+            <td> <span class="item-6-3">
+                Normal
+              </span></td>
+            <td> 20/07/2023</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #706b6b;">
+            <td>TOYOTA</td>
+            <td>27137T</td>
+            <td>24,000</td>
+            <td> <span class="item-6-3">
+                Normal
+              </span></td>
+            <td> 20/07/2023</td>
+          </tr>
+        </table>
+      </div>
+      <!-- </div> -->
+      <!-- <div id="chart"></div> -->
+  </section>
+  <script src="/VisualInventory/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"
+    integrity="sha512-+sXUwEYakGznuXubXLO/7LWSAPcm+U3NxMJaSu3S5OcvruAAAzaC50Uh4TW9KWj0hA6vfPAjB7E1uuIXgn9vmQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script>
+  var socket = io("http://172.23.32.56:3000");
+</script> -->
+</body>
+
+</html>
