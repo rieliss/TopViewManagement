@@ -131,7 +131,7 @@ const doughnutLabelLossClar = {
     ctx.fillStyle = "rgba(255,224,181,1)";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("Loss%", xCoor, yCoor);
+    ctx.fillText("Loss(mins.)", xCoor, yCoor);
   },
 };
 
@@ -150,11 +150,11 @@ const chartIdLossClar = new Chart(chrtLossClar, {
       {
         data: [0, 0, 0, 0, 0],
         backgroundColor: [
-          "rgba(192,144,0,1)",
-          "rgba(226,170,0,1)",
-          "rgba(255,192,0,1)",
-          "rgba(255,209,132,1)",
-          "rgba(255,224,181,1)",
+          "rgba(157, 1, 6, 1)",
+          "rgba(208, 0, 0, 1)",
+          "rgba(232, 93, 4, 1)",
+          "rgba(244, 140, 6, 1)",
+          "#fbb537",
         ],
         borderWidth: 0,
       },
