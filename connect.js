@@ -29,11 +29,27 @@ pool.connect((err) => {
   console.log("Database connected");
 });
 
+// const config = {
+//   user: "densoinfo",
+//   password: "DensoInfo",
+//   database: "RTDensoLineInfo",
+//   server: "172.23.3.9",
+//   pool: {
+//     max: 10,
+//     min: 0,
+//     idleTimeoutMillis: 30000,
+//   },
+//   options: {
+//     encrypt: false,
+//     trustServerCertificate: true,
+//   },
+// };
+
 const config = {
   user: "densoinfo",
-  password: "DensoInfo",
+  password: "densoinfo",
   database: "RTDensoLineInfo",
-  server: "172.23.3.9",
+  server: "10.72.220.14",
   pool: {
     max: 10,
     min: 0,
@@ -45,7 +61,6 @@ const config = {
   },
 };
 
-//instantiate a connection pool
 const appPool = new sql.ConnectionPool(config);
 
 function getPreviousDay(date = new Date()) {
@@ -57,7 +72,6 @@ function getPreviousDay(date = new Date()) {
 
 const nowdate = new Date("2023-10-30");
 const Date_Today = nowdate.toISOString();
-// const Date_Today = new Date("2023-10-30").toISOString();
 const today = getPreviousDay();
 const todayDate = today.toISOString();
 let todayDate_result = todayDate.slice(0, 10);
@@ -80,7 +94,6 @@ const y = "'" + monthDate_result + "-01 00:00:00.000'";
 
 const firstdate = "'" + monthDate_result + "-01 00:00:00.000'";
 const lastdate = "'" + monthDate_result + "-" + today_Loss + " 00:00:00.000'";
-// console.log(lastdate)
 
 var filter = "";
 console.log(filter);
@@ -91,25 +104,9 @@ const req_message_Loss =
   " AND DataModule = 'LOSS'";
 
 const req_message_ProdAct =
-  "SELECT RxNo_Line,Value FROM tbProductionActual WHERE ProductionDate = " +
+  "SELECT RxNo_Line,Value FROM tbProductionActual LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ProductionDate = " +
   x +
-  " AND ValueType = 'OK' AND RxNo_Line != 'PRS2308000000005' AND RxNo_Line != 'PRS2301000000009'";
-
-const req_message_ProdAct_PPA =
-  "SELECT RxNo_Line,Value,HourNo FROM tbProductionActual WHERE ProductionDate = " +
-  x +
-  " AND ValueType = 'PPA' AND RxNo_Line != 'PRS2308000000005' AND RxNo_Line != 'PRS2301000000009'";
-
-const req_message_ProdAct_date =
-  "SELECT RxNo_Line,Value,ProductionDate FROM tbProductionActual WHERE ProductionDate >= " +
-  firstdate +
-  " AND ProductionDate <= " +
-  lastdate +
-  " AND ValueType = 'OK' AND RxNo_Line != 'PRS2308000000005' AND RxNo_Line != 'PRS2301000000009'";
-
-const req_message_mp =
-  "SELECT RxNo,RxNo_Line,ProductionDate,InLine_WT,OutLine_WT,Mizusumashi_WT,LineLeader_WT,TeamLeader_WT FROM tbDailyManPower WHERE ProductionDate = " +
-  x;
+  " AND ValueType = 'OK' AND Department in ('Alternator Product', 'ECC, ABS & Asmo Product','Parts Mfg.1','Parts Mfg.2','Starter Product')";
 
 const req_message_ProdPlan =
   "SELECT RxNo,RxNo_Line,PlanMonth,ProdPlanPerMonth,WorkingDay FROM tbManPowerPlan WHERE PlanMonth = " +
@@ -118,9 +115,6 @@ const req_message_ProdPlan =
 
 const req_message_commonDay =
   "SELECT DataCode,DataValue FROM tbCommonData WHERE DataType = 'WORK_DAY'";
-
-const req_message_LineSummary =
-  "SELECT RxNo_Line,Department FROM line_summary where Department in ('Alternator Product', 'ECC, ABS & Asmo Product','Parts Mfg.1','Parts Mfg.2','Starter Product')";
 
 const req_message_ProdAct_per_date =
   "SELECT [ProductionDate],[ShiftNo],[NetTime],[CycleTime],[Value],[tbLine].[Code] AS LineCode, [tbLine].[Name] AS LineName, [tbLine].[ID], [tbSection].[Code] AS SectionCode, [tbSection].[Department] FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'OK' AND ProductionDate >= " +
@@ -223,7 +217,7 @@ const req_message_expense =
 const req_message_invest =
   "SELECT SUM(Actual) AS Actual, SUM(Target) AS Target FROM inventory_db.investment where dataMonth = '102023'";
 
-console.log(req_message_Dekidaka);
+// console.log(req_message_Dekidaka);
 
 app.get("/Loss", function (req, res) {
   req.app.locals.db.query(req_message_Loss, function (err, recorfset) {
@@ -238,17 +232,6 @@ app.get("/Loss", function (req, res) {
 
 app.get("/Losss", function (req, res) {
   req.app.locals.db.query(req_message_Losss, function (err, recorfset) {
-    if (err) {
-      console.log(err);
-      res.status(500).send(err);
-      return;
-    }
-    res.send(recorfset);
-  });
-});
-
-app.get("/Manpower", function (req, res) {
-  req.app.locals.db.query(req_message_mp, function (err, recorfset) {
     if (err) {
       console.log(err);
       res.status(500).send(err);
@@ -313,28 +296,6 @@ app.get("/ProdActs", function (req, res) {
   });
 });
 
-app.get("/ProdActPPA", function (req, res) {
-  req.app.locals.db.query(req_message_ProdAct_PPA, function (err, recorfset) {
-    if (err) {
-      console.log(err);
-      res.status(500).send(err);
-      return;
-    }
-    res.send(recorfset);
-  });
-});
-
-app.get("/ProdActDate", function (req, res) {
-  req.app.locals.db.query(req_message_ProdAct_date, function (err, recorfset) {
-    if (err) {
-      console.log(err);
-      res.status(500).send(err);
-      return;
-    }
-    res.send(recorfset);
-  });
-});
-
 app.get("/ProdActDate", function (req, res) {
   req.app.locals.db.query(
     req_message_ProdAct_per_date,
@@ -376,16 +337,9 @@ app.get("/", function (req, res) {
 });
 app.use(express.static(__dirname));
 
-//require route handlers and use the same connection pool everywhere
 const route1 = require("./routes/route.js");
 
 app.get("/path", route1);
-
-app.get("/LineSummary", function (req, res) {
-  pool.query(req_message_LineSummary, function (err, result, fields) {
-    res.json(result);
-  });
-});
 
 var filter = "";
 var filterLine = "";
@@ -402,7 +356,6 @@ io.on("connection", (socket) => {
       " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') " +
       filterLine +
       " GROUP BY ProductionDate ORDER BY Department";
-    // console.log(req_message_ProdAct_per_dates);
     appPool.query(
       req_message_ProdAct_per_dates,
       function (err, result, fields) {
@@ -415,7 +368,6 @@ io.on("connection", (socket) => {
       " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') " +
       filterLine +
       " GROUP BY [tbLine].[RxNo] ORDER BY ID";
-    // console.log(req_message_mp_dailys);
     appPool.query(req_message_mp_dailys, function (err, result, fields) {
       socket.emit("Manpower_Daily", result);
     });
@@ -425,7 +377,6 @@ io.on("connection", (socket) => {
       " AND DataModule = 'LOSS' AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') " +
       filterLine +
       " ORDER BY Department";
-    // console.log(req_message_Lossss);
     appPool.query(req_message_Lossss, function (err, result, fields) {
       socket.emit("req_message_Losss", result);
     });
@@ -435,7 +386,6 @@ io.on("connection", (socket) => {
       " AND DataModule = 'LOSS' AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') " +
       filterLine +
       " GROUP BY [tbDailyWorkRecord].[Code] ORDER BY Minute DESC";
-    // console.log(req_message_LossRankings);
     appPool.query(req_message_LossRankings, function (err, result, fields) {
       socket.emit("req_message_LossRanking", result);
     });
@@ -445,7 +395,6 @@ io.on("connection", (socket) => {
       " AND DataModule = 'LOSS' AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') " +
       filterLine +
       " ORDER BY LineName";
-    // console.log(req_message_LossSums);
     appPool.query(req_message_LossSums, function (err, result, fields) {
       socket.emit("req_message_LossSum", result);
     });
@@ -459,14 +408,6 @@ io.on("connection", (socket) => {
     appPool.query(req_message_OALossSums, function (err, result, fields) {
       socket.emit("req_message_OALossSum", result);
     });
-    // const req_message_Dekidakas =
-    //   "SELECT MAX([HourNo]) AS x, SUM([Value]) AS Value, SUM(Value * CycleTime) / (select SUM(Value) AS ActValue from tbProductionActual WHERE ValueType = 'OK' AND ProductionDate = " +
-    //   x +
-    //   " group by ProductionDate) AS CTAvg, MAX([CycleTime]) AS CycleTime, MAX([ManPower]) AS ManPower, MAX([tbLine].[Code]) as LineCode, MAX([tbLine].[Name]) as LineName, MAX([tbSection].[Code]) as SectionCode, MAX([tbSection].[Department]) as Department FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbPart on tbProductionActual.RxNo_Part = tbPart.RxNo LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'PPA' AND ShiftNo = 'A' AND ProductionDate = " +
-    //   x +
-    //   " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') " +
-    //   filterLine +
-    //   " GROUP BY tbProductionActual.HourNo ORDER BY tbProductionActual.HourNo";
     const req_message_Dekidakas =
       "SELECT Distinct([tbProductionActual].[RxNo]) as RxNo,([tbProductionActual].[RxNo_Line]) as RxNo_Line,([HourNo]) as HourNo,([ProductionDate]) as ProductionDate,([ShiftNo]) as ShiftNo,([Value]) as Value,[CT].CycleTime as CT FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbPartLine on tbProductionActual.RxNo_Line = tbPartLine.RxNo_Line LEFT JOIN (SELECT MAX([RxNo_Line]) as RxNo_Line, Avg([CycleTime]) as CycleTime FROM [RTDensoLineInfo].[dbo].[tbPartLine] GROUP BY RxNo_Line) as CT on CT.RxNo_Line = tbProductionActual.RxNo_Line LEFT JOIN tbLine on tbPartLine.RxNo_Line  = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'PPA' AND ShiftNo = 'A' AND ProductionDate = " +
       x +
@@ -546,40 +487,9 @@ io.on("connection", (socket) => {
       socket.emit("req_message_LossSum", result);
     });
   });
-  console.log("user connected");
-  // setInterval(() => {
-  appPool.query(req_message_ProdAct, function (err, result, fields) {
-    socket.emit("ProdAct", result);
-    // console.log('Sent ProdAct!')
-  });
-  appPool.query(req_message_ProdPlan, function (err, result, fields) {
-    socket.emit("MasterPlan", result);
-    // console.log('Sent ProdPlan!')
-  });
   appPool.query(req_message_commonDay, function (err, result, fields) {
     socket.emit("CommonDay", result);
     // console.log('Sent CommonDay!')
-  });
-  pool.query(
-    "SELECT Customer_name as CUSTOMER,part_no as PART_NO,Process_Name as LINE_NAME,ORQTY as ORDER_QTY,round(criteria_max,1) As MAX,round(criteria_min,1) as MIN,SUM(stock_qty) AS STOCK_QTY,Status as STATUS FROM vwstock_status_tbdetail WHERE Cust_line_Part is not null GROUP BY part_no order by Customer_name asc",
-    function (err, result, fields) {
-      socket.emit("LineSummary", result);
-    }
-  );
-  appPool.query(req_message_ProdAct_date, function (err, result, fields) {
-    socket.emit("ProdActPerDay", result);
-    // console.log('Sent CommonDay!')
-  });
-  appPool.query(req_message_Loss, function (err, result, fields) {
-    socket.emit("Loss", result);
-    // console.log('Sent CommonDay!')
-  });
-  appPool.query(req_message_ProdAct_PPA, function (err, result, fields) {
-    socket.emit("ProdActPPA", result);
-  });
-  appPool.query(req_message_mp, function (err, result, fields) {
-    socket.emit("Manpower", result);
-    // console.log('Sent ProdAct!')
   });
   appPool.query(req_message_mp_daily, function (err, result, fields) {
     socket.emit("Manpower_Daily", result);
