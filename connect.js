@@ -184,11 +184,12 @@ const req_message_OALossSum =
   " AND Value IS NOT NULL AND Value != 0 GROUP BY tbLine.Code";
 
 const req_message_for_point =
-  "SELECT MAX([tbLine].[RxNo]) as RxNo_Line, MAX([tbSection].[Code]) as SectionCode,MAX([Department]) AS Department,MAX([tbLine].[Code]) AS LineCode,MAX([tbLine].[Name]) AS LineName,SUM([Value]) AS Value,MAX([tbProductionActual].[UpdateDate]) AS UpdateDate,MAX(ProdPlanPerMonth) / MAX(WorkingDay) as ProdPlanPerDay, MAX(71568) / (SUM(Value * CycleTime) / SUM(Value)) AS PlanPerCap, (SUM(Value) / (MAX(71568) / (SUM(Value * CycleTime) / SUM(Value)))) * 100 AS perOA FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbManPowerPlan on tbManPowerPlan.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'OK' AND ProductionDate = " +
+  "SELECT MAX([tbLine].[RxNo]) as RxNo_Line, MAX([tbSection].[Code]) as SectionCode,MAX([Department]) AS Department,MAX([tbLine].[Code]) AS LineCode,MAX([tbLine].[Name]) AS LineName,SUM([Value]) AS Value,MAX([tbProductionActual].[UpdateDate]) AS UpdateDate,MAX(ProdPlanPerMonth) / MAX(WorkingDay) as ProdPlanPerDay, MAX(71568) / (SUM(Value * CycleTime) / SUM(Value)) AS PlanPerCap, (SUM(Value) / SUM(Value) / (MAX(71568) / (SUM(Value * CycleTime)))) * 100 AS perOA FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbManPowerPlan on tbManPowerPlan.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'OK' AND ProductionDate = " +
   x +
   " AND PlanMonth = " +
   y +
   " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') AND [tbLine].[Name] IS NOT NULL AND [tbLine].[Code] IS NOT NULL AND [tbProductionActual].[Value] != 0 GROUP BY tbLine.Code";
+console.log(req_message_for_point);
 
 const req_message_Stock_donut =
   "SELECT Line_name,Customer_name,Process_type, SUM(Inv_Cost) AS Stock_Cost FROM vwstock_by_cust where Process_type is not null and Process_type = 'Assy' GROUP BY Process_type";

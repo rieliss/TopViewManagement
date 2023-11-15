@@ -1502,9 +1502,7 @@ var datafilltext = 0;
 function Stock() {
   socket.on("req_message_Stock_donut", (data) => {
     data.filter((e) => {
-      // console.log(stock_data);
       addData(CurrentLossInHouseStock, e.Process_type, e.Stock_Cost);
-      // console.log(doughnutInHouseStock);
       datafilltext = formatNumber(e.Stock_Cost);
       stock_data.forEach((item) => {
         item.innerHTML = `<b>${formatNumber(e.Stock_Cost)}B</b>`;
