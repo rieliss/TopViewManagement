@@ -1,6 +1,6 @@
-var socket = io("http://localhost:4040");
-
+// var socket = io("http://localhost:4040");
 // var socket = io("http://172.23.36.47:5000");
+var socket = io("http://10.122.77.1:4040");
 
 var sum = [];
 var STOCK_QTY = 0;

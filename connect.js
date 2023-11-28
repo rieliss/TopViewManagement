@@ -505,7 +505,7 @@ appPool
     app.locals.db = pool;
     const server = http.listen(4040, () => {
       const port = server.address().port;
-      console.log(`running at http://localhost:${port}/`);
+      console.log(`running at http://10.122.77.1:${port}/`);
       // console.log('Example app listening at http://%s:%s', host, port)
     });
   })
