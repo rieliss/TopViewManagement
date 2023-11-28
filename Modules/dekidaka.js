@@ -549,7 +549,7 @@ var RakingLossChart = new Chart(RakingLoss_Chart, {
     indexAxis: "x",
     plugins: {
       legend: {
-        display: true,
+        display: false,
       },
       tooltip: {
         callbacks: {
