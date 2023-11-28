@@ -453,11 +453,6 @@ var CurrentLoss = new Chart(chrtLoss, {
     aspectRatio: 3.5,
     indexAxis: "x",
     scales: {
-      // pcs: {
-      //     beginAtZero: true,
-      //     type: 'linear',
-      //     position: 'left'
-      // },
       y: {
         ticks: {
           color: "white",

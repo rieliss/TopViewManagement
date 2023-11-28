@@ -1,4 +1,6 @@
-var socket = io("http://172.23.36.47:5000");
+var socket = io("http://localhost:4040");
+// var socket = io("http://172.23.36.47:4040");
+// var socket = io("http://10.122.77.1:4040");
 
 const objectDate = new Date();
 // const objectDate = new Date("2023-09-21");
@@ -95,20 +97,18 @@ function calculateSum(array, property) {
 var perOA = 0;
 function Update_Deki() {
   socket.on("req_message_OALossSum", (data) => {
-    // console.log(OALossSum);
+    console.log(OALossSum.data);
     data.recordset.filter((e) => {
-      OALossSum.data.calculatedData[0][1] = e.perOA.toFixed(1);
-      OALossSum.update;
-      OALossSum.data.calculatedData[1][1] = (100 - e.perOA).toFixed(1);
-      OALossSum.update;
-      OALossSum.data.datasets[0].data[1] = e.perOA.toFixed(1);
-      OALossSum.update;
-      OALossSum.data.datasets[1].data[1] = (100 - e.perOA).toFixed(1);
-      OALossSum.update;
-      OALossSum.data.originalData[0][1] = e.perOA.toFixed(1);
-      OALossSum.update;
-      OALossSum.data.originalData[1][1] = (100 - e.perOA).toFixed(1);
-      OALossSum.update;
+      OALossSum.data.datasets[0].data[0] = 90;
+      OALossSum.update();
+      OALossSum.data.datasets[0].data[1] = parseFloat(e.perOA.toFixed(1));
+      OALossSum.update();
+      OALossSum.data.datasets[1].data[0] = 10;
+      OALossSum.update();
+      OALossSum.data.datasets[1].data[1] = parseFloat(
+        (100 - e.perOA).toFixed(1)
+      );
+      OALossSum.update();
     });
   });
 }
@@ -439,6 +439,17 @@ function updateLoss() {
   });
 }
 
+function addDataLoss(chart, label, newData, Description) {
+  chart.data.labels.push(label);
+  chart.data.datasets.forEach((dataset) => {
+    dataset.data.push(newData);
+    dataset.Description.push(Description);
+  });
+
+  chart.update();
+  // console.log(chart.data);
+}
+
 function addData(chart, label, newData) {
   chart.data.labels.push(label);
   chart.data.datasets.forEach((dataset) => {
@@ -470,6 +481,54 @@ function LossRanking_month() {
   });
 }
 
+const footer = (tooltipItems) => {
+  let sum = "";
+
+  tooltipItems.forEach(function (tooltipItem) {
+    console.log(tooltipItem);
+    if (tooltipItem.dataIndex === 0) {
+      sum = tooltipItem.dataset.Description[0];
+    } else if (tooltipItem.dataIndex === 1) {
+      sum = tooltipItem.dataset.Description[1];
+    } else if (tooltipItem.dataIndex === 2) {
+      sum = tooltipItem.dataset.Description[2];
+    } else if (tooltipItem.dataIndex === 3) {
+      sum = tooltipItem.dataset.Description[3];
+    } else if (tooltipItem.dataIndex === 4) {
+      sum = tooltipItem.dataset.Description[4];
+    } else if (tooltipItem.dataIndex === 5) {
+      sum = tooltipItem.dataset.Description[5];
+    } else if (tooltipItem.dataIndex === 6) {
+      sum = tooltipItem.dataset.Description[6];
+    } else if (tooltipItem.dataIndex === 7) {
+      sum = tooltipItem.dataset.Description[7];
+    } else if (tooltipItem.dataIndex === 8) {
+      sum = tooltipItem.dataset.Description[8];
+    } else if (tooltipItem.dataIndex === 9) {
+      sum = tooltipItem.dataset.Description[9];
+    } else if (tooltipItem.dataIndex === 10) {
+      sum = tooltipItem.dataset.Description[10];
+    } else if (tooltipItem.dataIndex === 11) {
+      sum = tooltipItem.dataset.Description[11];
+    } else if (tooltipItem.dataIndex === 12) {
+      sum = tooltipItem.dataset.Description[12];
+    } else if (tooltipItem.dataIndex === 13) {
+      sum = tooltipItem.dataset.Description[13];
+    } else if (tooltipItem.dataIndex === 14) {
+      sum = tooltipItem.dataset.Description[14];
+    } else if (tooltipItem.dataIndex === 15) {
+      sum = tooltipItem.dataset.Description[15];
+    } else if (tooltipItem.dataIndex === 16) {
+      sum = tooltipItem.dataset.Description[16];
+    } else if (tooltipItem.dataIndex === 17) {
+      sum = tooltipItem.dataset.Description[17];
+    } else if (tooltipItem.dataIndex === 18) {
+      sum = tooltipItem.dataset.Description[18];
+    }
+  });
+  return sum;
+};
+
 var RakingLoss_Chart = document.getElementById("RakingLossChart");
 var RakingLossChart = new Chart(RakingLoss_Chart, {
   type: "bar",
@@ -478,6 +537,7 @@ var RakingLossChart = new Chart(RakingLoss_Chart, {
     datasets: [
       {
         data: [],
+        Description: [],
         backgroundColor: "rgba(255,224,181,1)",
         borderColor: "rgba(255,224,181,1)",
       },
@@ -489,7 +549,12 @@ var RakingLossChart = new Chart(RakingLoss_Chart, {
     indexAxis: "x",
     plugins: {
       legend: {
-        display: false,
+        display: true,
+      },
+      tooltip: {
+        callbacks: {
+          footer: footer,
+        },
       },
     },
     scales: {
@@ -516,6 +581,7 @@ Loss_Raking();
 function Loss_Raking() {
   socket.on("req_message_LossRanking", (data) => {
     // console.log(data.recordset);
+    // console.log(RakingLossChart.data);
     while (RakingLossChart.data.labels.length) {
       RakingLossChart.data.labels.pop();
       RakingLossChart.update();
@@ -524,7 +590,7 @@ function Loss_Raking() {
     }
     var SumLossPerDay = 0;
     data.recordset.map((e) => {
-      addData(RakingLossChart, e.x, e.Minute);
+      addDataLoss(RakingLossChart, e.x, e.Minute, e.CodeName);
     });
     LossPerDay.forEach((item) => {
       data.recordset.forEach((e) => {
@@ -771,8 +837,15 @@ AddOptionLine();
 function AddOptionLine() {
   var LineName = document.getElementById("filterByLineName");
   socket.on("req_message_Data_Line", (data) => {
+    // console.log(data);
+    data.recordset.unshift({
+      SectionName: "Select All",
+      LineName: "Select All",
+      sumCode: "Select All",
+    });
     removeAll(LineName);
     data.recordset.filter((e) => {
+      // console.log(e);
       var optionLineName = document.createElement("option");
       optionLineName.text = e.sumCode;
       LineName.add(optionLineName);
@@ -793,5 +866,6 @@ var searchFilterLineCode = () => {
   let selectedLineName = document.getElementById("filterByLineName").value;
 
   const selected = selectedLineName.slice(7);
+  console.log(selected);
   socket.emit("filterdataLineName", selected);
 };

@@ -1,49 +1,109 @@
 /*----------------------------------------------------------------*/
 Chart.register(ChartjsPluginStacked100.default);
-const OALossSumChart = document.getElementById("OALossSum");
-const OALossSum = new Chart(OALossSumChart, {
+var OALossSumChart = document.getElementById("OALossSum");
+// var OALossSum = new Chart(OALossSumChart, {
+//   type: "bar",
+//   data: {
+//     labels: ["Target", "Actual"],
+//     datasets: [
+//       {
+//         label: "%OA",
+//         data: [90, 90],
+//         backgroundColor: "rgba(0, 204, 153, 1)",
+//       },
+//       {
+//         label: "Loss",
+//         data: [10, 10],
+//         backgroundColor: "rgba(255, 37, 37, 1)",
+//       },
+//     ],
+//   },
+//   options: {
+//     barThickness: 50,
+//     aspectRatio: 1.9,
+//     plugins: {
+//       stacked100: {
+//         enable: true,
+//       },
+//       legend: {
+//         // display: false
+//       },
+//     },
+//     scales: {
+//       x: {
+//         stacked: true,
+//         ticks: {
+//           color: "white",
+//           beginAtZero: true,
+//         },
+//       },
+//       y: {
+//         stacked: true,
+//         ticks: {
+//           color: "white",
+//           beginAtZero: true,
+//         },
+//       },
+//     },
+//   },
+// });
+
+// var CurrentLoss = new Chart(chrtLoss, {
+var OALossSum = new Chart(OALossSumChart, {
   type: "bar",
   data: {
     labels: ["Target", "Actual"],
     datasets: [
       {
         label: "%OA",
-        data: [90, 88.8],
+        data: [0, 0],
         backgroundColor: "rgba(0, 204, 153, 1)",
       },
       {
         label: "Loss",
-        data: [10, 11.2],
+        data: [0, 0],
         backgroundColor: "rgba(255, 37, 37, 1)",
       },
     ],
   },
   options: {
-    barThickness: 50,
+    fontColor: "rgba(255, 255, 255,1)",
+    barPercentage: 5,
+    barThickness: 70,
+    catrgoryPercentage: 5,
     aspectRatio: 1.9,
+    indexAxis: "x",
+    scales: {
+      // pcs: {
+      //     beginAtZero: true,
+      //     type: 'linear',
+      //     position: 'left'
+      // },
+      y: {
+        ticks: {
+          color: "white",
+          beginAtZero: true,
+        },
+      },
+      x: {
+        ticks: {
+          color: "white",
+          beginAtZero: true,
+        },
+      },
+    },
     plugins: {
       stacked100: {
         enable: true,
       },
       legend: {
-        // display: false
+        // position: 'left',
+        // align: 'center',
+        display: false,
       },
     },
-    scales: {
-      x: {
-        stacked: true,
-        ticks: {
-          color: "white",
-          beginAtZero: true,
-        },
-      },
-      y: {
-        stacked: true,
-        ticks: {
-          color: "white",
-          beginAtZero: true,
-        },
-      },
+    labels: {
+      fontColor: "rgba(255, 255, 255,1)",
     },
   },
 });
