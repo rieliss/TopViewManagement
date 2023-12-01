@@ -117,11 +117,16 @@ const req_message_commonDay =
   "SELECT DataCode,DataValue FROM tbCommonData WHERE DataType = 'WORK_DAY'";
 
 const req_message_ProdAct_per_date =
-  "SELECT [ProductionDate],[ShiftNo],[NetTime],[CycleTime],[Value],[tbLine].[Code] AS LineCode, [tbLine].[Name] AS LineName, [tbLine].[ID], [tbSection].[Code] AS SectionCode, [tbSection].[Department] FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'OK' AND ProductionDate >= " +
+  // "SELECT [ProductionDate],[ShiftNo],[NetTime],[CycleTime],[Value],[tbLine].[Code] AS LineCode, [tbLine].[Name] AS LineName, [tbLine].[ID], [tbSection].[Code] AS SectionCode, [tbSection].[Department] FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'OK' AND ProductionDate >= " +
+  // firstdate +
+  // " AND ProductionDate <= " +
+  // lastdate +
+  // " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') ORDER BY Department";
+  "SELECT [ProductionDate], [Value], [tbLine].[Code] AS LineCode FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'OK' AND ProductionDate >= " +
   firstdate +
   " AND ProductionDate <= " +
   lastdate +
-  "AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') ORDER BY Department";
+  " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') ORDER BY Department";
 
 const req_message_ProdAct_s =
   "SELECT [ProductionDate],[NetTime],[CycleTime],[Value],[tbLine].[Code] AS LineCode, [tbLine].[Name] AS LineName, [tbLine].[ID], [tbSection].[Code] AS SectionCode, [tbSection].[Department] FROM [RTDensoLineInfo].[dbo].[tbProductionActual] LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'OK' AND ProductionDate = " +
@@ -505,7 +510,7 @@ appPool
     app.locals.db = pool;
     const server = http.listen(4040, () => {
       const port = server.address().port;
-      console.log(`running at http://10.122.77.1:${port}/`);
+      console.log(`running at http://localhost:${port}/`);
       // console.log('Example app listening at http://%s:%s', host, port)
     });
   })

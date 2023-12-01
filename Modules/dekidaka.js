@@ -21,6 +21,7 @@ function getPreviousDay(date = new Date()) {
 
   return previous;
 }
+console.log(getPreviousDay());
 
 function calculateSum(array, property) {
   let sum = 0;
@@ -69,6 +70,7 @@ const unique1 = [];
 const arr = [];
 
 const today = getPreviousDay();
+
 const todayDate = today.toISOString();
 let todayDate_result = todayDate.slice(0, 10);
 let monthDate_result = todayDate.slice(0, 7);
@@ -77,8 +79,14 @@ function Date_Modify(date) {
   if (date < 10) {
     date = "0" + date;
   }
-  let Date_Modify = `${year}-${month}-` + date + `T00:00:00.000Z`;
-  return Date_Modify;
+
+  if (new Date().getDate() === 1) {
+    let Date_Modify = `${year}-${month - 1}-` + date + `T00:00:00.000Z`;
+    return Date_Modify;
+  } else {
+    let Date_Modify = `${year}-${month}-` + date + `T00:00:00.000Z`;
+    return Date_Modify;
+  }
 }
 
 const firstdate = "'" + monthDate_result + "-01 00:00:00.000'";
@@ -97,7 +105,6 @@ function calculateSum(array, property) {
 var perOA = 0;
 function Update_Deki() {
   socket.on("req_message_OALossSum", (data) => {
-    console.log(OALossSum.data);
     data.recordset.filter((e) => {
       OALossSum.data.datasets[0].data[0] = 90;
       OALossSum.update();
