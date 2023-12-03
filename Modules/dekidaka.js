@@ -252,6 +252,9 @@ function updateprodActDeki() {
     });
     // console.log(res);
     res.forEach((e, index) => {
+      // console.log(e.ProductionDate);
+      // console.log(Date_Modify(1), "eeee");
+
       if (e.ProductionDate === Date_Modify(1)) {
         CurrentLossDetailSum.data.datasets[2].data[0] = e.Value;
         check(sumProdPlanDeki, e, 1);

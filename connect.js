@@ -408,12 +408,18 @@ io.on("connection", (socket) => {
       socket.emit("req_message_LossSum", result);
     });
     const req_message_OALossSums =
+      // "SELECT MAX(tbLine.Code) AS LineCode, MAX(tbLine.Name) AS LineName, MAX(tbSection.Department) AS Department, SUM(Value) AS ProdAct, SUM(Value) / (MAX(53568) / (SUM(Value * CycleTime) / SUM(Value))) AS OA, (SUM(Value) / (MAX(53568) / (SUM(Value * CycleTime) / SUM(Value)))) * 100 AS perOA FROM tbProductionActual LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'OK' AND ProductionDate = " +
+      // x +
+      // " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') " +
+      // filterLine +
+      // " AND Value IS NOT NULL AND Value != 0 GROUP BY tbLine.Code";
+
       "SELECT MAX(tbLine.Code) AS LineCode, MAX(tbLine.Name) AS LineName, MAX(tbSection.Department) AS Department, SUM(Value) AS ProdAct, SUM(Value) / (MAX(53568) / (SUM(Value * CycleTime) / SUM(Value))) AS OA, (SUM(Value) / (MAX(53568) / (SUM(Value * CycleTime) / SUM(Value)))) * 100 AS perOA FROM tbProductionActual LEFT JOIN tbLine on tbProductionActual.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ValueType = 'OK' AND ProductionDate = " +
       x +
       " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') " +
       filterLine +
       " AND Value IS NOT NULL AND Value != 0 GROUP BY tbLine.Code";
-    // console.log(req_message_OALossSums);
+    console.log(req_message_OALossSums);
     appPool.query(req_message_OALossSums, function (err, result, fields) {
       socket.emit("req_message_OALossSum", result);
     });
