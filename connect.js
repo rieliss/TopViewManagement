@@ -92,6 +92,8 @@ console.log(date);
 const x = "'" + todayDate_result + " 00:00:00.000'";
 const y = "'" + monthDate_result + "-01 00:00:00.000'";
 
+console.log(x, y);
+
 const firstdate = "'" + monthDate_result + "-01 00:00:00.000'";
 const lastdate = "'" + monthDate_result + "-" + today_Loss + " 00:00:00.000'";
 
@@ -147,6 +149,8 @@ const req_message_mp_daily =
   "SELECT MAX([tbLine].[ID]) AS ID, MAX([tbLine].[Code]) AS LineCode,MAX([tbLine].[Name]) AS LineName,MAX([tbSection].[Code]) AS SectionCode,MAX([tbSection].[Department]) AS Department,SUM([tbManPowerPlan].[ProdPlanPerMonth]) AS SUMProdPlanPerMonth,MAX([tbManPowerPlan].[ProdPlanPerMonth]) / MAX([tbManPowerPlan].[WorkingDay]) AS ProdPlan FROM [RTDensoLineInfo].[dbo].[tbLine] LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo LEFT JOIN tbManPowerPlan on tbLine.RxNo = tbManPowerPlan.RxNo_Line WHERE PlanMonth = " +
   firstdate +
   " AND Department IN ('Alternator Product', 'Starter Product', 'ECC, ABS & Asmo Product', 'Parts Mfg.1', 'Parts Mfg.2') GROUP BY [tbLine].[RxNo] ORDER BY ID";
+
+  console.log(req_message_mp_daily)
 
 const req_message_DLMP =
   "SELECT MAX([ProductionDate]) as ProductionDate, MAX([Shift]) as Shift, SUM([InLine_WT]) as InLine_WT, SUM([OutLine_WT]) as OutLine_WT, SUM([Mizusumashi_WT]) as Mizusumashi_WT, SUM([LineLeader_WT]) as LineLeader_WT, SUM([TeamLeader_WT]) as TeamLeader_WT, MAX([tbLine].[Code]) AS LineCode, MAX([tbLine].[Name]) AS LineName, MAX([tbLine].[ID]) AS ID, MAX([tbSection].[Code]) AS SectionCode, MAX([tbSection].[Department]) as Department FROM [RTDensoLineInfo].[dbo].[tbDailyManPower] LEFT JOIN tbLine on tbDailyManPower.RxNo_Line = tbLine.RxNo LEFT JOIN tbWorkCenter on tbLine.RxNo_WorkCenter = tbWorkCenter.RxNo LEFT JOIN tbSection on tbWorkCenter.RxNo_Section = tbSection.RxNo WHERE ProductionDate = " +
